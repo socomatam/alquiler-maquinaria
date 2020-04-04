@@ -11,6 +11,6 @@ class ContratoSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\Contrato::class,50)->create();
     }
 }

@@ -15,6 +15,12 @@ class CreateAlquileresTable extends Migration
     {
         Schema::create('alquileres', function (Blueprint $table) {
             $table->id();
+            $table->date('alq_fecha_inicio')->nullable();
+            $table->date('alq_fecha_fin')->nullable();
+            $table->double('alq_precio')->nullable();
+            $table->string('alq_detalle_trabajo')->nullable();
+            $table->integer('cliente_id')->unsigned()->nullable();
+            $table->integer('trabajador_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }

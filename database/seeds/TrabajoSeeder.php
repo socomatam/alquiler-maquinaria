@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class AlquilereSeeder extends Seeder
+class TrabajoSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class AlquilereSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Alquilere::class,50)->create();
+        factory(App\Trabajo::class,6)->create();
     }
 }
