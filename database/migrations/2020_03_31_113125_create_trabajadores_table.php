@@ -17,12 +17,12 @@ class CreateTrabajadoresTable extends Migration
             $table->id();
             $table->string('tra_nombre_trabajador',50);
             $table->string('tra_apellido_1',50)->nullable();
-            $table->string('tra_apellido_2',50)->nullable();
-            $table->date('tra_fecha_nacimiento')->nullable();
-            $table->string('tra_telefono',15)->nullable();
+            $table->string('tra_apellido_2',50);
+            $table->date('tra_fecha_nacimiento');
+            $table->string('tra_telefono',15);
             $table->string('tra_email')->nullable();
-            $table->string('tra_dni',9)->nullable();
-            $table->date('tra_fecha_alta')->nullable();
+            $table->string('tra_dni',9);
+            $table->date('tra_fecha_alta');
             $table->timestamps();
         });
     }
