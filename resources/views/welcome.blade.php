@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom">ACCEDER<a href="" uk-icon="icon:  sign-in"></a></button>
-                <a class="uk-link-muted" href="#">Recuperar contraseña</a>
+                <a class="uk-link-muted" href="#">Recuperar contraseña.</a>
             </form>
         <div>
     </div>
