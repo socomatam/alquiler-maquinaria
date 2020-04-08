@@ -15,6 +15,10 @@ class CreateMaquinasRepuestosTable extends Migration
     {
         Schema::create('maquinas_repuestos', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('maquinas_id');
+            $table->unsignedBigInteger('repuestos_id');
+            $table->foreign('maquinas_id')->references('id')->on('maquinas');
+            $table->foreign('repuestos_id')->references('id')->on('repuestos');
             $table->timestamps();
         });
     }

@@ -15,6 +15,10 @@ class CreateComplementosMaquinasTable extends Migration
     {
         Schema::create('complementos_maquinas', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('maquinas_id');
+            $table->unsignedBigInteger('complementos_id');
+            $table->foreign('maquinas_id')->references('id')->on('maquinas');
+            $table->foreign('complementos_id')->references('id')->on('complementos');
             $table->timestamps();
         });
     }

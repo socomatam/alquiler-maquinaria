@@ -18,11 +18,13 @@ class CreateMaquinasTable extends Migration
             $table->string('maq_marca')->nullable();
             $table->string('maq_modelo')->nullable();
             $table->string('maq_traslacion')->nullable();
-            $table->double('maq_peso')->nullabe();
-            $table->double('maq_dimension_alto')->nullabe();
-            $table->double('maq_dimension_largo')->nullabe();
-            $table->double('maq_dimension_ancho')->nullabe();
-
+            $table->double('maq_peso')->nullable();
+            $table->float('maq_dimension_alto')->nullable();
+            $table->float('maq_dimension_largo')->nullable();
+            $table->float('maq_dimension_ancho')->nullable();
+            $table->string('maq_categoria')->nullable();
+            $table->string('maq_tipo')->nullable();
+            $table->string('maq_estado')->nullable();
             $table->timestamps();
         });
     }

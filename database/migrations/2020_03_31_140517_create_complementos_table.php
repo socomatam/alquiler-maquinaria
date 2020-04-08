@@ -15,6 +15,8 @@ class CreateComplementosTable extends Migration
     {
         Schema::create('complementos', function (Blueprint $table) {
             $table->id();
+            $table->string('com_complemento')->nullable();
+            $table->string('com_tipo')->nullable();
             $table->timestamps();
         });
     }

@@ -11,6 +11,6 @@ class MaquinaSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\Maquina::class,50)->create();
     }
 }
