@@ -17,12 +17,25 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/pruebas', function () {
-    return "Prueba";
-});
 
 
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('alquiler', 'AlquilereController');
+
+
+
+
+
+Route::get('/pruebas', function () {
+    //$prueba = App\Alquilere::select('*')->join('clientes', 'alquileres.cliente_id', '=', 'clientes.id')->get();
+    //echo "$prueba";
+
+    //$hora = Carbon\Carbon::now();
+    $date1 = new DateTime("now");
+    
+    var_dump($date1);
+    
+
+});

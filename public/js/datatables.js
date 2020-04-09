@@ -6,7 +6,7 @@ $(document).ready( function () {
             "emptyTable":     "No hay datos disponibles",
             "info":           "Mostrando de _START_ a _END_ de _TOTAL_ registros",
             "infoEmpty":      "Mostrando de 0 a 0 de 0 entries",
-            "infoFiltered":   "(filtered from _MAX_ total entries)",
+            "infoFiltered":   "(filtrado de un total de _MAX_ entries)",
             "infoPostFix":    "",
             "thousands":      ",",
             "lengthMenu":     "Mostrando _MENU_ entradas",

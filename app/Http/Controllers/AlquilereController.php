@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Alquilere;
+use App\Cliente;
+use Carbon\Carbon;
+use DateTime;
 use Illuminate\Http\Request;
 
 class AlquilereController extends Controller
@@ -14,8 +17,24 @@ class AlquilereController extends Controller
      */
     public function index()
     {
-        $alquiler = Alquilere::all();
-        return view('alquiler.listado', compact('alquiler'));
+        //$fechaActual = Carbon::now();
+        
+        $alquiler = Alquilere::select(
+            'clientes.id AS id_clientes',
+            'alquileres.id AS id_alquiler',
+            'clientes.cli_nombre_empresa AS empresa',
+            'alquileres.alq_fecha_inicio AS inicio',
+            'alquileres.alq_fecha_fin AS fin',
+
+        )->join('clientes', 'alquileres.cliente_id', '=', 'clientes.id')->get();
+
+            $fechaActual = new DateTime('now');
+            $fechaActual =  $fechaActual->format('Y-m-d');
+           
+
+            //dd( $fechaActual);
+
+        return view('alquiler.listado', compact('alquiler', 'fechaActual'));
     }//fin index
 
     /**

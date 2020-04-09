@@ -1,0 +1,8 @@
+/*fija el menú lateral del layout*/
+#posicion_fija{
+  position:fixed;
+}
+
+#prueba{
+    background-color:blue;
+}

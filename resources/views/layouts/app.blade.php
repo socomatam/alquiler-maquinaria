@@ -36,6 +36,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/estilos.css') }}" rel="stylesheet">
 
   
 
@@ -44,7 +45,7 @@
 
 </head>
 <body>
-    <nav class="uk-navbar-container" uk-navbar>
+    <nav  class="uk-navbar-container " uk-navbar uk-sticky="top: 0" id="listado">
         <div class="uk-navbar-left">
 
             <ul class="uk-navbar-nav">
@@ -74,10 +75,10 @@
             <ul>
         </div>
     </nav>
-    <div uk-grid>
+    <div  uk-grid>
         <div>
-            <ul class="uk-list">
-                <li>List item 1</li>
+            <ul  id="posicion_fija" class="uk-list">
+                <li></li>
                 <li>List itefm 2</li>
                 <li>List item 3</li>
             </ul>
@@ -86,10 +87,13 @@
         <div>
             @yield('content')
         </div>
+        
     </div>
 
+    
+    
 
-<!--
+<!--uk-sticky="top: 0"
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">

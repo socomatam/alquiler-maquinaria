@@ -6,21 +6,30 @@
         <table id="alq_tabla_id" class="display">
             <thead>
                 <tr>
-                    <th>id</th>
-                    <th>Cliente</th>
-                    <th>Inicio de alquiler</th>
-                    <th>Fin de alquiler</th>
+                    <th>ID</th>
+                    <th>EMPRESA</th>
+                    <th>INICIO ALQUILER</th>
+                    <th>FIN ALQUILER</th>
                 </tr>
             </thead>
             <tbody>
 
                 @foreach($alquiler as $alq)
-                    <tr>
-                        <td>{{$alq->id}}</td>
-                        <td>{{$alq->cliente_id}}</td>
-                        <td>{{$alq->alq_fecha_inicio}}</td>
-                        <td>{{$alq->alq_fecha_fin}}</td>
-                    </tr>
+                    @if($alq->fin > $fechaActual)
+                        <tr id="prueba">
+                            <td>{{$alq->id_alquiler}}</td>
+                            <td>{{$alq->empresa}}</td>
+                            <td>{{$alq->inicio}}</td>
+                            <td>{{$alq->fin}}</td>
+                        </tr>
+                    @else
+                        <tr>
+                            <td>{{$alq->id_alquiler}}</td>
+                            <td>{{$alq->empresa}}</td>
+                            <td>{{$alq->inicio}}</td>
+                            <td>{{$alq->fin}}</td>
+                        </tr>
+                    @endif
                 @endforeach
                 
                 
