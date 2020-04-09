@@ -14,8 +14,9 @@ class AlquilereController extends Controller
      */
     public function index()
     {
-        return view('alquiler.listado');
-    }
+        $alquiler = Alquilere::all();
+        return view('alquiler.listado', compact('alquiler'));
+    }//fin index
 
     /**
      * Show the form for creating a new resource.

@@ -7,6 +7,12 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
+ /**/
+
+
+ 
+ /**/
+
 :root {
   --blue: #3490dc;
   --indigo: #6574cd;
@@ -51,6 +57,7 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+
 article,
 aside,
 figcaption,
@@ -74,6 +81,8 @@ body {
   text-align: left;
   background-color: #f8fafc;
 }
+
+
 
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important;
