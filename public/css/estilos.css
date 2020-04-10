@@ -3,6 +3,22 @@
   position:fixed;
 }
 
-#prueba{
-    background-color:blue;
+.layout_menu_lateral{
+    padding: 50px;
+}
+
+.layout_contenedor{
+    margin-left:30px ;
+}
+
+#alq_pasados{
+    background-color:lightgrey;
+}
+
+#alq_vigente{
+    background-color: lightgreen;
+}
+
+tbody tr td{
+
 }

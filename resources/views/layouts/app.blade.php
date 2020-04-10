@@ -28,7 +28,9 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js" defer></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/colreorder/1.5.2/js/dataTables.colReorder.min.js" defer></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/fixedheader/3.1.6/js/dataTables.fixedHeader.min.js" defer></script>
+
+    
     
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -75,16 +77,16 @@
             <ul>
         </div>
     </nav>
-    <div  uk-grid>
-        <div>
+    <div uk-grid>
+        <div class='layout_menu_lateral'>
             <ul  id="posicion_fija" class="uk-list">
-                <li></li>
-                <li>List itefm 2</li>
-                <li>List item 3</li>
+                <li>AlQUILER</li>
+                <li>MÁQUINAS</li>
+                <li>CLIENTES</li>
             </ul>
         </div>
-        <hr class="uk-divider-vertical">
-        <div>
+        
+        <div class="layout_contenedor">
             @yield('content')
         </div>
         

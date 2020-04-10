@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Alquilere;
 use App\Cliente;
+use App\Trabajadore;
 use Carbon\Carbon;
 use DateTime;
 use Illuminate\Http\Request;
+use DB;
+use App\Quotation;
 
 class AlquilereController extends Controller
 {
@@ -17,22 +20,52 @@ class AlquilereController extends Controller
      */
     public function index()
     {
-        //$fechaActual = Carbon::now();
         
         $alquiler = Alquilere::select(
+            'trabajadores.id AS id_trabajador',
             'clientes.id AS id_clientes',
             'alquileres.id AS id_alquiler',
             'clientes.cli_nombre_empresa AS empresa',
             'alquileres.alq_fecha_inicio AS inicio',
             'alquileres.alq_fecha_fin AS fin',
+            'trabajadores.tra_nombre_trabajador AS nombre_trabajador',
+            'trabajadores.tra_apellido_1 AS apellido_trabajador_1',
+            'trabajadores.tra_apellido_2 AS apellido_trabajador_2',
+        )->join(
+            'clientes', 'alquileres.cliente_id', '=', 'clientes.id'
+        )->join(
+            'trabajadores', 'alquileres.trabajador_id', '=', 'trabajadores.id'
+        )->get();
 
-        )->join('clientes', 'alquileres.cliente_id', '=', 'clientes.id')->get();
+        
 
-            $fechaActual = new DateTime('now');
-            $fechaActual =  $fechaActual->format('Y-m-d');
+
+
+       
+            /*
+        $alquiler = DB::table('alquileres')
+            ->join('clientes', 'alquileres.cliente_id', '=', 'clientes.id', 'inner')
+            ->join('trabajadores', 'alquileres.trabajador_id', '=', 'trabajadores.id', 'inner')
+            ->select(
+            'trabajadores.id AS id_trabajador',
+            'clientes.id AS id_clientes',
+            'alquileres.id AS id_alquiler',
+            //'trabajadores.id AS id_',
+            'clientes.cli_nombre_empresa AS empresa',
+            'alquileres.alq_fecha_inicio AS inicio',
+            'alquileres.alq_fecha_fin AS fin')
+            //'trabajadores.tra_nombre_trabajador AS nombre_trabajador',
+            //'trabajadores.tra_apellido_1 AS apellido_trabajador_1',
+            //'trabajadores.tra_apellido_2 AS apellido_trabajador_2')
+            ->get();
+                */
+            
+
+        
+        $fechaActual = new DateTime('now');
+        $fechaActual =  $fechaActual->format('Y-m-d');
            
-
-            //dd( $fechaActual);
+    
 
         return view('alquiler.listado', compact('alquiler', 'fechaActual'));
     }//fin index

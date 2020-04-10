@@ -22,7 +22,7 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('alquiler', 'AlquilereController');
+Route::resource('alquiler', 'AlquilereController')->middleware('auth');;
 
 
 
