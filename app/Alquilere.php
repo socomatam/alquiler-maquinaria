@@ -14,4 +14,8 @@ class Alquilere extends Model
 	public function trabajador(){
 		return $this->belongsTo('App\Trabajadore');
 	}//fin paciente
+
+	public function maquinas(){
+		return $this->belongsToMany('App\Maquina');
+	}
 }

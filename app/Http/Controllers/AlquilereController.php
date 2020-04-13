@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Alquilere;
+use App\Maquina;
 use App\Cliente;
 use App\Trabajadore;
 use Carbon\Carbon;
@@ -36,10 +37,19 @@ class AlquilereController extends Controller
         )->join(
             'trabajadores', 'alquileres.trabajador_id', '=', 'trabajadores.id'
         )->get();
-
         
+            
+            
+            $array = [];
+            //$hola = Alquilere::with('maquinas')->get();
+            $hola = Alquilere::find(1);
+            $contador = 0;
+            foreach ($hola->maquinas as $role) {
+                $array[$contador] = $role;
+                $contador++;
+            }
 
-
+            //dd($hola);
 
        
             /*

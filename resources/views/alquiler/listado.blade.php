@@ -11,8 +11,9 @@
                     <th>INICIO ALQUILER</th>
                     <th>FIN ALQUILER</th>
                     <th>EMPLEADO</th>
+                    <th>MAQUINAS</th>
                     <th>EDITAR</th>
-                    <th>EDITAR</th>
+                    <th>DETALLES</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,8 +26,9 @@
                             <td>{{$alq->inicio}}</td>
                             <td>{{$alq->fin}}</td>
                             <th>{{$alq->nombre_trabajador}} {{ $alq->apellido_trabajador_1}} {{ $alq->apellido_trabajador_2}} </th>
+                            <th><span uk-icon="icon: plus-circle"></span> Ver máquinas</th>
                             <td><li><a href="#" uk-icon="icon: file-edit"></a></li></td>
-                            <td>HOLS</td>
+                            <th><span uk-icon="icon: info"></span></th>
                         </tr>
                     @else
                         <tr id="alq_vigente">
@@ -35,8 +37,9 @@
                             <td>{{$alq->inicio}}</td>
                             <td>{{$alq->fin}}</td>
                             <th>{{$alq->nombre_trabajador}} {{ $alq->apellido_trabajador_1}} {{ $alq->apellido_trabajador_2}}</th>
+                            <th><span uk-icon="icon: plus-circle"></span> Ver máquinas</th>
                             <td><li><a href="#" uk-icon="icon: file-edit"></a></li></td>
-                            <td>HOLS</td>
+                            <th><span uk-icon="icon: info"></span></th>
                         </tr>
                     @endif
                 @endforeach
