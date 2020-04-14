@@ -5,7 +5,7 @@ $(document).ready( function () {
         "pageLength": 15,
         "lengthMenu": [ 10, 15, 20, 25, 50, 75, 100 ],
         "order": [[ 3, "desc" ]],
-        columnDefs: [ { orderable: false, targets: [0] }],
+        columnDefs: [ { orderable: false, targets: [0,1] }],
         language:{
             "decimal":        "",
             "emptyTable":     "No hay datos disponibles",
@@ -31,5 +31,34 @@ $(document).ready( function () {
             }
         },
         
-    });
-} );
+    });//fin datetable
+
+    $('.alq_btn_plus').click(function(){
+        var alq_id = $(this).closest('tr').data()['alq_id'];
+        
+
+        $.ajax({
+			url: 'maquinas_alquiladas/' + alq_id,
+            type:'GET',
+            success: function(respuesta){
+             
+                var lista = '<ul>';
+                for (const prop in respuesta) {
+                    console.log(respuesta[prop].maq_marca);
+                    lista = lista + '<li>' + respuesta[prop].maq_marca + '</li>'; 
+                }
+                lista = lista + '</ul>';
+
+                
+
+                $('.a').html(lista); 
+
+            }, 
+		
+		});//fin ajax
+
+    });//fin alq btn plus
+
+
+} );//fin ready
+

@@ -37,20 +37,6 @@ class AlquilereController extends Controller
         )->join(
             'trabajadores', 'alquileres.trabajador_id', '=', 'trabajadores.id'
         )->get();
-        
-            
-            
-            $array = [];
-            //$hola = Alquilere::with('maquinas')->get();
-            $hola = Alquilere::find(1);
-            $contador = 0;
-            foreach ($hola->maquinas as $role) {
-                $array[$contador] = $role;
-                $contador++;
-            }
-
-            //dd($hola);
-
        
             /*
         $alquiler = DB::table('alquileres')
@@ -79,6 +65,22 @@ class AlquilereController extends Controller
 
         return view('alquiler.listado', compact('alquiler', 'fechaActual'));
     }//fin index
+
+
+    public function listaMaquinas($id){
+        $maquinas = Alquilere::find($id);
+
+        $listaMaquinas = [];
+        $i = 0;
+        foreach($maquinas->maquinas as $maquina){
+
+            $listaMaquinas[$i] = $maquina;
+            $i++;
+
+        }//fin for each
+
+        return $listaMaquinas;
+    }//fin lista máquinas
 
     /**
      * Show the form for creating a new resource.
