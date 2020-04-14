@@ -32,7 +32,7 @@
                         <td>{{$alq->empresa}}</td>
                         <td>{{$alq->inicio}}</td>
                         <td>{{$alq->fin}}</td>
-                        <th>TOTAL DIAS</th>
+                        <th>{{$alq->dias }}</th>
                         <th>{{$alq->nombre_trabajador}} {{ $alq->apellido_trabajador_1}} {{ $alq->apellido_trabajador_2}} </th>
                         <th><span href="#modal-center" uk-toggle class="alq_btn_plus" uk-icon="icon: plus-circle"></span> Ver máquinas</th>
                         <td><li><a href="#" uk-icon="icon: file-edit"></a></li></td>

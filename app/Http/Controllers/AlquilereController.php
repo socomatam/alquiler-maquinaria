@@ -33,6 +33,7 @@ class AlquilereController extends Controller
             'trabajadores.tra_nombre_trabajador AS nombre_trabajador',
             'trabajadores.tra_apellido_1 AS apellido_trabajador_1',
             'trabajadores.tra_apellido_2 AS apellido_trabajador_2',
+            DB::raw("DATEDIFF(alquileres.alq_fecha_fin,alquileres.alq_fecha_inicio) AS dias")
         )->join(
             'clientes', 'alquileres.cliente_id', '=', 'clientes.id'
         )->join(
@@ -61,6 +62,10 @@ class AlquilereController extends Controller
         
         $fechaActual = new DateTime('now');
         $fechaActual =  $fechaActual->format('Y-m-d');
+
+
+        
+    //echo $interval->format('%R%a días');
            
     
 
