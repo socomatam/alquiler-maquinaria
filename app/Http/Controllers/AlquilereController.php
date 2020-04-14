@@ -29,6 +29,7 @@ class AlquilereController extends Controller
             'clientes.cli_nombre_empresa AS empresa',
             'alquileres.alq_fecha_inicio AS inicio',
             'alquileres.alq_fecha_fin AS fin',
+            'alquileres.alq_incidencia AS incidencia',
             'trabajadores.tra_nombre_trabajador AS nombre_trabajador',
             'trabajadores.tra_apellido_1 AS apellido_trabajador_1',
             'trabajadores.tra_apellido_2 AS apellido_trabajador_2',

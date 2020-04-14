@@ -29,14 +29,23 @@ Route::get('maquinas_alquiladas/{id}', 'AlquilereController@listaMaquinas')->mid
 
 
 
+
+
+
+
+
+
 Route::get('/pruebas', function () {
     //$prueba = App\Alquilere::select('*')->join('clientes', 'alquileres.cliente_id', '=', 'clientes.id')->get();
     //echo "$prueba";
 
     //$hora = Carbon\Carbon::now();
-    $date1 = new DateTime("now");
+    //$date1 = new DateTime("now");
     
-    var_dump($date1);
+    //var_dump($date1);
+    $hola = App\Alquilere_maquina::all();
+
+    echo "$hola";
     
 
 });

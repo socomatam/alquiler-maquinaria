@@ -19,6 +19,7 @@ class CreateAlquileresTable extends Migration
             $table->date('alq_fecha_fin')->nullable();
             $table->double('alq_precio')->nullable();
             $table->string('alq_detalle_trabajo')->nullable();
+            $table->string('alq_incidencia')->nullable();
             $table->integer('cliente_id')->unsigned()->nullable();
             $table->integer('trabajador_id')->unsigned()->nullable();
             $table->integer('trabajos_id')->unsigned()->nullable();
