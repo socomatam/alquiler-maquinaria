@@ -2,7 +2,10 @@
 
 @section('content')
 
+
     <div class='alq_contenedor'>
+        
+    <button id="alq_btn_nuevo_alquiler" class="uk-button uk-button-primary uk-button-small"><a href="{{url('/alquiler/create')}}">CREAR NUEVO ALQUILER</a></button>
         <table id="alq_tabla_id" class="display">
             <thead >
                 <tr>
@@ -43,8 +46,11 @@
                 
                 
             </tbody>
+            <tfoot></tfoot>
         </table> 
     <div>
+
+    
 
     <a class="uk-button uk-button-default" href="#modal-center" uk-toggle>Open</a>
 
@@ -52,7 +58,7 @@
     <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
 
         <button class="uk-modal-close-default" type="button" uk-close></button>
-        <div class="a"></div>
+        <div class="alq_lista_maquinas"></div>
 
     </div>
 </div>

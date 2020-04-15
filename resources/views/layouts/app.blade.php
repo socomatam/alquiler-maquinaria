@@ -24,11 +24,25 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/datatables.js') }}" defer></script>
 
+    <!--Dependencias JQUERY UI-->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" defer></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
     <!--Dependencias datetable-->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js" defer></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/colreorder/1.5.2/js/dataTables.colReorder.min.js" defer></script>
     <script type="text/javascript" src="https://cdn.datatables.net/fixedheader/3.1.6/js/dataTables.fixedHeader.min.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+
+    <!--Dependencias select 2-->
+    <script src="{{ asset('js/select2.js') }}" defer></script>
+    
+    <link href="{{ asset('css/select2.css') }}" rel="stylesheet">
+   
+    
+
+ 
+
 
     
     
@@ -47,7 +61,7 @@
 
 </head>
 <body>
-    <nav  class="uk-navbar-container " uk-navbar uk-sticky="top: 0" id="listado">
+    <nav   class="uk-navbar-container " uk-navbar uk-sticky="top: 0" id="listado">
         <div class="uk-navbar-left">
 
             <ul class="uk-navbar-nav">

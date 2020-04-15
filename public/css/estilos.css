@@ -4,11 +4,28 @@
 }
 
 .layout_menu_lateral{
-    padding: 50px;
+    padding: 70px;
 }
 
 .layout_contenedor{
-    margin-left:30px ;
+    margin-left:30px;
+    margin-top: 30px;
+
+}
+
+
+
+#listado{
+    background-color: red;
+    
+}
+
+
+/*LISTADO ALQUILER*/
+
+#alq_btn_nuevo_alquiler a{
+    color: white;
+    text-decoration: none;
 }
 
 #alq_pasados{
@@ -23,10 +40,17 @@
     background-color: red;
 }
 
-tbody tr td{
-
-}
 
 .alq_btn_plus{
     cursor: pointer;
+}
+
+/*FIN LISTADO ALQUILER*/
+
+
+
+/*CREACIÓN DE CLIENTES*/
+
+#cli_select{
+    border: yellow;
 }

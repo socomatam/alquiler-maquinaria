@@ -1,4 +1,8 @@
 $(document).ready( function () {
+
+ 
+
+
     $('#alq_tabla_id').DataTable({
         colReorder: true,
         fixedHeader: false,
@@ -51,13 +55,66 @@ $(document).ready( function () {
 
                 
 
-                $('.a').html(lista); 
+                $('.alq_lista_maquinas').html(lista); 
 
             }, 
 		
 		});//fin ajax
 
     });//fin alq btn plus
+
+    //Select2
+    $('.js-example-basic-multiple').select2();
+
+    //JQuery UI Datepiker
+    $.datepicker.regional['es'] = {
+        closeText: 'Cerrar',
+        prevText: '< Ant',
+        nextText: 'Sig >',
+        currentText: 'Hoy',
+        monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+        dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+        dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+        dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+        weekHeader: 'Sm',
+        dateFormat: 'dd/mm/yy',
+    };
+    
+    $.datepicker.setDefaults($.datepicker.regional['es']);
+
+    var dateFormat = "mm/dd/yy",
+
+    from = $( "#from" )
+        .datepicker({
+            defaultDate: "+1w",
+            changeMonth: true,
+            numberOfMonths: 1
+        })
+        .on( "change", function() {
+            to.datepicker( "option", "minDate", getDate( this ) );
+        }),
+    to = $( "#to" ).datepicker({
+        defaultDate: "+1w",
+        changeMonth: true,
+        numberOfMonths: 1
+    })
+    .on( "change", function() {
+        from.datepicker( "option", "maxDate", getDate( this ) );
+    });
+
+  function getDate( element ) {
+        var date;
+        try {
+        date = $.datepicker.parseDate( dateFormat, element.value );
+        } catch( error ) {
+        date = null;
+        }
+
+        return date;
+    }
+    
+    
 
 
 } );//fin ready
