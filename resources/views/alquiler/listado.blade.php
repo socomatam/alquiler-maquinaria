@@ -5,12 +5,13 @@
 
     <div class='alq_contenedor'>
         
-    <button id="alq_btn_nuevo_alquiler" class="uk-button uk-button-primary uk-button-small"><a href="{{url('/alquiler/create')}}">CREAR NUEVO ALQUILER</a></button>
+        <button id="alq_btn_nuevo_alquiler" class="uk-button uk-button-primary uk-button-small"><a href="{{url('/alquiler/create')}}">CREAR NUEVO ALQUILER</a></button>
+        
         <table id="alq_tabla_id" class="display">
             <thead >
                 <tr>
-                    <th>ID</th>
-                    <th>EMPRESA</th>
+                    <th>ID CLIENTE</th>
+                    <th>NOMBRE EMPRESA</th>
                     <th>INICIO ALQUILER</th>
                     <th>FIN ALQUILER</th>
                     <th>DÍAS</th>

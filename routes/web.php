@@ -23,6 +23,7 @@ Route::get('/', function () {
 //Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('alquiler', 'AlquilereController')->middleware('auth');
+Route::resource('clientes', 'ClienteController')->middleware('auth');
 Route::get('maquinas_alquiladas/{id}', 'AlquilereController@listaMaquinas')->middleware('auth');
 
 

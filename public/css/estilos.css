@@ -26,6 +26,11 @@
 #alq_btn_nuevo_alquiler a{
     color: white;
     text-decoration: none;
+    margin-bottom: 20px;
+}
+
+#alq_btn_nuevo_alquiler{
+    margin-bottom: 20px;
 }
 
 #alq_pasados{
@@ -53,4 +58,14 @@
 
 #cli_select{
     border: yellow;
+}
+
+#cli_btn_nuevo_cliente a{
+    color: white;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+
+#cli_btn_nuevo_cliente{
+    margin-bottom: 20px;
 }

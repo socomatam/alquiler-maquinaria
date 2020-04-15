@@ -22,7 +22,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/datatables.js') }}" defer></script>
+    <script src="{{ asset('js/script_general.js') }}" defer></script>
 
     <!--Dependencias JQUERY UI-->
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" defer></script>
@@ -94,9 +94,9 @@
     <div uk-grid>
         <div class='layout_menu_lateral'>
             <ul  id="posicion_fija" class="uk-list">
-                <li>AlQUILER</li>
+                <li><a href="{{url('/alquiler')}}">ALQUILER</a></li>
                 <li>MÁQUINAS</li>
-                <li>CLIENTES</li>
+                <li><a href="{{url('/clientes')}}">ALQUILER</a></li>
             </ul>
         </div>
         
