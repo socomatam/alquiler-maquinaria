@@ -96,7 +96,7 @@
             <ul  id="posicion_fija" class="uk-list">
                 <li><a href="{{url('/alquiler')}}">ALQUILER</a></li>
                 <li>MÁQUINAS</li>
-                <li><a href="{{url('/clientes')}}">ALQUILER</a></li>
+                <li><a href="{{url('/clientes')}}">CLIENTES</a></li>
             </ul>
         </div>
         

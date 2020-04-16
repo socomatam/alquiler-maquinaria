@@ -25,7 +25,7 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        //
+        return view('clientes.crear_cliente');
     }
 
     /**
@@ -36,8 +36,9 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        Cliente::create($request->all());
+        return redirect('clientes');
+    }//fin cuardar cliente
 
     /**
      * Display the specified resource.

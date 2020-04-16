@@ -95,6 +95,16 @@ $(document).ready( function () {
 
     });//fin alq btn plus
 
+
+    /////CREAR CLIENTES////
+    $('#cli_btn_crear').click(function(){
+        $.ajax({
+            url: '/clientes',
+            type: 'POST',
+        });//fin ajax
+    });//fin crear cliente
+
+
     //Select2
     $('.js-example-basic-multiple').select2();
 
