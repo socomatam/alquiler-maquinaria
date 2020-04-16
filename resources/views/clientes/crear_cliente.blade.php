@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <form method="POST" action="{{url('/clientes')}}" class="uk-form-stacked">
+    <form class="formularios" method="POST" action="{{url('/clientes')}}" class="uk-form-stacked">
         @csrf
         <div class="uk-width-1-1@m">
             <label class="uk-form-label" for="cli_nombre">NOMBRE DE LA EMPRESA</label>
@@ -51,25 +51,11 @@
 
 
         <button id="cli_btn_crer" class="uk-button uk-button-primary">CREAR CLIENTE</button>
+        <button id='btn_limpiar' class="uk-button uk-button-default">LIMPIAR FORMULARIO</button>
     </form>
 
     
 
 
 @endsection
-
-<div uk-grid>
-    <div class="uk-width-auto@m">
-        <label class="uk-form-label" for="cli_telefono">Nº TELÉFONO</label>
-        <input class="uk-input uk-width-1-2@m" id="cli_telefono" name=cli_telefono type="text" >
-    </div>
-    <div class="uk-width-1-3@m">
-        <label class="uk-form-label" for="cli_telefono">Nº TELÉFONO</label>
-        <input class="uk-input uk-width-1-2@m" id="cli_telefono" name=cli_telefono type="text" >
-    </div>
-    <div class="uk-width-expand@m">
-        <label class="uk-form-label" for="cli_telefono">Nº TELÉFONO</label>
-        <input class="uk-input uk-width-1-2@m" id="cli_telefono" name=cli_telefono type="text" >
-    </div>
-</div>
 

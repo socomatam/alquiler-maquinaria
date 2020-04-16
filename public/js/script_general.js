@@ -1,12 +1,18 @@
 $(document).ready( function () {
 
+    $('#btn_limpiar').click(function(evento){
+        evento.preventDefault();
+        $('.formularios div input').val('');
+    });//fin botón limpiar
+
     $('#cli_tabla_id').DataTable({
         colReorder: true,
         fixedHeader: false,
+        responsive: true,
         "pageLength": 15,
         "lengthMenu": [ 10, 15, 20, 25, 50, 75, 100 ],
-        "order": [[ 3, "desc" ]],
-        columnDefs: [ { orderable: false, targets: [0,1] }],
+        "order": [[ 0, "asc" ]],
+        columnDefs: [ { orderable: false, targets: [] }],
         language:{
             "decimal":        "",
             "emptyTable":     "No hay datos disponibles",
@@ -155,6 +161,11 @@ $(document).ready( function () {
 
         return date;
     }
+
+
+    //---------------ClIENTES-----------------//
+
+    
     
     
 
