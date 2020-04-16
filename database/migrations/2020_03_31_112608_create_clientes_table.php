@@ -22,7 +22,7 @@ class CreateClientesTable extends Migration
             $table->string('cli_direccion')->nullable();
             $table->string('cli_pais')->nullable();
             $table->string('cli_ciudad')->nullable();
-            $table->date('cli_fecha_alta')->nullable();
+            $table->date('cli_fecha_alta')->nullable()->useCurrent = true;;
             $table->string('cli_nombre_contacto', 100)->nullable();
             $table->timestamps();
         });

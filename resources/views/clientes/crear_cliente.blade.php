@@ -1,5 +1,23 @@
 @extends('layouts.app')
 @section('content')
+
+    @if (count($errors) > 0)
+		<div class="ui negative message">
+			<i class="close icon"></i>
+			<div class="header">
+				<ul>
+					@foreach ($errors->all() as $error)
+						<li>{{ $error }}</li>
+					@endforeach
+				</ul>
+			</div>
+		</div>
+    @endif
+    
+   
+
+
+
     <form class="formularios" method="POST" action="{{url('/clientes')}}" class="uk-form-stacked">
         @csrf
         <div class="uk-width-1-1@m">
@@ -50,7 +68,7 @@
 
 
 
-        <button id="cli_btn_crer" class="uk-button uk-button-primary">CREAR CLIENTE</button>
+        <button  class="uk-button uk-button-primary">CREAR CLIENTE</button>
         <button id='btn_limpiar' class="uk-button uk-button-default">LIMPIAR FORMULARIO</button>
     </form>
 
