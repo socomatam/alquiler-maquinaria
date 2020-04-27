@@ -14,7 +14,7 @@ class CreateMaquinasRepuestosTable extends Migration
     public function up()
     {
         Schema::create('maquinas_repuestos', function (Blueprint $table) {
-            $table->id();
+        
             $table->unsignedBigInteger('maquinas_id');
             $table->unsignedBigInteger('repuestos_id');
             $table->foreign('maquinas_id')->references('id')->on('maquinas');

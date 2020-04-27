@@ -14,7 +14,7 @@ class CreateComplementosMaquinasTable extends Migration
     public function up()
     {
         Schema::create('complementos_maquinas', function (Blueprint $table) {
-            $table->id();
+            
             $table->unsignedBigInteger('maquinas_id');
             $table->unsignedBigInteger('complementos_id');
             $table->foreign('maquinas_id')->references('id')->on('maquinas');

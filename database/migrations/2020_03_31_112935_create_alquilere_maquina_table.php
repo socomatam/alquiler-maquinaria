@@ -14,7 +14,7 @@ class CreateAlquilereMaquinaTable extends Migration
     public function up()
     {
         Schema::create('alquilere_maquina', function (Blueprint $table) {
-            $table->id();
+           
          
             $table->unsignedBigInteger('alquilere_id');
             $table->unsignedBigInteger('maquina_id');

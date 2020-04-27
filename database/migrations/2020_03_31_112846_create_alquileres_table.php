@@ -20,9 +20,10 @@ class CreateAlquileresTable extends Migration
             $table->double('alq_precio')->nullable();
             $table->string('alq_detalle_trabajo')->nullable();
             $table->string('alq_incidencia')->nullable();
-            $table->integer('cliente_id')->unsigned()->nullable();
-            $table->integer('trabajador_id')->unsigned()->nullable();
-            $table->integer('trabajos_id')->unsigned()->nullable();
+            $table->unsignedBigInteger('cliente_id');
+            $table->unsignedBigInteger('trabajador_id');
+            //$table->foreign('cliente_id')->references('id')->on('clientes');
+            //$table->foreign('trabajador_id')->references('id')->on('trabajadores');
             $table->timestamps();
         });
     }
