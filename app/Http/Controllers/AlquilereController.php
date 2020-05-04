@@ -83,7 +83,20 @@ class AlquilereController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      
+        //$fecha = $request->input('from');
+
+       
+        $alquiler = new Alquilere;
+        $alquiler->cliente_id = $request->input('nombre_empresa');
+        $alquiler->alq_fecha_inicio = $request->input('from');
+        $alquiler->alq_fecha_fin = $request->input('to');
+       //dd($alquiler);
+        $alquiler->save();
+
+        //$clienteId = $request->input('nombre_empresa');
+        
+        return redirect('alquiler');
     }
 
     /**

@@ -36,6 +36,7 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
+       
         Cliente::create($request->all());
         return redirect('clientes');
     }//fin cuardar cliente

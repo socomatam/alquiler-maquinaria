@@ -102,17 +102,15 @@ $(document).ready( function () {
     });//fin alq btn plus
 
 
-    /////CREAR CLIENTES////
-    $('#cli_btn_crear').click(function(){
-        $.ajax({
-            url: '/clientes',
-            type: 'POST',
-        });//fin ajax
-    });//fin crear cliente
+   
 
 
     //Select2
-    $('.js-example-basic-multiple').select2();
+    $('.js-example-basic-multiple').select2({
+        multiple: true,
+    });
+  
+
 
     //JQuery UI Datepiker
     $.datepicker.regional['es'] = {
@@ -126,12 +124,12 @@ $(document).ready( function () {
         dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
         dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
         weekHeader: 'Sm',
-        dateFormat: 'dd/mm/yy',
+        dateFormat: 'yy/mm/dd',
     };
     
     $.datepicker.setDefaults($.datepicker.regional['es']);
 
-    var dateFormat = "mm/dd/yy",
+    var dateFormat = "yy/mm/dd",
 
     from = $( "#from" )
         .datepicker({
@@ -166,7 +164,11 @@ $(document).ready( function () {
     //---------------ClIENTES-----------------//
 
     
+    //-------------ALQUILER-------------------//
     
+
+
+    //-----------FIN ALQUILER--------------//
     
 
 

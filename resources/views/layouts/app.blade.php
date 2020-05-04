@@ -6,7 +6,7 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- UIkit CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.3.7/dist/css/uikit.min.css" />
@@ -20,9 +20,7 @@
 
     
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/script_general.js') }}" defer></script>
+    
 
     <!--Dependencias JQUERY UI-->
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" defer></script>
@@ -45,7 +43,9 @@
     <link href="{{ asset('css/select2.css') }}" rel="stylesheet">
    
     
-
+    <!-- Scripts -->
+    
+    <script src="{{ asset('js/script_general.js') }}" defer></script>
  
 
 
