@@ -44,9 +44,15 @@ Route::get('/pruebas', function () {
     //$date1 = new DateTime("now");
     
     //var_dump($date1);
-    $hola = App\Alquilere_maquina::all();
+    //$hola = App\Alquilere_maquina::all();
 
-    echo "$hola";
+    //echo "$hola";
+
+    $usuario = App\User::find(1)->trabajador;
+
+    echo  "$usuario->tra_nombre_trabajador";
+
+  
     
 
 });

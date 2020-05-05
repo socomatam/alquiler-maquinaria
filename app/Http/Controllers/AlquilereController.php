@@ -81,12 +81,8 @@ class AlquilereController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
       
-        //$fecha = $request->input('from');
-
-       
         $alquiler = new Alquilere;
         $alquiler->cliente_id = $request->input('nombre_empresa');
         $alquiler->alq_fecha_inicio = $request->input('from');
@@ -94,10 +90,8 @@ class AlquilereController extends Controller
        //dd($alquiler);
         $alquiler->save();
 
-        //$clienteId = $request->input('nombre_empresa');
-        
         return redirect('alquiler');
-    }
+    }//fin store
 
     /**
      * Display the specified resource.
