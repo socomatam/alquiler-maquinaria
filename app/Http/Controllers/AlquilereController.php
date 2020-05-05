@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Alquilere;
+use App\User;
 use App\Maquina;
 use App\Cliente;
 use App\Trabajadore;
@@ -11,6 +12,7 @@ use DateTime;
 use Illuminate\Http\Request;
 use DB;
 use App\Quotation;
+use Illuminate\Support\Facades\Auth;
 
 class AlquilereController extends Controller
 {
@@ -67,12 +69,16 @@ class AlquilereController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create(){
+
         $clientes = Cliente::all();
         $maquinas = Maquina::all();
 
-        return view('alquiler.crear_alquiler', compact('clientes', 'maquinas'));
+        //$idUsuario = Auth::id();//obtiene el id del usuario autenticado en el sistema
+        $id = Auth::id();
+        $empleado = User::find($id)->trabajador;//obtiene los datos del emprledo autenticado
+
+        return view('alquiler.crear_alquiler', compact('clientes', 'maquinas', 'empleado'));
     }//fin crear
 
     /**
@@ -83,10 +89,13 @@ class AlquilereController extends Controller
      */
     public function store(Request $request){
       
+        $id = Auth::id();
+
         $alquiler = new Alquilere;
         $alquiler->cliente_id = $request->input('nombre_empresa');
         $alquiler->alq_fecha_inicio = $request->input('from');
         $alquiler->alq_fecha_fin = $request->input('to');
+        $alquiler->trabajador_id = $id;
        //dd($alquiler);
         $alquiler->save();
 

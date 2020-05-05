@@ -24,8 +24,16 @@
                 <input class="uk-input uk-width-1-2" id="to" name=to type="text" >
             </div>
         </div>
-
         <br>
+
+        <label class="uk-form-label" for="n_maquinas">SELECCIONES Nº MÁQUINAS</label>
+        <div class="uk-width-1-4">    
+            
+            <input class="uk-input" id="n_amaquinas" name="n_maquinas" type="number" value="" >
+        </div>
+        <br>
+
+
 
         <div>    
             <label class="uk-form-label" for="form-stacked-text">MÁQUINA/S</label>
@@ -34,6 +42,12 @@
                     <option value="{{$maquina->id}}">{{$maquina->maq_marca}}</option>
                 @endforeach
             </select>
+        </div>
+        <br>
+
+        <div class="uk-width-1-2">    
+            <label class="uk-form-label" for="nombre_empleado">NOMBRE DE TRABAJADOR</label>
+            <input class="uk-input" id="nombre_empleado" name="nombre_empleado" type="text" value="{{$empleado->tra_nombre_trabajador}} {{$empleado->tra_apellido_1}} {{$empleado->tra_apellido_2}}" disabled >
         </div>
         <br>
 

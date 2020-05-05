@@ -48,11 +48,15 @@ Route::get('/pruebas', function () {
 
     //echo "$hola";
 
-    $usuario = App\User::find(1)->trabajador;
+    //realción uno a uno
+    //$usuario = App\User::find(1)->trabajador;
 
-    echo  "$usuario->tra_nombre_trabajador";
+    //echo  "$usuario->tra_nombre_trabajador";
 
-  
+    //
+    $id = Auth::id();
+
+    echo "$id";
     
 
 });
