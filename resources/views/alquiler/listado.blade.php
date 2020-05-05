@@ -10,13 +10,13 @@
         <table id="alq_tabla_id" class="display">
             <thead >
                 <tr>
-                    <th>ID CLIENTE</th>
+                    <th>ID</th>
                     <th>NOMBRE EMPRESA</th>
                     <th>INICIO ALQUILER</th>
                     <th>FIN ALQUILER</th>
                     <th>DÍAS</th>
                     <th>EMPLEADO</th>
-                    <th>MAQUINAS</th>
+                    <th>CONTRATOS</th>
                     <th>EDITAR</th>
                     <th>DETALLES</th>
                     <th>INCIDENCIAS</th>
@@ -38,7 +38,7 @@
                         <td>{{$alq->fin}}</td>
                         <th>{{$alq->dias }}</th>
                         <th>{{$alq->nombre_trabajador}} {{ $alq->apellido_trabajador_1}} {{ $alq->apellido_trabajador_2}} </th>
-                        <th><span href="#modal-center" uk-toggle class="alq_btn_plus" uk-icon="icon: plus-circle"></span> Ver máquinas</th>
+                        <th><a href="{{url('/alquiler')}}/{{$alq->id_alquiler}}"> ver</a> </th>
                         <td><li><a href="#" uk-icon="icon: file-edit"></a></li></td>
                         <th><span uk-icon="icon: info"></span></th>
                         <th><span uk-icon="icon: plus-circle"></span>{{$alq->incidencia}}</th>

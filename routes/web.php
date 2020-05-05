@@ -49,14 +49,23 @@ Route::get('/pruebas', function () {
     //echo "$hola";
 
     //realción uno a uno
-    //$usuario = App\User::find(1)->trabajador;
+    //$usuario = App\Contrato::find(1)->maquina;
 
-    //echo  "$usuario->tra_nombre_trabajador";
+    //echo  "$usuario->maq_marca";
+
+     //$prueba = App\Contrato::select('*')->join('alquileres', 'contratos.alquiler_id', '=', 'alquileres.id')->get();
+    //echo "$prueba";
 
     //
-    $id = Auth::id();
+    //$id = Auth::id();
 
-    echo "$id";
+    //echo "$id";
+
+
+    $contratos = DB::table('contratos')->where('alquiler_id', 2)->get();
     
+    foreach($contratos as $c){
+        echo $c->con_precio;
+    }
 
 });

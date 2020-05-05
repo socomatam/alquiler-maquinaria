@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Alquilere;
 use App\User;
 use App\Maquina;
+use App\Contrato;
 use App\Cliente;
 use App\Trabajadore;
 use Carbon\Carbon;
@@ -88,7 +89,11 @@ class AlquilereController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
+        
       
+        
+
+
         $id = Auth::id();
 
         $alquiler = new Alquilere;
@@ -96,8 +101,15 @@ class AlquilereController extends Controller
         $alquiler->alq_fecha_inicio = $request->input('from');
         $alquiler->alq_fecha_fin = $request->input('to');
         $alquiler->trabajador_id = $id;
-       //dd($alquiler);
         $alquiler->save();
+        
+        ////////////////////////777777
+        $contrato = new Contrato;
+        $contrato->maquina_id = $request->input('maquina1');
+        $contrato->alquiler_id = $alquiler->id;
+        $contrato->save();
+     
+        
 
         return redirect('alquiler');
     }//fin store
@@ -108,9 +120,17 @@ class AlquilereController extends Controller
      * @param  \App\Alquilere  $alquilere
      * @return \Illuminate\Http\Response
      */
-    public function show(Alquilere $alquilere)
-    {
-        //
+    public function show($id){
+
+       // $contratos = Contrato::where('alquiler_id','=', $id);
+
+        //$contratos = Contrato::all();
+        //dd($contratos);
+
+        $contratos = DB::table('contratos')->where('alquiler_id', $id)->get();
+        dd($contratos);
+        
+        return view('alquiler.contratos', compact('contratos'));
     }
 
     /**

@@ -23,6 +23,10 @@ class Alquilere extends Model
 		return $this->belongsTo('App\Cliente');
 	}//fin paciente
 
+	public function contrato(){
+		return $this->belongsTo('App\Contrato');
+	}//fin paciente
+
 	public function trabajador(){
 		return $this->belongsTo('App\Trabajadore');
 	}//fin paciente

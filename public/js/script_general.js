@@ -1,5 +1,8 @@
 $(document).ready( function () {
 
+    var contadorMaquinas = 1;
+
+
     $('#btn_limpiar').click(function(evento){
         evento.preventDefault();
         $('.formularios div input').val('');
@@ -163,8 +166,27 @@ $(document).ready( function () {
 
     //---------------ClIENTES-----------------//
 
-    
+   
     //-------------ALQUILER-------------------//
+
+    $( "#guarda_maq" ).click(function(evento) {
+
+        event.preventDefault();
+        
+        var valor = $( "#val_maquina option:selected" ).val();
+        
+        $('.contenedor_maquinas').append(
+            `<div>
+                <input class="uk-input" id="nombre_empleado" name="maquina${contadorMaquinas}" type="text" value="${valor}">
+
+            
+            </div>
+            <br>`
+        );//fin ocntenedor máquina
+
+        contadorMaquinas++;
+
+    });//fin añadir máquina
     
 
 
