@@ -54,7 +54,10 @@
 
 
 /*CREACIÓN ALQUILER*/
-
+.caja_maquinas{
+    
+    border: 1px solid grey;
+}
 
 /*FIN CREACIÓN ALQUILER*/
 

@@ -4,6 +4,8 @@
 
     <form class="formularios uk-form-stacked" method="POST" action="{{url('/alquiler')}}" class="uk-form-stacked">
         @csrf
+
+        <input id="invisible_id" name="contador" type="hidden" value="">
         <div>    
             <label class="uk-form-label" for="">NOMBRE DE LA EMPRESA</label>
             <select id="cli_select" class="uk-select" name="nombre_empresa">

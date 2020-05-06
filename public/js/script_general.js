@@ -1,6 +1,6 @@
 $(document).ready( function () {
 
-    var contadorMaquinas = 1;
+    var contadorMaquinas = 0;
 
 
     $('#btn_limpiar').click(function(evento){
@@ -170,23 +170,32 @@ $(document).ready( function () {
     //-------------ALQUILER-------------------//
 
     $( "#guarda_maq" ).click(function(evento) {
-
+        console.log(contadorMaquinas);
         event.preventDefault();
         
         var valor = $( "#val_maquina option:selected" ).val();
         
         $('.contenedor_maquinas').append(
-            `<div>
-                <input class="uk-input" id="nombre_empleado" name="maquina${contadorMaquinas}" type="text" value="${valor}">
-
-            
+            `<div class="caja_maquinas">
+                <label class="uk-form-label" for="from">MAQUINA ${contadorMaquinas + 1}</label>
+                <div>
+                    <input class="uk-input" id="nombre_empleado" name="maquina${contadorMaquinas}" type="text" value="${valor}" readonly>
+                </div>
+                <br>
+                <span id="quitar_maquina" class="uk-button uk-button-danger">QUITAR MÁQUINA</span>
             </div>
             <br>`
         );//fin ocntenedor máquina
 
+        $('#invisible_id').val(contadorMaquinas);
+        
         contadorMaquinas++;
-
+        
     });//fin añadir máquina
+
+    $('#quitar_maquina').click(function(event){
+        event.preventDefault();
+    });//fin click 
     
 
 

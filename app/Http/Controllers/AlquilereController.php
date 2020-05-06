@@ -73,7 +73,7 @@ class AlquilereController extends Controller
     public function create(){
 
         $clientes = Cliente::all();
-        $maquinas = Maquina::all();
+        $maquinas = Maquina::where('maq_estado','libre')->get();
 
         //$idUsuario = Auth::id();//obtiene el id del usuario autenticado en el sistema
         $id = Auth::id();
@@ -83,16 +83,16 @@ class AlquilereController extends Controller
     }//fin crear
 
     /**
-     * Store a newly created resource in storage.
+     * Recoge el id del usario autenticado en el sistema.
+     * Crea un objeto de tipo alquiler y lo guarda en la base de datos.
+     * Recoje el contador de máquinas introducidas
+     * Crean tanto objetos de tipo contrato como máquinas halla
+     * Modifica un los objetos de tipo máquina 
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
-        
-      
-        
-
 
         $id = Auth::id();
 
@@ -104,12 +104,20 @@ class AlquilereController extends Controller
         $alquiler->save();
         
         ////////////////////////777777
-        $contrato = new Contrato;
-        $contrato->maquina_id = $request->input('maquina1');
-        $contrato->alquiler_id = $alquiler->id;
-        $contrato->save();
-     
+
+        $contador = $request->input('contador');
         
+        for($i = 0; $i < $contador+1; $i++){
+            $contrato = new Contrato;
+            $contrato->maquina_id = $request->input('maquina'.$i);
+            $contrato->alquiler_id = $alquiler->id;
+            $contrato->save();
+
+            Maquina::where('id',$request->input('maquina'.$i))->update(['maq_estado'=>'alquilada']);
+        }//fin for
+
+        
+       
 
         return redirect('alquiler');
     }//fin store
