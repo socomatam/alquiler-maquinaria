@@ -109,11 +109,9 @@ $(document).ready( function () {
 
 
     //Select2
-    $('.js-example-basic-multiple').select2({
-        multiple: true,
-    });
-  
-
+   // $('select').select2({
+     //   dropdownParent: $('#modal_crear_maquina')
+    //});
 
     //JQuery UI Datepiker
     $.datepicker.regional['es'] = {
@@ -170,17 +168,21 @@ $(document).ready( function () {
     //-------------ALQUILER-------------------//
 
     $( "#guarda_maq" ).click(function(evento) {
-        
+
         event.preventDefault();
         
         var valor = $( "#val_maquina option:selected" ).val();
+        var text = $( "#val_maquina option:selected" ).text();
         
         $('.contenedor_maquinas').append(
-            `<div class="caja_maquinas caja${contadorMaquinas+1}">
-                <label class="uk-form-label" for="from">MAQUINA ${contadorMaquinas + 1}</label>
-                <div>
+
+            `<label class="uk-form-label" for="from">MAQUINA ${contadorMaquinas + 1}</label>
+            <div class="caja_maquinas caja${contadorMaquinas+1}">
+                
+                <div class="uk-width-1-4">
                     <input class="uk-input" id="nombre_empleado" name="maquina${contadorMaquinas}" type="text" value="${valor}" readonly>
                 </div>
+                <p>${text}</p
                 <br>
                 <span onclick="borrarMaquina(${contadorMaquinas+1})" id="quitar_maquina" class="uk-button uk-button-danger">QUITAR MÁQUINA</span>
             </div>

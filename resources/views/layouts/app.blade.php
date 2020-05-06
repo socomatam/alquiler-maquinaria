@@ -46,7 +46,6 @@
     <!-- Scripts -->
     
     <script src="{{ asset('js/script_general.js') }}" defer></script>
- 
 
 
     

@@ -56,7 +56,8 @@
 /*CREACIÓN ALQUILER*/
 .caja_maquinas{
     
-    border: 1px solid grey;
+    border: 1px solid lightgray;
+    padding: 10px;;
 }
 
 /*FIN CREACIÓN ALQUILER*/
@@ -79,4 +80,6 @@
     margin-bottom: 20px;
 }
 
-
+#val_maquina{
+    border: 1x solid gray !important;
+}

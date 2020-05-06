@@ -58,13 +58,21 @@
  
     <div id="modal_crear_maquina" uk-modal>
         <div class="uk-modal-dialog uk-modal-body">
-            <h2 class="uk-modal-title">Headline</h2>
+            <h2 class="uk-modal-title">AÑADA UNA MÁQUINA AL ALQUILER</h2>
 
             <div>    
                 <label class="uk-form-label" for="">MÁQUINA</label>
                 <select id="val_maquina" class="uk-select" name="nombre_empresa">
                     @foreach($maquinas as $maquina)
-                        <option value="{{$maquina->id}}">{{$maquina->maq_marca}}</option>
+                        <option value="{{$maquina->id}}">
+                            {{$maquina->maq_categoria}} | 
+                            {{$maquina->maq_tipo}} |
+                            {{$maquina->maq_peso}}kg | 
+                            ({{$maquina->maq_dimension_largo}}cm x {{$maquina->maq_dimension_ancho}}cm x {{$maquina->maq_dimension_alto}}cm) |
+                            {{$maquina->maq_marca}} |
+                            {{$maquina->maq_modelo}} |
+                            {{$maquina->maq_precio_dia}} |
+                        </option>
                     @endforeach
                 </select>
             </div>
