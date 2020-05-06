@@ -61,7 +61,7 @@ Route::get('/pruebas', function () {
 
     //echo "$id";
 
-
+    //
     $contratos = DB::table('contratos')->where('alquiler_id', 2)->get();
     
     foreach($contratos as $c){
