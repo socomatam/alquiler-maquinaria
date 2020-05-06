@@ -82,7 +82,11 @@
 
 
 
-
+<script>
+    function borrarMaquina(valor){
+        $(`.caja${valor}`).remove();
+    }//fin borrar máquina
+</script>
 
 
 

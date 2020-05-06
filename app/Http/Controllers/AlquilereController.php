@@ -73,7 +73,7 @@ class AlquilereController extends Controller
     public function create(){
 
         $clientes = Cliente::all();
-        $maquinas = Maquina::where('maq_estado','libre')->get();
+        $maquinas = Maquina::where('maq_estado','Libre')->get();
 
         //$idUsuario = Auth::id();//obtiene el id del usuario autenticado en el sistema
         $id = Auth::id();
@@ -113,7 +113,7 @@ class AlquilereController extends Controller
             $contrato->alquiler_id = $alquiler->id;
             $contrato->save();
 
-            Maquina::where('id',$request->input('maquina'.$i))->update(['maq_estado'=>'alquilada']);
+            Maquina::where('id',$request->input('maquina'.$i))->update(['maq_estado'=>'Alquilada']);
         }//fin for
 
         

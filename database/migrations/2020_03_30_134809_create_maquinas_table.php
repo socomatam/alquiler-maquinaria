@@ -25,6 +25,8 @@ class CreateMaquinasTable extends Migration
             $table->string('maq_categoria')->nullable();
             $table->string('maq_tipo')->nullable();
             $table->string('maq_estado')->nullable();
+            $table->double('maq_precio_dia')->nullable();
+            $table->string('maq_seguro',15)->nullable();
             $table->timestamps();
         });
     }
