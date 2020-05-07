@@ -94,6 +94,7 @@ class AlquilereController extends Controller
      */
     public function store(Request $request){
 
+        
         $id = Auth::id();
 
         $alquiler = new Alquilere;
@@ -108,8 +109,13 @@ class AlquilereController extends Controller
         $contador = $request->input('contador');
         
         for($i = 0; $i < $contador+1; $i++){
+
             $contrato = new Contrato;
+            $contrato->con_fecha_inicio = $request->input('from'.$i);
+            $contrato->con_fecha_fin = $request->input('to'.$i);
             $contrato->maquina_id = $request->input('maquina'.$i);
+            $contrato->con_detalle_trabajo = $request->input('descripcion'.$i);
+            $contrato->con_precio = Maquina::select('maq_precio_dia')->where('id', $request->input('maquina'.$i))->get()[0]->maq_precio_dia;
             $contrato->alquiler_id = $alquiler->id;
             $contrato->save();
 

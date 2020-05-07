@@ -44,12 +44,13 @@
 
 
  
-    <div id="modal_crear_maquina" uk-modal="bg-close:false;">
+    <div id="modal_crear_maquina" id="modal-container" class="uk-modal-container" uk-modal="bg-close:false;">
         <div class="uk-modal-dialog uk-modal-body">
             <h2 class="uk-modal-title">AÑADA UNA MÁQUINA AL ALQUILER</h2>
 
             <div>    
                 <label class="uk-form-label" for="">MÁQUINA</label>
+                <br>
                 <select id="val_maquina" class="uk-select" name="nombre_empresa">
                     @foreach($maquinas as $maquina)
                         <option value="{{$maquina->id}}">
@@ -69,13 +70,21 @@
             <div class="uk-grid-small uk-child-width-expand@s" uk-grid>
                 <div>
                     <label class="uk-form-label" for="from">DESDE</label>
+                    <br>
                     <input class="uk-input uk-width-1-2" id="from" name=from type="text" >
                 </div>
                 <div>
                     <label class="uk-form-label" for="to">HASTA</label>
+                    <br>
                     <input class="uk-input uk-width-1-2" id="to" name=to type="text" >
-
                 </div>
+            </div>
+            <br>
+
+            <div class="uk-margin">
+                <label class="uk-form-label" for="to">DESCRIPCIÓN DEL TRABAJO</label>
+                <br>
+                <textarea id="alq_descripcion" name="descripcion" class="uk-textarea" rows="5" placeholder="Escriba la descripción"></textarea>
             </div>
             <br>
 

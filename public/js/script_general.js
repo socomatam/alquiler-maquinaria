@@ -170,22 +170,48 @@ $(document).ready( function () {
     //-------------ALQUILER-------------------//
 
     $( "#guarda_maq" ).click(function(evento) {
-
         event.preventDefault();
         
         var valor = $( "#val_maquina option:selected" ).val();
-        var text = $( "#val_maquina option:selected" ).text();
+        var textoMaquina = $( "#val_maquina option:selected" ).text();
+        var textoDescripcion = $( "#alq_descripcion" ).val();
         var fechaDesde = $( "#from" ).val();
-        console.log(fechaDesde);
+        var fechaHasta = $( "#to" ).val();
+
+        console.log(textoDescripcion);
+    
         $('.contenedor_maquinas').append(
 
             `<label class="uk-form-label" for="from">MAQUINA ${contadorMaquinas + 1}</label>
             <div class="caja_maquinas caja${contadorMaquinas+1}">
+                <label class="uk-form-label">ID DE CONTRATO</label>
                 
                 <div class="uk-width-1-4">
-                    <input class="uk-input" id="nombre_empleado" name="maquina${contadorMaquinas}" type="text" value="${valor}" readonly>
+                    <input class="uk-input" name="maquina${contadorMaquinas}" type="text" value="${valor}" readonly>
                 </div>
-                <p>${text}</p
+
+
+                <div class="uk-grid-small uk-child-width-expand@s" uk-grid>
+                    <div>
+                        <label class="uk-form-label" for="from">DESDE</label>
+                        <input class="uk-input" name="from${contadorMaquinas}" type="text" value="${fechaDesde}" readonly>
+                    </div>
+                    <div>
+                        <label class="uk-form-label" for="to">HASTA</label>
+                        <input class="uk-input" name="to${contadorMaquinas}" type="text" value="${fechaHasta}" readonly>
+                    </div>
+                </div>
+
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="to">DESCRIPCIÓN DEL TRABAJO</label>
+                    <textarea name="descripcion${contadorMaquinas}" class="uk-textarea" rows="5">${textoDescripcion}</textarea>
+                </div>
+                <br>
+                
+
+                
+
+                <p>${textoMaquina}</p
                 <br>
                 <span onclick="borrarMaquina(${contadorMaquinas+1})" id="quitar_maquina" class="uk-button uk-button-danger">QUITAR MÁQUINA</span>
             </div>

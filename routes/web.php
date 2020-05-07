@@ -62,10 +62,16 @@ Route::get('/pruebas', function () {
     //echo "$id";
 
     //
-    $contratos = DB::table('contratos')->where('alquiler_id', 2)->get();
+   // $contratos = DB::table('contratos')->where('alquiler_id', 2)->get();
     
-    foreach($contratos as $c){
-        echo $c->con_precio;
-    }
+    //foreach($contratos as $c){
+      //  echo $c->con_precio;
+   // }
+
+
+
+   $contrato = App\Maquina::select('maq_precio_dia')->where('id', 1)->get()[0]->maq_precio_dia;
+
+   echo $contrato;
 
 });
