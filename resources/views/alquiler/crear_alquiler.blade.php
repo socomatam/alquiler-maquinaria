@@ -14,20 +14,8 @@
                 @endforeach
             </select>
         </div>
-        <br>
-
-        <div class="uk-grid-small uk-child-width-expand@s" uk-grid>
-            <div>
-                <label class="uk-form-label" for="from">DESDE</label>
-                <input class="uk-input uk-width-1-2" id="from" name=from type="text" >
-            </div>
-            <div>
-                <label class="uk-form-label" for="to">HASTA</label>
-                <input class="uk-input uk-width-1-2" id="to" name=to type="text" >
-            </div>
-        </div>
-        <br>
-
+        <br>    
+    
         <div class="contenedor_maquinas">
 
         </div>
@@ -42,7 +30,7 @@
 
         <div class="uk-width-1-2">    
             <label class="uk-form-label" for="nombre_empleado">NOMBRE DE TRABAJADOR</label>
-            <input class="uk-input" id="nombre_empleado" name="nombre_empleado" type="text" value="{{$empleado->tra_nombre_trabajador}} {{$empleado->tra_apellido_1}} {{$empleado->tra_apellido_2}}" >
+            <input class="uk-input" id="nombre_empleado" name="nombre_empleado" type="text" value="{{$empleado->tra_nombre_trabajador}} {{$empleado->tra_apellido_1}} {{$empleado->tra_apellido_2}}" readonly >
         </div>
         <br>
 
@@ -56,7 +44,7 @@
 
 
  
-    <div id="modal_crear_maquina" uk-modal>
+    <div id="modal_crear_maquina" uk-modal="bg-close:false;">
         <div class="uk-modal-dialog uk-modal-body">
             <h2 class="uk-modal-title">AÑADA UNA MÁQUINA AL ALQUILER</h2>
 
@@ -75,6 +63,19 @@
                         </option>
                     @endforeach
                 </select>
+            </div>
+            <br>
+            
+            <div class="uk-grid-small uk-child-width-expand@s" uk-grid>
+                <div>
+                    <label class="uk-form-label" for="from">DESDE</label>
+                    <input class="uk-input uk-width-1-2" id="from" name=from type="text" >
+                </div>
+                <div>
+                    <label class="uk-form-label" for="to">HASTA</label>
+                    <input class="uk-input uk-width-1-2" id="to" name=to type="text" >
+
+                </div>
             </div>
             <br>
 

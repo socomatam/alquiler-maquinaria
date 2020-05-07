@@ -109,9 +109,9 @@ $(document).ready( function () {
 
 
     //Select2
-   // $('select').select2({
-     //   dropdownParent: $('#modal_crear_maquina')
-    //});
+    $('select').select2({
+       
+    });
 
     //JQuery UI Datepiker
     $.datepicker.regional['es'] = {
@@ -138,16 +138,19 @@ $(document).ready( function () {
             changeMonth: true,
             numberOfMonths: 1
         })
-        .on( "change", function() {
+        .on( "change", function(e) {
+            
             to.datepicker( "option", "minDate", getDate( this ) );
+            
         }),
     to = $( "#to" ).datepicker({
         defaultDate: "+1w",
         changeMonth: true,
         numberOfMonths: 1
     })
-    .on( "change", function() {
+    .on( "change", function(e) {
         from.datepicker( "option", "maxDate", getDate( this ) );
+        //e.stopPropagation();
     });
 
   function getDate( element ) {
@@ -161,7 +164,6 @@ $(document).ready( function () {
         return date;
     }
 
-
     //---------------ClIENTES-----------------//
 
    
@@ -173,7 +175,8 @@ $(document).ready( function () {
         
         var valor = $( "#val_maquina option:selected" ).val();
         var text = $( "#val_maquina option:selected" ).text();
-        
+        var fechaDesde = $( "#from" ).val();
+        console.log(fechaDesde);
         $('.contenedor_maquinas').append(
 
             `<label class="uk-form-label" for="from">MAQUINA ${contadorMaquinas + 1}</label>
