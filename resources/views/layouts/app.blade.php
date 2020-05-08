@@ -95,7 +95,7 @@
             <ul>
         </div>
     </nav>
-    <div uk-grid>
+    <div class="uk-flex">
         <div class='layout_menu_lateral'>
             <ul  id="posicion_fija" class="uk-list">
                 <li><a href="{{url('/alquiler')}}">ALQUILER</a></li>

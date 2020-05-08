@@ -83,3 +83,8 @@
 #val_maquina{
     border: 1x solid gray !important;
 }
+
+
+table{
+    width: 50%;
+}

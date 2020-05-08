@@ -98,9 +98,6 @@ class AlquilereController extends Controller
         $id = Auth::id();
         $contador = $request->input('contador');
 
-        
-
-
         $alquiler = new Alquilere;
         $alquiler->cliente_id = $request->input('nombre_empresa');
 
@@ -109,12 +106,13 @@ class AlquilereController extends Controller
         }//fin if
 
         for($i = 0; $i < $contador+1; $i++){
-            $precioTotalAlquiler = $precioTotalAlquiler + Maquina::select('maq_precio_dia')->where('id', $request->input('maquina'.$i))->get()[0]->maq_precio_dia;
+            $precioTotalAlquiler = $precioTotalAlquiler + Maquina::select('maq_precio_dia')
+                                                                ->where('id', $request->input('maquina'.$i))
+                                                                ->get()[0]->maq_precio_dia;
             $alquiler->alq_fecha_fin = $request->input('to'.$i);
         }//fin for
 
         $alquiler->alq_precio = $precioTotalAlquiler;
-
         $alquiler->trabajador_id = $id;
         $alquiler->save();
         
@@ -128,15 +126,16 @@ class AlquilereController extends Controller
             $contrato->con_fecha_fin = $request->input('to'.$i);
             $contrato->maquina_id = $request->input('maquina'.$i);
             $contrato->con_detalle_trabajo = $request->input('descripcion'.$i);
-            $contrato->con_precio = Maquina::select('maq_precio_dia')->where('id', $request->input('maquina'.$i))->get()[0]->maq_precio_dia;
+            $contrato->con_precio = Maquina::select('maq_precio_dia')
+                                        ->where('id', $request->input('maquina'.$i))
+                                        ->get()[0]->maq_precio_dia;
             $contrato->alquiler_id = $alquiler->id;
             $contrato->save();
 
-            Maquina::where('id',$request->input('maquina'.$i))->update(['maq_estado'=>'Alquilada']);
+            Maquina::where('id',$request
+                ->input('maquina'.$i))
+                ->update(['maq_estado'=>'Alquilada']);
         }//fin for
-
-        
-       
 
         return redirect('alquiler');
     }//fin store
@@ -155,7 +154,7 @@ class AlquilereController extends Controller
         //dd($contratos);
 
         $contratos = DB::table('contratos')->where('alquiler_id', $id)->get();
-        dd($contratos);
+        
         
         return view('alquiler.contratos', compact('contratos'));
     }
