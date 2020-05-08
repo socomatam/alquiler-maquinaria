@@ -11,6 +11,7 @@ class ComplementoSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\Complemento::class,10)->create();
+
     }
 }

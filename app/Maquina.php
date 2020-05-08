@@ -14,4 +14,8 @@ class Maquina extends Model
 		return $this->hasOne('App\Contrato');
 	}//fin contrato
 
+	public function complementos(){
+		return $this->belongsToMany('App\Complemento');
+	}
+
 }

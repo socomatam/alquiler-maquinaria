@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Alquilere_maquina::class, function (Faker $faker) {
     return [
-        'maquina_id'=>$faker->numberBetween(1, 50),
-        'alquilere_id'=>$faker->numberBetween(1,50),
+        //'maquina_id'=>$faker->numberBetween(1, 50),
+        //'alquilere_id'=>$faker->numberBetween(1,50),
     ];
 });

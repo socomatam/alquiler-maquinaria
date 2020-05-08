@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Complemento extends Model
 {
-    //
+    public function maquinas(){
+		return $this->belongsToMany('App\Maquina');
+	}
 }

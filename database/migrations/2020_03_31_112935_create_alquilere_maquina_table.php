@@ -16,8 +16,8 @@ class CreateAlquilereMaquinaTable extends Migration
         Schema::create('alquilere_maquina', function (Blueprint $table) {
            
          
-            $table->unsignedBigInteger('alquilere_id');
-            $table->unsignedBigInteger('maquina_id');
+            $table->unsignedBigInteger('alquilere_id')->nullable();
+            $table->unsignedBigInteger('maquina_id')->nullable();
             $table->foreign('alquilere_id')->references('id')->on('alquileres');
             $table->foreign('maquina_id')->references('id')->on('maquinas');
             $table->timestamps();

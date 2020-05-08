@@ -80,14 +80,18 @@
                 </div>
             </div>
             <br>
-
+            <label class="uk-form-label" for="to">SELECCIONES COMPLEMENTOS</label>
+            <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+                <label><input class="uk-checkbox" type="checkbox" checked> A</label>
+                <label><input class="uk-checkbox" type="checkbox"> B</label>
+            </div>
+            <br>
             <div class="uk-margin">
                 <label class="uk-form-label" for="to">DESCRIPCIÓN DEL TRABAJO</label>
                 <br>
                 <textarea id="alq_descripcion" name="descripcion" class="uk-textarea" rows="5" placeholder="Escriba la descripción"></textarea>
             </div>
             <br>
-
             <p class="uk-text-right">
                 <button class="uk-button uk-button-default uk-modal-close" type="button">Cancelar</button>
                 <button id="guarda_maq" class="uk-button uk-button-primary uk-modal-close" type="button">Añadir</button>

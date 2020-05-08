@@ -17,6 +17,8 @@ class CreateComplementosTable extends Migration
             $table->id();
             $table->string('com_complemento')->nullable();
             $table->string('com_tipo')->nullable();
+            $table->string('com_precio')->nullable();
+            $table->string('com_estado')->nullable();
             $table->timestamps();
         });
     }

@@ -42,7 +42,7 @@
                             <td><a href="{{url('/alquiler')}}/{{$alq->id_alquiler}}"> ver</a> </td>
                             <td><li><a href="#" uk-icon="icon: file-edit"></a></li></td>
                             <td><span uk-icon="icon: info"></span></td>
-                            <td><span uk-icon="icon: plus-circle"></span>{{$alq->incidencia}}</td>
+                            <td>{{$alq->incidencia}}</td>
                         </tr>  
                     @endforeach
                     
