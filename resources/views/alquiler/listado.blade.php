@@ -37,12 +37,12 @@
                             <td>{{$alq->empresa}}</td>
                             <td>{{$alq->inicio}}</td>
                             <td>{{$alq->fin}}</td>
-                            <th>{{$alq->dias }}</th>
-                            <th>{{$alq->nombre_trabajador}} {{ $alq->apellido_trabajador_1}} {{ $alq->apellido_trabajador_2}} </th>
-                            <th><a href="{{url('/alquiler')}}/{{$alq->id_alquiler}}"> ver</a> </th>
+                            <td>{{$alq->dias }}</td>
+                            <td>{{$alq->nombre_trabajador}} {{ $alq->apellido_trabajador_1}} {{ $alq->apellido_trabajador_2}} </td>
+                            <td><a href="{{url('/alquiler')}}/{{$alq->id_alquiler}}"> ver</a> </td>
                             <td><li><a href="#" uk-icon="icon: file-edit"></a></li></td>
-                            <th><span uk-icon="icon: info"></span></th>
-                            <th><span uk-icon="icon: plus-circle"></span>{{$alq->incidencia}}</th>
+                            <td><span uk-icon="icon: info"></span></td>
+                            <td><span uk-icon="icon: plus-circle"></span>{{$alq->incidencia}}</td>
                         </tr>  
                     @endforeach
                     

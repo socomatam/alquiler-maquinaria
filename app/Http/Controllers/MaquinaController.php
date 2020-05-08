@@ -12,9 +12,9 @@ class MaquinaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index(){
+        $maquinas = Maquina::all();
+        return view('maquinas.listado_maquina', compact('maquinas'));
     }
 
     /**

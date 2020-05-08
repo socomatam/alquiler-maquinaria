@@ -24,7 +24,7 @@ $factory->define(Maquina::class, function (Faker $faker) {
         'maq_categoria'=>$faker->randomElement([
             'Pesada',
             'Semipesada',
-            'Lijera',
+            'Ligera',
         ]),//fin maquina
 
         'maq_modelo'=>$faker->randomElement([
