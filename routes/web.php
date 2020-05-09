@@ -26,6 +26,7 @@ Route::resource('alquiler', 'AlquilereController')->middleware('auth');
 Route::resource('clientes', 'ClienteController')->middleware('auth');
 Route::resource('maquinas', 'MaquinaController')->middleware('auth');
 Route::resource('complementos', 'ComplementoController')->middleware('auth');
+Route::resource('trabajadores', 'TrabajadoreController')->middleware('auth');
 Route::get('maquinas_alquiladas/{id}', 'AlquilereController@listaMaquinas')->middleware('auth');
 
 

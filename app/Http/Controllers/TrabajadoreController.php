@@ -14,7 +14,8 @@ class TrabajadoreController extends Controller
      */
     public function index()
     {
-        //
+        $trabajadores = Trabajadore::all();
+        return view('trabajadores.listado_trabajadores', compact('trabajadores'));
     }
 
     /**

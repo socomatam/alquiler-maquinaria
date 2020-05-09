@@ -101,13 +101,18 @@
                 <li><a href="{{url('/alquiler')}}">ALQUILER</a></li>
                 <li><a href="{{url('/maquinas')}}">MÁQUINAS</a></li>
                 <li><a href="{{url('/clientes')}}">CLIENTES</a></li>
+                <li><a href="{{url('/trabajadores')}}">EMPLEADOS</a></li>
                 <li><a href="{{url('/complementos')}}">COMPLEMENTOS</a></li>
+                <li><a href="{{url('/repuestos')}}">REPUESTOS</a></li>
             </ul>
         </div>
         
         <div class="layout_contenedor">
             @yield('content')
         </div>
+    </div>
+    
+    <div class="layout_pie">
         
     </div>
 

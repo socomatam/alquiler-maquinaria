@@ -5,8 +5,13 @@
 
 .layout_menu_lateral{
     padding-top: 30px;
-    padding-right: 6%;
+    padding-right: 10%;
     padding-left: 1%;
+    background-color: lightgreen;
+}
+
+.layout_pie{
+    background-color: lightsalmon;
 }
 
 .layout_contenedor{
