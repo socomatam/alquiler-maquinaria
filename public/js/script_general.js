@@ -362,6 +362,12 @@ $(document).ready( function () {
         
     });//fin añadir máquina
 
+    $('#btn_moda_edit_cliente').click(function(){
+        
+    });//fin bontón editar cliente
+
+
+
 
     //-----------FIN ALQUILER--------------//
     

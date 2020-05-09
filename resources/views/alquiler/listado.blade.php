@@ -19,7 +19,7 @@
                         <th class="centrar_celda">Empleados</th>
                         <th>Contratos</th>
                         <th>Editar</th>
-                        <th>Detalles</th>
+                        <th>Borrar</th>
                         <th class="centrar_celda">Incidencias</th>
                     </tr>
                 </thead>
@@ -40,8 +40,8 @@
                             <td class="centrar_celda">{{$alq->dias }}</td>
                             <td>{{$alq->nombre_trabajador}} {{ $alq->apellido_trabajador_1}} {{ $alq->apellido_trabajador_2}} </td>
                             <td class="centrar_celda"><a href="{{url('/alquiler')}}/{{$alq->id_alquiler}}" uk-icon="icon: plus-circle"></a></a> </td>
-                            <td class="centrar_celda"><a href="#" uk-icon="icon: file-edit"></a></td>
-                            <td class="centrar_celda"><span uk-icon="icon: info"></span></td>
+                            <td class="centrar_celda"><a href="#" uk-icon="icon: file-edit" uk-toggle="target: #modal_editar_nombre_empresa"></a></td>
+                            <td class="centrar_celda"><a uk-icon="icon: trash"></a></td>
                             <td>{{$alq->incidencia}}</td>
                         </tr>  
                     @endforeach
@@ -51,5 +51,25 @@
                 
             </table> 
     <div>
+
+    <div id="modal_editar_nombre_empresa"  uk-modal="bg-close:false;">
+    <div class="uk-modal-dialog uk-modal-body">
+        <h2 class="uk-modal-title">Editar nombre de empresa</h2>
+        <div>    
+            <label class="uk-form-label" for="">NOMBRE DE LA EMPRESA</label>
+            <select id="cli_select" class="uk-select" name="nombre_empresa">
+                @foreach($clientes as $cliente)
+                    <option value="{{$cliente->id}}">{{$cliente->cli_nombre_empresa}}</option>
+                @endforeach
+            </select>
+        </div>
+
+        <br>
+        <p class="uk-text-right">
+            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancelar</button>
+            <button id="btn_moda_edit_cliente" class="uk-button uk-button-primary uk-modal-close" type="button">Guardar</button>
+        </p>
+    </div>
+</div>
 
 @endsection

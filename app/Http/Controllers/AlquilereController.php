@@ -22,9 +22,8 @@ class AlquilereController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        
+    public function index(){
+        $clientes = Cliente::all();
         $alquiler = Alquilere::select(
             'trabajadores.id AS id_trabajador',
             'clientes.id AS id_clientes',
@@ -46,7 +45,7 @@ class AlquilereController extends Controller
         $fechaActual = new DateTime('now');
         $fechaActual =  $fechaActual->format('Y-m-d');
 
-        return view('alquiler.listado', compact('alquiler', 'fechaActual'));
+        return view('alquiler.listado', compact('alquiler', 'fechaActual', 'clientes'));
     }//fin index
 
 

@@ -5,7 +5,7 @@
 
 <div class='con_contenedor'>
         
-        <button id="cli_btn_nuevo_cliente" class="uk-button uk-button-primary uk-button-small"><a href="{{url('/clientes/create')}}">CREAR NUEVO CLIENTE</a></button>
+        <button id="cli_btn_nuevo_cliente" class="uk-button uk-button-primary uk-button-small"><a href="{{url('/clientes/create')}}">AÑADIR UN CONTRATO</a></button>
         
         <table id="con_tabla_id" class="display">
             <thead >
