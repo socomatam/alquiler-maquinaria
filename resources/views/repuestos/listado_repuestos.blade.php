@@ -11,29 +11,23 @@
             <thead >
                 <tr>
                     <th>ID</th>
-                    <th>Nombre</th>
-                    <th>DNI</th>
-                    <th>Fecha de nacimiento</th>
-                    <th>Fecha de alta</th>
-                    <th>Nº Teléfono</th>
-                    <th>E-mail</th>
+                    <th>Categoria</th>
+                    <th>Tipo</th>
+                    <th>Repuesto</th>
+                    <th>Estado</th>
                     <th>Editar</th>
                     <th>Borrar</th>
-                   
-                   
                 </tr>
             </thead>
             <tbody>
 
-                @foreach($trabajadores as $trabajador)
-                    <tr data-tra_id="{{$trabajador->id}}">
-                        <td>{{$trabajador->id}}</td>
-                        <td>{{$trabajador->tra_nombre_trabajador}} {{$trabajador->tra_apellido_1}} {{$trabajador->tra_apellido_2}}</td>
-                        <td>{{$trabajador->tra_dni}}</td>
-                        <td>{{$trabajador->tra_fecha_nacimiento}}</td>
-                        <td>{{$trabajador->tra_fecha_alta}}</td>
-                        <td>{{$trabajador->tra_telefono}}</td>
-                        <td>{{$trabajador->tra_email}}</td>
+                @foreach($repuestos as $repuesto)
+                    <tr data-rep_id="{{$repuesto->id}}">
+                        <td>{{$repuesto->id}}</td>
+                        <td>{{$repuesto->rep_categoria}}</td>
+                        <td>{{$repuesto->rep_tipo}}</td>
+                        <td>{{$repuesto->rep_repuesto}}</td>
+                        <td>{{$repuesto->rep_estado}}</td>
                         <td>Editar</td>
                         <td>Borrar</td>
                         

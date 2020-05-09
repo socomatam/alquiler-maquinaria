@@ -14,7 +14,8 @@ class RepuestoController extends Controller
      */
     public function index()
     {
-        //
+        $repuestos = Repuesto::all();
+        return view('repuestos.listado_repuestos', compact('repuestos'));
     }
 
     /**
