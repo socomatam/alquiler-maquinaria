@@ -11,6 +11,6 @@ class RepuestoSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\Repuesto::class,10)->create();
     }
 }
