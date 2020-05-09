@@ -3,6 +3,10 @@
   position:fixed;
 }
 
+.centrar_celda{
+    text-align: center;
+}
+
 .layout_menu_lateral{
     padding-top: 30px;
     padding-right: 10%;

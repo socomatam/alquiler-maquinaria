@@ -7,21 +7,22 @@
         
         <button id="cli_btn_nuevo_cliente" class="uk-button uk-button-primary uk-button-small"><a href="{{url('/clientes/create')}}">CREAR NUEVO CLIENTE</a></button>
         
-        <table id="cli_tabla_id" class="display">
+        <table id="con_tabla_id" class="display">
             <thead >
                 <tr>
                     <th>ID</th>
                     <th>Categoria</th>
-                    <th>Tipo</th>
-                    <th>Marca</th>
-                    <th>Modelo</th>
-                    <th>Tamaño</th>
-                    <th>Peso</th>
+                    <th class="centrar_celda">Tipo</th>
+                    <th class="centrar_celda">Marca</th>
+                    <th class="centrar_celda">Modelo</th>
+                    <th class="centrar_celda">Tamaño</th>
+                    <th class="centrar_celda">Peso</th>
                     <th>Traslacion</th>
-                    <th>Precio contrato</th>
+                    <th class="centrar_celda">Precio</th>
                     <th>Días</th>
-                    <th>Inicio</th>
-                    <th>Fin</th>
+                    <th class="centrar_celda">Inicio</th>
+                    <th class="centrar_celda">Fin</th>
+                    <th>Estado</th>
                     
                
                     <th>Editar</th>
@@ -41,13 +42,14 @@
                         <td>{{$contrato->maq_peso}}kg</td>
                         <td>{{$contrato->maq_traslacion}}kg</td>
                         <td>{{$contrato->dias * $contrato->maq_precio}}€</td>
-                        <td>{{$contrato->dias}}</td>
+                        <td class="centrar_celda">{{$contrato->dias}}</td>
                         <td>{{$contrato->fecha_inicio}}</td>
                         <td>{{$contrato->fecha_final}}</td>
+                        <td>{{$contrato->maq_estado}}</td>
 
 
-                        <th>Editar</th>
-                        <th>Borrar</th>
+                        <th class="centrar_celda"><a href="#" uk-icon="icon: file-edit"></a></th>
+                        <th class="centrar_celda">Borrar</th>
                         
                 @endforeach
                 

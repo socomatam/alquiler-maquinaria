@@ -12,15 +12,15 @@
                 <thead >
                     <tr>
                         <th>ID</th>
-                        <th>NOMBRE EMPRESA</th>
-                        <th>Inicio</th>
-                        <th>Final</th>
+                        <th class="centrar_celda">NOMBRE EMPRESA</th>
+                        <th class="centrar_celda">Inicio</th>
+                        <th class="centrar_celda">Final</th>
                         <th>Días</th>
-                        <th>Empleados</th>
+                        <th class="centrar_celda">Empleados</th>
                         <th>Contratos</th>
                         <th>Editar</th>
                         <th>Detalles</th>
-                        <th>Incidencias</th>
+                        <th class="centrar_celda">Incidencias</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -37,11 +37,11 @@
                             <td>{{$alq->empresa}}</td>
                             <td>{{$alq->inicio}}</td>
                             <td>{{$alq->fin}}</td>
-                            <td>{{$alq->dias }}</td>
+                            <td class="centrar_celda">{{$alq->dias }}</td>
                             <td>{{$alq->nombre_trabajador}} {{ $alq->apellido_trabajador_1}} {{ $alq->apellido_trabajador_2}} </td>
-                            <td><a href="{{url('/alquiler')}}/{{$alq->id_alquiler}}" uk-icon="icon: plus-circle"></a></a> </td>
-                            <td><a href="#" uk-icon="icon: file-edit"></a></td>
-                            <td><span uk-icon="icon: info"></span></td>
+                            <td class="centrar_celda"><a href="{{url('/alquiler')}}/{{$alq->id_alquiler}}" uk-icon="icon: plus-circle"></a></a> </td>
+                            <td class="centrar_celda"><a href="#" uk-icon="icon: file-edit"></a></td>
+                            <td class="centrar_celda"><span uk-icon="icon: info"></span></td>
                             <td>{{$alq->incidencia}}</td>
                         </tr>  
                     @endforeach
@@ -51,18 +51,5 @@
                 
             </table> 
     <div>
-
-    
-
-    <a class="uk-button uk-button-default" href="#modal-center" uk-toggle>Open</a>
-
-<div id="modal-center" class="uk-flex-top" uk-modal>
-    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
-
-        <button class="uk-modal-close-default" type="button" uk-close></button>
-        <div class="alq_lista_maquinas"></div>
-
-    </div>
-</div>
 
 @endsection
