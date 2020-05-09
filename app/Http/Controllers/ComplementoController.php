@@ -12,9 +12,9 @@ class ComplementoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index(){
+        $complementos = Complemento::all();
+        return view('complementos.listado_complementos', compact('complementos'));
     }
 
     /**

@@ -101,6 +101,7 @@
                 <li><a href="{{url('/alquiler')}}">ALQUILER</a></li>
                 <li><a href="{{url('/maquinas')}}">MÁQUINAS</a></li>
                 <li><a href="{{url('/clientes')}}">CLIENTES</a></li>
+                <li><a href="{{url('/complementos')}}">COMPLEMENTOS</a></li>
             </ul>
         </div>
         

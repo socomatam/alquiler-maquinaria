@@ -4,7 +4,9 @@
 }
 
 .layout_menu_lateral{
-    padding: 70px;
+    padding-top: 30px;
+    padding-right: 6%;
+    padding-left: 1%;
 }
 
 .layout_contenedor{
