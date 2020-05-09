@@ -50,7 +50,7 @@ $(document).ready( function () {
         "pageLength": 15,
         "lengthMenu": [ 10, 15, 20, 25, 50, 75, 100 ],
         "order": [[ 3, "desc" ]],
-        columnDefs: [ { orderable: false, targets: [0,1] }],
+        columnDefs: [ { orderable: false, targets: [0,6,7,8,9] }],
         language:{
             "decimal":        "",
             "emptyTable":     "No hay datos disponibles",

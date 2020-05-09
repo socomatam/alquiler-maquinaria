@@ -11,11 +11,19 @@
             <thead >
                 <tr>
                     <th>ID</th>
-                    <th>Fecha de inicio</th>
-                    <th>Fecha de finalización</th>
-                    <th>Precio por día</th>
-                    <th>Descripción</th>
-                    <th>Máquina</th>
+                    <th>Categoria</th>
+                    <th>Tipo</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Tamaño</th>
+                    <th>Peso</th>
+                    <th>Traslacion</th>
+                    <th>Precio contrato</th>
+                    <th>Días</th>
+                    <th>Inicio</th>
+                    <th>Fin</th>
+                    
+               
                     <th>Editar</th>
                     <th>Borrar</th>
                 </tr>
@@ -23,16 +31,23 @@
             <tbody>
 
                 @foreach($contratos as $contrato)
-                    <tr data-cli_id="{{$contrato->id}}">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <th></th>
-                        <th></th>
-                        <th>s </th>
-                        <th>s </th>
+                    <tr data-con_id="{{$contrato->id}}">
+                        <td>{{$contrato->id}}</td>
+                        <td>{{$contrato->maq_categoria}}</td>
+                        <td>{{$contrato->maq_tipo}}</td>
+                        <td>{{$contrato->maq_marca}}</td>
+                        <td>{{$contrato->maq_modelo}}</td>
+                        <td>{{$contrato->maq_largo}} x {{$contrato->maq_ancho}} x {{$contrato->maq_alto}}</td>
+                        <td>{{$contrato->maq_peso}}kg</td>
+                        <td>{{$contrato->maq_traslacion}}kg</td>
+                        <td>{{$contrato->dias * $contrato->maq_precio}}€</td>
+                        <td>{{$contrato->dias}}</td>
+                        <td>{{$contrato->fecha_inicio}}</td>
+                        <td>{{$contrato->fecha_final}}</td>
+
+
+                        <th>Editar</th>
+                        <th>Borrar</th>
                         
                 @endforeach
                 
