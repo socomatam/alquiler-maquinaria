@@ -32,6 +32,7 @@ class AlquilereController extends Controller
             'alquileres.alq_fecha_inicio AS inicio',
             'alquileres.alq_fecha_fin AS fin',
             'alquileres.alq_incidencia AS incidencia',
+            'alquileres.alq_precio AS alq_precio',
             'trabajadores.tra_nombre_trabajador AS nombre_trabajador',
             'trabajadores.tra_apellido_1 AS apellido_trabajador_1',
             'trabajadores.tra_apellido_2 AS apellido_trabajador_2',
@@ -94,7 +95,10 @@ class AlquilereController extends Controller
     public function store(Request $request){
 
         $precioTotalAlquiler = 0;
-        $id = Auth::id();
+        $precioMaquina = 0;
+        $diasAlquiler = 0;
+
+        $id = Auth::id();//recoge del usuario actualmente logeado en el sistema
         $contador = $request->input('contador');
 
         $alquiler = new Alquilere;
@@ -105,9 +109,16 @@ class AlquilereController extends Controller
         }//fin if
 
         for($i = 0; $i < $contador+1; $i++){
-            $precioTotalAlquiler = $precioTotalAlquiler + Maquina::select('maq_precio_dia')
+            $fecha1 = new DateTime($request->input('from'.$i));
+            $fecha2 = new DateTime($request->input('to'.$i));
+
+            $dias = $fecha1->diff($fecha2);
+            $precioMaquina = Maquina::select('maq_precio_dia')
                                                                 ->where('id', $request->input('maquina'.$i))
                                                                 ->get()[0]->maq_precio_dia;
+
+            $precioTotalAlquiler  = $precioTotalAlquiler + ($precioMaquina * $dias->format('%a'));
+
             $alquiler->alq_fecha_fin = $request->input('to'.$i);
         }//fin for
 
@@ -135,6 +146,8 @@ class AlquilereController extends Controller
                 ->input('maquina'.$i))
                 ->update(['maq_estado'=>'Alquilada']);
         }//fin for
+
+       
 
         return redirect('alquiler');
     }//fin store

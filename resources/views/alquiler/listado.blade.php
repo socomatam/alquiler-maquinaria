@@ -16,6 +16,7 @@
                         <th class="centrar_celda">Inicio</th>
                         <th class="centrar_celda">Final</th>
                         <th>Días</th>
+                        <th>Precio total</th>
                         <th class="centrar_celda">Empleados</th>
                         <th>Contratos</th>
                         <th>Editar</th>
@@ -38,6 +39,7 @@
                             <td>{{$alq->inicio}}</td>
                             <td>{{$alq->fin}}</td>
                             <td class="centrar_celda">{{$alq->dias }}</td>
+                            <td class="centrar_celda">{{$alq->alq_precio }}</td>
                             <td>{{$alq->nombre_trabajador}} {{ $alq->apellido_trabajador_1}} {{ $alq->apellido_trabajador_2}} </td>
                             <td class="centrar_celda"><a href="{{url('/alquiler')}}/{{$alq->id_alquiler}}" uk-icon="icon: plus-circle"></a></a> </td>
                             <td class="centrar_celda"><a href="#" uk-icon="icon: file-edit" uk-toggle="target: #modal_editar_nombre_empresa"></a></td>
