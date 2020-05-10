@@ -1,6 +1,7 @@
 $(document).ready( function () {
 
     var contadorMaquinas = 0;
+    //var idFilaAlquiler = 0;
 
 
     $('#btn_limpiar').click(function(evento){
@@ -185,7 +186,7 @@ $(document).ready( function () {
     $('#tra_tabla_id').DataTable({
         colReorder: true,
         fixedHeader: false,
-        "pageLength": 15,
+        "pageLength": 100,
         "lengthMenu": [ 10, 15, 20, 25, 50, 75, 100 ],
         "order": [[ 3, "desc" ]],
         columnDefs: [ { orderable: false, targets: [0,] }],
@@ -362,10 +363,42 @@ $(document).ready( function () {
         
     });//fin añadir máquina
 
-    $('#btn_moda_edit_cliente').click(function(){
-        
-    });//fin bontón editar cliente
+    $('.alq_editar').click(function(){
+        id = $(this).closest('tr').data();
 
+        var tr = $(this).closest('tr');
+        console.log(id.alq_id);
+        UIkit.modal('#modal_editar_nombre_empresa').show();
+
+        
+
+        $('#btn_moda_edit_cliente').click(function(){
+
+            var valor = $( "#val_empresa option:selected" ).val();
+            
+             $.ajax({
+                url: 'alquiler/'+id.alq_id,
+                method: 'POST',
+                data: {
+                    _method: 'PUT',
+                    'empresa': valor,
+                    "_token": $("meta[name='csrf-token']").attr("content")
+                },
+                success: function(respuesta) {
+              
+                },//FIN SUCCESS
+
+     
+             });//fin ajax
+
+             $('#modal_editar_nombre_empresa').hide();
+            
+              $(`this td`).html('ddd');               
+         });//fin bontón editar cliente
+    
+    });//fin click
+
+  
 
 
 

@@ -114,19 +114,19 @@ class AlquilereController extends Controller
 
             $dias = $fecha1->diff($fecha2);
             $precioMaquina = Maquina::select('maq_precio_dia')
-                                                                ->where('id', $request->input('maquina'.$i))
-                                                                ->get()[0]->maq_precio_dia;
+                                ->where('id', $request->input('maquina'.$i))
+                                ->get()[0]->maq_precio_dia;
 
             $precioTotalAlquiler  = $precioTotalAlquiler + ($precioMaquina * $dias->format('%a'));
 
             $alquiler->alq_fecha_fin = $request->input('to'.$i);
         }//fin for
-
+        $alquiler->alq_incidencia = 'Sin incidencias';
         $alquiler->alq_precio = $precioTotalAlquiler;
         $alquiler->trabajador_id = $id;
         $alquiler->save();
         
-        ////////////////////////777777
+        ////////////////////////
 
         
         for($i = 0; $i < $contador+1; $i++){
@@ -217,10 +217,13 @@ class AlquilereController extends Controller
      * @param  \App\Alquilere  $alquilere
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Alquilere $alquilere)
-    {
-        //
-    }
+
+    public function update(Request $request, $id){
+
+        $request->input('empresa');
+        Alquilere::where('id',$id)->update(['cliente_id'=>$request->input('empresa')]);
+
+    }//fin update
 
     /**
      * Remove the specified resource from storage.
