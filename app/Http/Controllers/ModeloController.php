@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Maquina;
+use App\Modelo;
 use Illuminate\Http\Request;
 
-class MaquinaController extends Controller
+class ModeloController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
-        $maquinas = Maquina::all();
-        return view('maquinas.listado_maquina', compact('maquinas'));
+    public function index()
+    {
+        //
     }
 
     /**
@@ -22,9 +22,9 @@ class MaquinaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(){
-        $maquinas = Maquina::all();
-        return view('maquinas.crear_maquina', compact('maquinas'));
+    public function create()
+    {
+        //
     }
 
     /**
@@ -41,10 +41,10 @@ class MaquinaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Maquina  $maquina
+     * @param  \App\Modelo  $modelo
      * @return \Illuminate\Http\Response
      */
-    public function show(Maquina $maquina)
+    public function show(Modelo $modelo)
     {
         //
     }
@@ -52,10 +52,10 @@ class MaquinaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Maquina  $maquina
+     * @param  \App\Modelo  $modelo
      * @return \Illuminate\Http\Response
      */
-    public function edit(Maquina $maquina)
+    public function edit(Modelo $modelo)
     {
         //
     }
@@ -64,10 +64,10 @@ class MaquinaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Maquina  $maquina
+     * @param  \App\Modelo  $modelo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Maquina $maquina)
+    public function update(Request $request, Modelo $modelo)
     {
         //
     }
@@ -75,10 +75,10 @@ class MaquinaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Maquina  $maquina
+     * @param  \App\Modelo  $modelo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Maquina $maquina)
+    public function destroy(Modelo $modelo)
     {
         //
     }

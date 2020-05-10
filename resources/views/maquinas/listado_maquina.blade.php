@@ -5,7 +5,7 @@
 
     <div class='alq_contenedor'>
         
-        <button id="cli_btn_nuevo_cliente" class="uk-button uk-button-primary uk-button-small"><a href="{{url('/clientes/create')}}">CREAR NUEVA MÁQUINA</a></button>
+        <button id="cli_btn_nuevo_cliente" class="uk-button uk-button-primary uk-button-small"><a href="{{url('/maquinas/create')}}">CREAR NUEVA MÁQUINA</a></button>
         
         <table id="maq_tabla_id" class="display">
             <thead >
