@@ -18,13 +18,9 @@
 
 
 
-    <form class="formularios" method="POST" action="{{url('/clientes')}}" class="uk-form-stacked">
+    <form class="formularios" method="POST" action="{{url('/maquinas')}}" class="uk-form-stacked">
         @csrf
-        <div class="uk-width-1-2@m">
-            <label class="uk-form-label" for="maq_marca">MARCA</label>
-            <input class="uk-input" id="maq_marca" name="maq_marca" type="text" required value={{old('maq_marca')}} >    
-        </div>
-        <br>
+        
 
         <div class="uk-width-1-3@m">
             <label class="uk-form-label" for="cli_nif">Nº NIF</label>
@@ -35,7 +31,11 @@
         <div uk-grid>
             <div class="uk-width-1-3">
                 <label class="uk-form-label" for="maq_marca">MARCA</label>
-                <input class="uk-input" id="maq_marca" name=maq_marca type="text" required value={{old('maq_marca')}}  >
+                <select class="uk-select" name="marca">
+                    @foreach($marcas as $marca)
+                        <option value="{{$marca->mar_marca}}">{{$marca->mar_marca}}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="uk-width-1-3">
                 <label class="uk-form-label" for="maq_modelo">MODELO</label>

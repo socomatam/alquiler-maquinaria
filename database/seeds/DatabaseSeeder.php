@@ -20,5 +20,12 @@ class DatabaseSeeder extends Seeder
         $this->call(AlquilerMaquinaSeeder::class);
         $this->call(ComplementoSeeder::class);
         $this->call(RepuestoSeeder::class);
+        $this->call(CategoriaSeeder::class);
+        $this->call(TipoSeeder::class);
+        $this->call(MarcaSeeder::class);
+        $this->call(DesplazamientoSeeder::class);
+        $this->call(EstadoSeeder::class);
+        $this->call(ModeloSeeder::class);
+        
     }
 }

@@ -7,6 +7,6 @@ use Faker\Generator as Faker;
 
 $factory->define(Estado::class, function (Faker $faker) {
     return [
-        //
+        'est_estado' => 'Libre',
     ];
 });

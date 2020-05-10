@@ -11,6 +11,6 @@ class EstadoSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\Estado::class,3)->create();
     }
 }

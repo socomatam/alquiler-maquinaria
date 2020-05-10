@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class CategoriaSeeder extends Seeder
+class MarcaSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class CategoriaSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Categoria::class,3)->create();
+        factory(App\Marca::class,10)->create();
     }
 }

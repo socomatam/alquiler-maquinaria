@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Maquina;
 use App\Marca;
 use Illuminate\Http\Request;
 
-class MaquinaController extends Controller
+class MarcaController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
-        $maquinas = Maquina::all();
-        return view('maquinas.listado_maquina', compact('maquinas'));
+    public function index()
+    {
+        //
     }
 
     /**
@@ -23,10 +22,9 @@ class MaquinaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(){
-        $maquinas = Maquina::all();
-        $marcas = Marca::all();
-        return view('maquinas.crear_maquina', compact('maquinas','marcas'));
+    public function create()
+    {
+        //
     }
 
     /**
@@ -37,17 +35,16 @@ class MaquinaController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
-        return redirect('maquinas');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Maquina  $maquina
+     * @param  \App\Marca  $marca
      * @return \Illuminate\Http\Response
      */
-    public function show(Maquina $maquina)
+    public function show(Marca $marca)
     {
         //
     }
@@ -55,10 +52,10 @@ class MaquinaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Maquina  $maquina
+     * @param  \App\Marca  $marca
      * @return \Illuminate\Http\Response
      */
-    public function edit(Maquina $maquina)
+    public function edit(Marca $marca)
     {
         //
     }
@@ -67,10 +64,10 @@ class MaquinaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Maquina  $maquina
+     * @param  \App\Marca  $marca
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Maquina $maquina)
+    public function update(Request $request, Marca $marca)
     {
         //
     }
@@ -78,10 +75,10 @@ class MaquinaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Maquina  $maquina
+     * @param  \App\Marca  $marca
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Maquina $maquina)
+    public function destroy(Marca $marca)
     {
         //
     }

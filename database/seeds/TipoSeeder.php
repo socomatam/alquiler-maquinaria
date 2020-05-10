@@ -11,6 +11,6 @@ class TipoSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\Tipo::class,10)->create();
     }
 }

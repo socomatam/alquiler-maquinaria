@@ -7,6 +7,11 @@ use Faker\Generator as Faker;
 
 $factory->define(Tipo::class, function (Faker $faker) {
     return [
-        //
+        'tip_tipo'=>$faker->randomElement([
+            'Excavadora',
+            'Retroexcavadora',
+            'Draga',
+            'Volqueta',
+        ]),//fin maquina
     ];
 });

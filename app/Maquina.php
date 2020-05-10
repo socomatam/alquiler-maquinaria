@@ -18,4 +18,21 @@ class Maquina extends Model
 		return $this->belongsToMany('App\Complemento');
 	}
 
+	public function categorias(){
+		return $this->hasMany('App\Categoria');
+	}//fin contrato
+
+	public function tipos(){
+		return $this->hasMany('App\Tipos');
+	}//fin contrato
+
+	public function marcas(){
+		return $this->hasMany('App\Marca');
+	}//fin contrato
+
+	public function desplazamientos(){
+		return $this->hasMany('App\Desplazamiento');
+	}//fin contrato
+
+
 }

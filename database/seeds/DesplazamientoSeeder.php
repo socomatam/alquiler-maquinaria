@@ -11,6 +11,6 @@ class DesplazamientoSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\Desplazamiento::class,3)->create();
     }
 }
