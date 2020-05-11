@@ -14,10 +14,9 @@
 		</div>
     @endif
     
+   <h2 class="uk-heading-divider">Añadir nueva máquina</h2>
+   <br>
    
-
-
-
     <form class="formularios" method="POST" action="{{url('/maquinas')}}" class="uk-form-stacked">
         @csrf
 

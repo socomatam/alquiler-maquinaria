@@ -361,6 +361,22 @@ $(document).ready( function () {
         $('#invisible_id').val(contadorMaquinas);
         
         contadorMaquinas++;
+
+
+        $.ajax({
+            url: 'http://localhost/gestion_alquiler_maquinaria/public/cuentas',
+            type: 'POST',
+            data: {
+                
+                'id_maquina': valor,
+                "_token": $("meta[name='csrf-token']").attr("content")
+            },
+            success: function(respuesta) {
+          
+            },//FIN SUCCESS
+
+ 
+         });//fin ajax
         
     });//fin añadir máquina
 
@@ -398,6 +414,29 @@ $(document).ready( function () {
          });//fin bontón editar cliente
     
     });//fin click
+
+
+    $('#borrar_cuentas').click(function(){
+        
+         $.ajax({
+            url: 'http://localhost/gestion_alquiler_maquinaria/public/cuentas/'+1,
+
+            method: 'POST',
+            data: {
+                _method: 'DELETE',
+                "_token": $("meta[name='csrf-token']").attr("content")
+            },
+            success: function(respuesta) {
+          
+            },//FIN SUCCESS
+
+ 
+         });//fin ajax
+
+         $('#modal_editar_nombre_empresa').hide();
+        
+          $(`this td`).html('ddd');               
+     });//fin bontón editar cliente
 
   
 

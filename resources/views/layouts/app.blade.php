@@ -96,18 +96,6 @@
         </div>
     </nav>
     <div class="uk-flex">
-    <!--
-        <div class='layout_menu_lateral'>
-            <ul  id="posicion_fija" class="uk-list">
-                <li><a href="{{url('/alquiler')}}">Alquiler</a></li>
-                <li><a href="{{url('/maquinas')}}">MÁQUINAS</a></li>
-                <li><a href="{{url('/clientes')}}">CLIENTES</a></li>
-                <li><a href="{{url('/trabajadores')}}">EMPLEADOS</a></li>
-                <li><a href="{{url('/complementos')}}">COMPLEMENTOS</a></li>
-                <li><a href="{{url('/repuestos')}}">REPUESTOS</a></li>
-            </ul>
-        </div>
-        -->
        
        <div class="layout_menu_lateral uk-width-1-6@s">
             <ul uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky" class="uk-nav-primary uk-nav-parent-icon" uk-nav>
@@ -119,6 +107,12 @@
                     <a href="#">Gestión Máquinas</a>
                     <ul class="uk-nav-sub">
                         <li><a href="{{url('/maquinas')}}">Máquinas</a></li>
+                        <li><a href="{{url('/marcas')}}">Marcas</a></li>
+                        <li><a href="{{url('/modelos')}}">Modelos</a></li>
+                        <li><a href="{{url('/categorias')}}">Categorías</a></li>
+                        <li><a href="{{url('/tipos')}}">Tipos</a></li>
+                        <li><a href="{{url('/estados')}}">Estados</a></li>
+                        
                        
                     </ul>
                 </li>

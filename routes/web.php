@@ -28,7 +28,19 @@ Route::resource('maquinas', 'MaquinaController')->middleware('auth');
 Route::resource('complementos', 'ComplementoController')->middleware('auth');
 Route::resource('trabajadores', 'TrabajadoreController')->middleware('auth');
 Route::resource('repuestos', 'RepuestoController')->middleware('auth');
-Route::get('maquinas_alquiladas/{id}', 'AlquilereController@listaMaquinas')->middleware('auth');
+Route::resource('categorias', 'CategoriaController')->middleware('auth');
+Route::resource('tipos', 'TipoController')->middleware('auth');
+Route::resource('modelos', 'ModeloController')->middleware('auth');
+Route::resource('marcas', 'MarcaController')->middleware('auth');
+Route::resource('estados', 'EstadoController')->middleware('auth');
+Route::resource('desplazamientos', 'DesplazamientoController')->middleware('auth');
+Route::resource('cuentas', 'CuentaController')->middleware('auth');
+
+//Route::post('alquiler', 'AlquilereController')->middleware('auth');
+
+
+
+Route::get('alquilerdos', 'AlquilereController@createDos')->middleware('auth');
 
 
 
