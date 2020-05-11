@@ -23,7 +23,8 @@ class MaquinaController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Muestra el formulario para la creación de máquinas.
+     * Al tiempo que para 
      *
      * @return \Illuminate\Http\Response
      */
@@ -44,9 +45,23 @@ class MaquinaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        dd($request);
+    public function store(Request $request){
+        
+        $maquina = new Maquina;
+        $maquina->maq_marca = $request->input('marca');
+        $maquina->maq_modelo = $request->input('modelo');
+        $maquina->maq_tipo = $request->input('tipo');
+        $maquina->maq_traslacion = $request->input('desplazamiento');
+        $maquina->maq_peso = $request->input('peso');
+        $maquina->maq_dimension_alto = $request->input('alto');
+        $maquina->maq_dimension_largo = $request->input('largo');
+        $maquina->maq_dimension_ancho = $request->input('ancho');
+        $maquina->maq_categoria = $request->input('categoria');
+        $maquina->maq_precio_dia = $request->input('precio');
+        $maquina->maq_estado = 'Libre';
+        $maquina->maq_seguro = 'Vigente';
+        $maquina->save();
+
         return redirect('maquinas');
     }
 

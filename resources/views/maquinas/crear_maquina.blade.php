@@ -77,7 +77,7 @@
 
         <div class="uk-width-1-5@m">
             <label class="uk-form-label" for="maq_peso">PESO (kg)</label>
-            <input class="uk-input" id="maq_peso" name="peso" type="number" step=".01" value={{old("peso")}} >    
+            <input class="uk-input" id="maq_peso" name="peso" type="number" step=".01" required value={{old("peso")}} >    
         </div>
         <br>
         <div uk-grid>
