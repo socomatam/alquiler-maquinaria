@@ -20,17 +20,11 @@
 
     <form class="formularios" method="POST" action="{{url('/maquinas')}}" class="uk-form-stacked">
         @csrf
-        
-
-        <div class="uk-width-1-3@m">
-            <label class="uk-form-label" for="cli_nif">Nº NIF</label>
-            <input class="uk-input " id="cli_nif" name=cli_nif type="text" required value={{old('cli_nif')}} >
-        </div>
-        <br>
 
         <div uk-grid>
             <div class="uk-width-1-3">
                 <label class="uk-form-label" for="maq_marca">MARCA</label>
+                <br>
                 <select class="uk-select" name="marca">
                     @foreach($marcas as $marca)
                         <option value="{{$marca->mar_marca}}">{{$marca->mar_marca}}</option>
@@ -39,29 +33,72 @@
             </div>
             <div class="uk-width-1-3">
                 <label class="uk-form-label" for="maq_modelo">MODELO</label>
-                <input class="uk-input" id="maq_modelo" name=maq_modelo type="text" value={{old('maq_modelo')}} >
+                <br>
+                <select class="uk-select" name="modelo">
+                    @foreach($modelos as $modelo)
+                        <option value="{{$modelo->mod_modelo}}">{{$modelo->mod_modelo}}</option>
+                    @endforeach
+                </select>
             </div>
         </div>
         <br>
-        <div class="uk-width-1-1@m">
-            <label class="uk-form-label" for="cli_direccion">DIRECCIÓN DE LA EMPRESA</label>
-            <input class="uk-input" id="cli_direccion" name="cli_direccion" type="text" value={{old("cli_direccion")}} >    
+
+        <div uk-grid>
+            <div class="uk-width-1-3">
+                <label class="uk-form-label" for="maq_marca">CATEGORIA</label>
+                <br>
+                <select class="uk-select" name="categoria">
+                    @foreach($categorias as $categoria)
+                        <option value="{{$categoria->cat_categoria}}">{{$categoria->cat_categoria}}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="uk-width-1-3">
+                <label class="uk-form-label" for="maq_modelo">TIPO</label>
+                <br>
+                <select class="uk-select" name="tipo">
+                    @foreach($tipos as $tipo)
+                        <option value="{{$tipo->tip_tipo}}">{{$tipo->tip_tipo}}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="uk-width-1-3">
+                <label class="uk-form-label" for="maq_modelo">TRASLACIÓN</label>
+                <br>
+                 <select class="uk-select" name="desplazamiento">
+                    @foreach($desplazamientos as $desplazamiento)
+                        <option value="{{$desplazamiento->des_desplazamiento}}">{{$desplazamiento->des_desplazamiento}}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+        <br>
+
+
+        <div class="uk-width-1-5@m">
+            <label class="uk-form-label" for="maq_peso">PESO (kg)</label>
+            <input class="uk-input" id="maq_peso" name="peso" type="number" step=".01" value={{old("peso")}} >    
         </div>
         <br>
         <div uk-grid>
-            <div class="uk-width-1-3">
-                <label class="uk-form-label" for="cli_pais">PAÍS</label>
-                <input class="uk-input" id="cli_pais" name=cli_pais type="text" required value={{old('cli_pais')}}  >
+            <div class="uk-width-1-4@m">
+                <label class="uk-form-label" for="maq_largo">LARGO</label>
+                <input class="uk-input" id="maq_largo" name="largo" type="number" step=".01" value={{old("largo")}} >    
             </div>
-            <div class="uk-width-1-3@m">
-                <label class="uk-form-label" for="cli_ciudad">CIUDAD</label>
-                <input class="uk-input" id="cli_email" name=cli_ciudad type="text" value={{old('cli_ciudad')}} >
+            <div class="uk-width-1-4@m">
+                <label class="uk-form-label" for="maq_ancho">ANCHO</label>
+                <input class="uk-input" id="maq_ancho" name="ancho" type="number" step=".01" value={{old("ancho")}} >    
+            </div>
+            <div class="uk-width-1-4@m">
+                <label class="uk-form-label" for="maq_alto">ALTO</label>
+                <input class="uk-input" id="maq_alto" name="alto" type="number" step=".01" value={{old("alto")}} >    
             </div>
         </div>
         <br>
-        <div class="uk-width-1-1@m">
-            <label class="uk-form-label" for="cli_nombre_contacto">NOMBRE CONTACTO DE LA EMPRESA</label>
-            <input class="uk-input" id="cli_nombre_contacto" name="cli_nombre_contacto" type="text" required value={{old('cli_nombre_contacto')}} >    
+
+        <label class="uk-form-label" for="maq_precio">PRECIO DE ALQUILER POR DÍA</label>
+        <div class="uk-width-1-5@m">
+            <input class="uk-input" id="maq_peso" name="precio"  type="number" step=".01" value={{old("precio")}} >    
         </div>
         <br>
        

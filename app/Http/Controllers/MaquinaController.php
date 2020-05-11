@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Maquina;
+use App\Tipo;
 use App\Marca;
+use App\Modelo;
+use App\Categoria;
+use App\Desplazamiento;
 use Illuminate\Http\Request;
 
 class MaquinaController extends Controller
@@ -26,7 +30,12 @@ class MaquinaController extends Controller
     public function create(){
         $maquinas = Maquina::all();
         $marcas = Marca::all();
-        return view('maquinas.crear_maquina', compact('maquinas','marcas'));
+        $modelos = Modelo::all();
+        $categorias = Categoria::all();
+        $desplazamientos = Desplazamiento::all();
+        $tipos = Tipo::all();
+
+        return view('maquinas.crear_maquina', compact('desplazamientos','tipos','categorias','maquinas','marcas', 'modelos'));
     }
 
     /**
