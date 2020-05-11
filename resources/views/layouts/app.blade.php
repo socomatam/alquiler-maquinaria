@@ -65,7 +65,7 @@
 
 </head>
 <body>
-    <nav   class="uk-navbar-container " uk-navbar uk-sticky="top: 0" id="listado">
+    <nav   class="uk-navbar-container " uk-navbar id="listado">
         <div class="uk-navbar-left">
 
             <ul class="uk-navbar-nav">
@@ -96,9 +96,10 @@
         </div>
     </nav>
     <div class="uk-flex">
+    <!--
         <div class='layout_menu_lateral'>
             <ul  id="posicion_fija" class="uk-list">
-                <li><a href="{{url('/alquiler')}}">ALQUILER</a></li>
+                <li><a href="{{url('/alquiler')}}">Alquiler</a></li>
                 <li><a href="{{url('/maquinas')}}">MÁQUINAS</a></li>
                 <li><a href="{{url('/clientes')}}">CLIENTES</a></li>
                 <li><a href="{{url('/trabajadores')}}">EMPLEADOS</a></li>
@@ -106,7 +107,32 @@
                 <li><a href="{{url('/repuestos')}}">REPUESTOS</a></li>
             </ul>
         </div>
-        
+        -->
+       
+       <div class="layout_menu_lateral uk-width-1-6@s">
+            <ul uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky" class="uk-nav-primary uk-nav-parent-icon" uk-nav>
+                <li class="uk-active"><a href="#">Menú de navegación </a></li>
+                <li><a href="{{url('/alquiler')}}">Alquiler</a></li>
+                <li><a href="{{url('/clientes')}}">Clientes</a></li>
+                <li><a href="{{url('/trabajadores')}}">Trabajadores</a></li>
+                <li class="uk-parent">
+                    <a href="#">Gestión Máquinas</a>
+                    <ul class="uk-nav-sub">
+                        <li><a href="{{url('/maquinas')}}">Máquinas</a></li>
+                       
+                    </ul>
+                </li>
+                
+                <li><a href="{{url('/complementos')}}">Complementos</a></li>
+                <li><a href="{{url('/repuestos')}}">Repuestos</a></li>
+
+
+              
+            </ul>
+        </div>
+
+
+
         <div class="layout_contenedor">
             @yield('content')
         </div>
