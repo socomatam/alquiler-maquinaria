@@ -40,7 +40,7 @@ Route::resource('cuentas', 'CuentaController')->middleware('auth');
 
 
 
-Route::get('alquilerdos', 'AlquilereController@createDos')->middleware('auth');
+//Route::post('alquilerdos', 'AlquilereController@createDos')->middleware('auth');
 
 
 
