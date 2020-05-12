@@ -74,6 +74,13 @@
     padding: 10px;;
 }
 
+.alq_caja_de_complementos{
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+
+}
+
 /*FIN CREACIÓN ALQUILER*/
 
 

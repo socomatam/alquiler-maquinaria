@@ -22,6 +22,7 @@ class CreateContratosTable extends Migration
             $table->string('con_incidencia')->nullable();
             $table->unsignedBigInteger('alquiler_id')->nullable();
             $table->unsignedBigInteger('maquina_id')->nullable();
+            $table->unsignedBigInteger('complemento_id')->nullable();
             $table->timestamps();
         });
     }

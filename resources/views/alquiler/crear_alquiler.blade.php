@@ -40,34 +40,36 @@
             <div class="uk-grid-small uk-child-width-expand@s" uk-grid>
                 <div>
                     <label class="uk-form-label" for="from">DESDE</label>
-                    <br>
                     <input class="uk-input uk-width-1-2" id="from" name=from type="text" >
                 </div>
                 <div>
                     <label class="uk-form-label" for="to">HASTA</label>
-                    <br>
                     <input class="uk-input uk-width-1-2" id="to" name=to type="text" >
                 </div>
             </div>
             <br>
             <label class="uk-form-label" for="to">SELECCIONES COMPLEMENTOS</label>
-            <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
-                <label><input class="uk-checkbox" type="checkbox" checked> A</label>
-                <label><input class="uk-checkbox" type="checkbox"> B</label>
+            <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid ">
+
+                <div class="alq_caja_de_complementos">
+                    @foreach($complementos as $complemento)
+                    <div>
+                        <label>
+                            <input class="uk-checkbox" name="complementos[]" type="checkbox" value="{{$complemento->id}}"> {{$complemento->com_complemento}}                       
+                        </label>
+                    </div>
+                    @endforeach
+                </div>
+                    
             </div>
             <br>
             <div class="uk-margin">
                 <label class="uk-form-label" for="to">DESCRIPCIÓN DEL TRABAJO</label>
-                <br>
                 <textarea id="alq_descripcion" name="descripcion" class="uk-textarea" rows="5" placeholder="Escriba la descripción"></textarea>
             </div>
-            <br>
-        <br>
-       
-       
-  
-
-
+            
+     
+ 
         <div class="uk-width-1-2">    
             <label class="uk-form-label" for="nombre_empleado">NOMBRE DE TRABAJADOR</label>
             <input class="uk-input" id="nombre_empleado" name="nombre_empleado" type="text" value="{{$empleado->tra_nombre_trabajador}} {{$empleado->tra_apellido_1}} {{$empleado->tra_apellido_2}}" readonly >
@@ -77,40 +79,12 @@
        
 
         <button  class="uk-button uk-button-primary">Añadir contrato a alquiler</button>
+        <a class="uk-button uk-button-default" href="{{url('/alquiler')}}">VOLVER</a>
+        
 
- 
-
-
-        <button id='btn_limpiar' class="uk-button uk-button-default">
-            <a href="{{url('alquilerdos')}}">ss</a>
-            </button>
-
-
-     
 
 
     </form>
-
-   <button id="cli_btn_nuevo_cliente" class="uk-button uk-button-default">
-            <a href="{{url('/alquiler')}}">Volver</a>
-        </button>
-
-
- 
-    
-
-
-
-
-
-
-<script>
-    function borrarMaquina(valor){
-        $(`.caja${valor}`).remove();
-    }//fin borrar máquina
-</script>
-
-
 
 
 

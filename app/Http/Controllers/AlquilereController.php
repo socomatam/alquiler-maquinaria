@@ -8,7 +8,9 @@ use App\Maquina;
 use App\Contrato;
 use App\Cliente;
 use App\Trabajadore;
+use App\Complemento;
 use App\Cuenta;
+use App\Complemento_contrato;
 use Carbon\Carbon;
 use DateTime;
 use Illuminate\Http\Request;
@@ -51,25 +53,6 @@ class AlquilereController extends Controller
     }//fin index
 
 
-    public function createDos(Request $request){
-        
-        $datosAlquiler = Alquilere::latest('id')->first();
-        
-
-        $clientes = Cliente::where('id', $datosAlquiler->cliente_id)->get();
-
-        //$clientes = $datosAlquiler;
-        //$clientes = Cliente::all();
-        $maquinas = Maquina::where('maq_estado','Libre')->get();
-
-        //$idUsuario = Auth::id();//obtiene el id del usuario autenticado en el sistema
-        $id = Auth::id();
-        $empleado = User::find($id)->trabajador;//obtiene los datos del emprledo autenticado
-
-        return view('alquiler.crear_alquiler', compact('clientes', 'maquinas', 'empleado'));
-    }//fin index
-
-
     public function listaMaquinas($id){
         $maquinas = Alquilere::find($id);
 
@@ -92,15 +75,16 @@ class AlquilereController extends Controller
      */
     public function create(){
 
-        $cuentas = Cuenta::all();
         $clientes = Cliente::all();
+        //Solo carga en el objeto las máquinas que estén marcadas como libres
         $maquinas = Maquina::where('maq_estado','Libre')->get();
+        $complementos = Complemento::where('com_estado', 'Libre')->get();
 
         //$idUsuario = Auth::id();//obtiene el id del usuario autenticado en el sistema
         $id = Auth::id();
         $empleado = User::find($id)->trabajador;//obtiene los datos del emprledo autenticado
 
-        return view('alquiler.crear_alquiler', compact('cuentas','clientes', 'maquinas', 'empleado'));
+        return view('alquiler.crear_alquiler', compact('complementos','clientes', 'maquinas', 'empleado'));
     }//fin crear
 
     /**
@@ -114,7 +98,6 @@ class AlquilereController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
-
         $precioTotalAlquiler = 0;
         $precioMaquina = 0;
         $diasAlquiler = 0;
@@ -160,6 +143,8 @@ class AlquilereController extends Controller
         //Marca una maquina como alquilada, por lo que no se cargará en el formulario
         $maquinas = Maquina::where('maq_estado','Libre')->get();
 
+        $complementos = Complemento::where('com_estado', 'Libre')->get();
+
         //recoge el id del empledo actual en el sistema para uaserlo en el formulario
         $id = Auth::id();
         $empleado = User::find($id)->trabajador;//obtiene los datos del emprledo autenticado
@@ -168,7 +153,21 @@ class AlquilereController extends Controller
         $datosAlquiler = Alquilere::latest('id')->first();
         $clientes = Cliente::where('id', $datosAlquiler->cliente_id)->get();
 
-        return view('alquiler.crear_alquiler', compact('clientes', 'maquinas', 'empleado'));
+
+
+        $arrayComplementos = $request->input('complementos');
+
+        
+        foreach($arrayComplementos as $complemento){
+            $complementosObjeto = new Complemento_contrato;
+            $complementosObjeto->contrato_id = $contrato->id;
+            $complementosObjeto->complemento_id = $complemento;
+            $complementosObjeto->save();
+        }//fin for each
+        
+
+
+        return view('alquiler.crear_alquiler', compact('complementos','clientes', 'maquinas', 'empleado'));
     }//fin store
 
 

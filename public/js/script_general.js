@@ -309,6 +309,7 @@ $(document).ready( function () {
    
     //-------------ALQUILER-------------------//
 
+    /*
     $( "#guarda_maq" ).click(function(evento) {
         event.preventDefault();
         
@@ -380,6 +381,8 @@ $(document).ready( function () {
         
     });//fin añadir máquina
 
+    */
+
     $('.alq_editar').click(function(){
         id = $(this).closest('tr').data();
 
@@ -443,8 +446,13 @@ $(document).ready( function () {
 
 
     //-----------FIN ALQUILER--------------//
+
     
+   
 
 
 } );//fin ready
+
+
+
 
