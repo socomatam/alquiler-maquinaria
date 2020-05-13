@@ -43,7 +43,7 @@
                             <td>{{$alq->nombre_trabajador}} {{ $alq->apellido_trabajador_1}} {{ $alq->apellido_trabajador_2}} </td>
                             <td class="centrar_celda"><a href="{{url('/alquiler')}}/{{$alq->id_alquiler}}" uk-icon="icon: plus-circle"></a></a> </td>
                             <td class="centrar_celda alq_editar" ><a class=""  uk-icon="icon: file-edit" ></a></td>
-                            <td class="centrar_celda"><a id="borrar_alquiler" uk-icon="icon: trash"></a></td>
+                            <td class="centrar_celda"><a class="borrar_alquiler" uk-icon="icon: trash"></a></td>
                             <td>{{$alq->incidencia}}</td>
                         </tr>  
                     @endforeach

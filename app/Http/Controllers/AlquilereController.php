@@ -285,8 +285,27 @@ class AlquilereController extends Controller
      * @param  \App\Alquilere  $alquilere
      * @return \Illuminate\Http\Response
      */
-    public function destroy($alquiler)
-    {
+    public function destroy($alquiler){
         
-    }
-}
+
+
+
+
+        $nContratos = DB::table('contratos')
+        ->select(DB::raw("count(*) AS numero"))
+        ->where('alquiler_id', $alquiler)->get();
+
+        //dd($nContratos);
+        
+        foreach($nContratos as $n){
+            //Conseguimos el objeto
+            $contrato=Contrato::where('alquiler_id', '=', $alquiler);
+            
+            // Lo eliminamos de la base de datos
+            $contrato->delete();
+
+        }//fin for each
+
+        
+    }//fin destroy
+}//fin clase

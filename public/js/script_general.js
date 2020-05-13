@@ -419,7 +419,7 @@ $(document).ready( function () {
     });//fin click
 
 
-    $('#borrar_alquiler').click(function(){
+    $('.borrar_alquiler').click(function(){
          var alq_id = $(this).closest('tr').data()['alq_id'];
          $.ajax({
             url: 'alquiler/'+alq_id,

@@ -17,8 +17,8 @@ class CreateComplementoContratosTable extends Migration
             
             $table->unsignedBigInteger('contrato_id');
             $table->unsignedBigInteger('complemento_id');
-            $table->foreign('contrato_id')->references('id')->on('contratos');
-            $table->foreign('complemento_id')->references('id')->on('complementos');
+            $table->foreign('contrato_id')->references('id')->on('contratos')->onDelete('cascade');;
+            $table->foreign('complemento_id')->references('id')->on('complementos')->onDelete('cascade');;
             $table->timestamps();
         });
     }
