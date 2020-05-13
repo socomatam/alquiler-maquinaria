@@ -420,32 +420,34 @@ $(document).ready( function () {
 
 
     $('.borrar_alquiler').click(function(){
-        //UIkit.modal.confirm('UIkit confirm!')
+        
+        var alq_id = $(this).closest('tr').data()['alq_id'];
+        var tr = $(this).closest('tr');
+        
+        UIkit.modal.confirm('¿Está seguro que desea borrar este alquiler?',{
+            labels: {
+                cancel: 'Cancelar',
+                ok: 'Aceptar'
+              }
+        }).then(function() {
+            $.ajax({
+                url: 'alquiler/'+alq_id,
+                method: 'DELETE',
+                data: {
+                    _method: 'DELETE',
+                    "_token": $("meta[name='csrf-token']").attr("content")
+                },
+                success: function(respuesta) {
+                    $(tr).fadeOut();
+                    UIkit.notification({message: 'Alquiler borrado con éxito', status: 'success'});
 
-         var alq_id = $(this).closest('tr').data()['alq_id'];
-         var tr = $(this).closest('tr');
-
-         $.ajax({
-            url: 'alquiler/'+alq_id,
-
-            method: 'DELETE',
-            data: {
-                _method: 'DELETE',
-                "_token": $("meta[name='csrf-token']").attr("content")
-            },
-            success: function(respuesta) {
-                $(tr).fadeOut();
-
-                UIkit.notification({message: 'Alquiler borrado con éxito', status: 'success'});
-
-            },//FIN SUCCESS
-
- 
-         });//fin ajax
+                },//FIN SUCCESS
+            });//fin ajax
+        }, function () {
             
-     });//fin borrar alquiler
+        });
 
-  
+     });//fin borrar alquiler
 
 
 
