@@ -17,8 +17,16 @@
                 @endforeach
             </select>
         </div>
-        <br>    
-    
+        <br>
+
+        @if($nuevo == true)
+             <input class="uk-input uk-width-1-2" name="nuevo" value="nuevo" type="hidden" >
+        @elseif($nuevo == false)
+            <input class="uk-input uk-width-1-2" name="nuevo" value="viejo" type="hidden" >
+        @endif
+
+        
+
          <div>    
                 <label class="uk-form-label" for="">MÁQUINA</label>
                 <select id="val_aquina" class="uk-select" name="id_maquina">

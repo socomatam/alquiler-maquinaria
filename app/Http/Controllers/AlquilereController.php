@@ -84,7 +84,9 @@ class AlquilereController extends Controller
         $id = Auth::id();
         $empleado = User::find($id)->trabajador;//obtiene los datos del emprledo autenticado
 
-        return view('alquiler.crear_alquiler', compact('complementos','clientes', 'maquinas', 'empleado'));
+        $nuevo = true;
+
+        return view('alquiler.crear_alquiler', compact('nuevo', 'complementos','clientes', 'maquinas', 'empleado'));
     }//fin crear
 
     /**
@@ -98,32 +100,48 @@ class AlquilereController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
+
+        $valorFormulario = $request->input('nuevo');
+
+        //dd($request);
+
         $precioTotalAlquiler = 0;
         $precioMaquina = 0;
         $diasAlquiler = 0;
 
         $id = Auth::id();//recoge del usuario actualmente logeado en el sistema
     
+
+
+        if($valorFormulario == 'nuevo'){
+            $alquiler = new Alquilere;
+            $alquiler->cliente_id = $request->input('nombre_empresa');
+    
+            $fecha1 = new DateTime($request->input('from'));
+            $fecha2 = new DateTime($request->input('to'));
+    
+            $dias = $fecha1->diff($fecha2);
+            $precioMaquina = Maquina::select('maq_precio_dia')
+                            ->where('id', $request->input('id_maquina'))
+                          ->get()[0]->maq_precio_dia;
+    
+            $precioTotalAlquiler  = $precioTotalAlquiler + ($precioMaquina * $dias->format('%a'));
+    
+            $alquiler->alq_incidencia = 'Sin incidencias';
+            $alquiler->alq_precio = $precioTotalAlquiler;
+            $alquiler->trabajador_id = $id;
+            $alquiler->save();
+        }//fin if
+        
         //Crea un objeto de tipo alquiler y lo guarda en la base de datos
-        $alquiler = new Alquilere;
-        $alquiler->cliente_id = $request->input('nombre_empresa');
-
-        $fecha1 = new DateTime($request->input('from'));
-        $fecha2 = new DateTime($request->input('to'));
-
-        $dias = $fecha1->diff($fecha2);
-        $precioMaquina = Maquina::select('maq_precio_dia')
-                        ->where('id', $request->input('id_maquina'))
-                      ->get()[0]->maq_precio_dia;
-
-        $precioTotalAlquiler  = $precioTotalAlquiler + ($precioMaquina * $dias->format('%a'));
-
-        $alquiler->alq_incidencia = 'Sin incidencias';
-        $alquiler->alq_precio = $precioTotalAlquiler;
-        $alquiler->trabajador_id = $id;
-        $alquiler->save();
+     
         
         
+        //optiene el id del último cliente para dejar solo el del actual cliente en el formulario
+        $datosAlquiler = Alquilere::latest('id')->first();
+        $clientes = Cliente::where('id', $datosAlquiler->cliente_id)->get();
+
+
         //Crea y guarda un objeto de tipo Contrato y lo guarda en la base de datos
         $contrato = new Contrato;
         $contrato->con_fecha_inicio = $request->input('from');
@@ -133,41 +151,48 @@ class AlquilereController extends Controller
         $contrato->con_precio = Maquina::select('maq_precio_dia')
                                       ->where('id', $request->input('id_maquina'))
                                 ->get()[0]->maq_precio_dia;
-        $contrato->alquiler_id = $alquiler->id;
+        $contrato->alquiler_id = $datosAlquiler->cliente_id;
         $contrato->save();
 
-        Maquina::where('id',$request
-            ->input('id_maquina'))
+        Maquina::where('id',$request->input('id_maquina'))
             ->update(['maq_estado'=>'Alquilada']);
+
+        
+
+        //recoge el id del empledo actual en el sistema para uaserlo en el formulario
+        $id = Auth::id();
+        $empleado = User::find($id)->trabajador;//obtiene los datos del emprledo autenticado
+
+    
+
+
+
+        //guarda 
+        $arrayComplementos = $request->input('complementos');
+
+        foreach($arrayComplementos as $complemento){
+            $complementosObjeto = new Complemento_contrato;
+            $complementosObjeto->contrato_id = $contrato->id;
+            $complementosObjeto->complemento_id = $complemento;
+            $complementosObjeto->save();
+
+            Complemento::where('id', $complemento)
+            ->update(['com_estado'=>'Alquilado']);
+
+
+        }//fin for each
+        
 
         //Marca una maquina como alquilada, por lo que no se cargará en el formulario
         $maquinas = Maquina::where('maq_estado','Libre')->get();
 
         $complementos = Complemento::where('com_estado', 'Libre')->get();
 
-        //recoge el id del empledo actual en el sistema para uaserlo en el formulario
-        $id = Auth::id();
-        $empleado = User::find($id)->trabajador;//obtiene los datos del emprledo autenticado
-
-        //optiene el id del último cliente para dejar solo el del actual cliente en el formulario
-        $datosAlquiler = Alquilere::latest('id')->first();
-        $clientes = Cliente::where('id', $datosAlquiler->cliente_id)->get();
+        //compruba si el alquiler es nuevo 
+        $nuevo = false;
 
 
-
-        $arrayComplementos = $request->input('complementos');
-
-        
-        foreach($arrayComplementos as $complemento){
-            $complementosObjeto = new Complemento_contrato;
-            $complementosObjeto->contrato_id = $contrato->id;
-            $complementosObjeto->complemento_id = $complemento;
-            $complementosObjeto->save();
-        }//fin for each
-        
-
-
-        return view('alquiler.crear_alquiler', compact('complementos','clientes', 'maquinas', 'empleado'));
+        return view('alquiler.crear_alquiler', compact('nuevo','complementos','clientes', 'maquinas', 'empleado'));
     }//fin store
 
 

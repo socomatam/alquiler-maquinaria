@@ -11,6 +11,6 @@ class AlquilereSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Alquilere::class,50)->create();
+        factory(App\Alquilere::class,1)->create();
     }
 }
