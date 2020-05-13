@@ -151,7 +151,7 @@ class AlquilereController extends Controller
         $contrato->con_precio = Maquina::select('maq_precio_dia')
                                       ->where('id', $request->input('id_maquina'))
                                 ->get()[0]->maq_precio_dia;
-        $contrato->alquiler_id = $datosAlquiler->cliente_id;
+        $contrato->alquiler_id = $datosAlquiler->id;
         $contrato->save();
 
         Maquina::where('id',$request->input('id_maquina'))
