@@ -420,7 +420,11 @@ $(document).ready( function () {
 
 
     $('.borrar_alquiler').click(function(){
+        //UIkit.modal.confirm('UIkit confirm!')
+
          var alq_id = $(this).closest('tr').data()['alq_id'];
+         var tr = $(this).closest('tr');
+
          $.ajax({
             url: 'alquiler/'+alq_id,
 
@@ -430,7 +434,10 @@ $(document).ready( function () {
                 "_token": $("meta[name='csrf-token']").attr("content")
             },
             success: function(respuesta) {
-          
+                $(tr).fadeOut();
+
+                UIkit.notification({message: 'Alquiler borrado con éxito', status: 'success'});
+
             },//FIN SUCCESS
 
  

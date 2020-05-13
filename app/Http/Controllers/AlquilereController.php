@@ -287,24 +287,28 @@ class AlquilereController extends Controller
      */
     public function destroy($alquiler){
         
+        $maquinaIds = DB::table('contratos')
+        ->select(DB::raw("maquina_id AS id_maquina"))
+        ->where('alquiler_id', $alquiler)->get();
 
-
+        
+        foreach($maquinaIds as $id){
+            Maquina::where('id', $id->id_maquina)
+            ->update(['maq_estado'=>'Libre']);
+        }//fin
 
 
         $nContratos = DB::table('contratos')
         ->select(DB::raw("count(*) AS numero"))
         ->where('alquiler_id', $alquiler)->get();
 
-        //dd($nContratos);
-        
-        foreach($nContratos as $n){
-            //Conseguimos el objeto
-            $contrato=Contrato::where('alquiler_id', '=', $alquiler);
-            
-            // Lo eliminamos de la base de datos
-            $contrato->delete();
+        //Conseguimos el objeto
+        $contrato=Contrato::where('alquiler_id', '=', $alquiler);    
+        // Lo eliminamos de la base de datos
+        $contrato->delete();
 
-        }//fin for each
+        $objAlquiler = Alquilere::where('id', '=', $alquiler);
+        $objAlquiler->delete(); 
 
         
     }//fin destroy
