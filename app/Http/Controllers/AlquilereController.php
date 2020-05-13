@@ -119,13 +119,16 @@ class AlquilereController extends Controller
     
             $fecha1 = new DateTime($request->input('from'));
             $fecha2 = new DateTime($request->input('to'));
-    
+            
+            
             $dias = $fecha1->diff($fecha2);
             $precioMaquina = Maquina::select('maq_precio_dia')
                             ->where('id', $request->input('id_maquina'))
                           ->get()[0]->maq_precio_dia;
     
             $precioTotalAlquiler  = $precioTotalAlquiler + ($precioMaquina * $dias->format('%a'));
+            $alquiler->alq_fecha_inicio = $fecha1;
+            $alquiler->alq_fecha_fin = $fecha2;
     
             $alquiler->alq_incidencia = 'Sin incidencias';
             $alquiler->alq_precio = $precioTotalAlquiler;
@@ -154,11 +157,18 @@ class AlquilereController extends Controller
         $contrato->alquiler_id = $datosAlquiler->id;
         $contrato->save();
 
+        //actualiza el estado de la maquina alquilada
         Maquina::where('id',$request->input('id_maquina'))
             ->update(['maq_estado'=>'Alquilada']);
 
-        
-
+        if($contrato->alq_fecha_fin > $datosAlquiler->alq_fecha_fin){
+            Alquilere::where('id',$datosAlquiler->id)
+            ->update(['alq_fecha_fin'=>$contrato->con_fecha_fin]);
+        }elseif($contrato->alq_fecha_inicio < $datosAlquiler->alq_fecha_inicio ){
+            Alquilere::where('id',$datosAlquiler->id)
+            ->update(['alq_fecha_inicio'=>$contrato->con_fecha_inicio]);
+        }    
+  
         //recoge el id del empledo actual en el sistema para uaserlo en el formulario
         $id = Auth::id();
         $empleado = User::find($id)->trabajador;//obtiene los datos del emprledo autenticado
@@ -178,7 +188,6 @@ class AlquilereController extends Controller
 
             Complemento::where('id', $complemento)
             ->update(['com_estado'=>'Alquilado']);
-
 
         }//fin for each
         
@@ -224,7 +233,7 @@ class AlquilereController extends Controller
             'maquinas.maq_dimension_largo AS maq_largo',
             'maquinas.maq_dimension_ancho AS maq_ancho',
             'maquinas.maq_categoria AS maq_categoria',
-            'maquinas.maq_tipo AS maq_estado',
+            'maquinas.maq_estado AS maq_estado',
             'maquinas.maq_precio_dia AS maq_precio',
             DB::raw("DATEDIFF(contratos.con_fecha_fin,contratos.con_fecha_inicio) AS dias")
             
@@ -276,8 +285,8 @@ class AlquilereController extends Controller
      * @param  \App\Alquilere  $alquilere
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Alquilere $alquilere)
+    public function destroy($alquiler)
     {
-        //
+        
     }
 }

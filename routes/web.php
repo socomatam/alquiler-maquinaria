@@ -34,7 +34,7 @@ Route::resource('modelos', 'ModeloController')->middleware('auth');
 Route::resource('marcas', 'MarcaController')->middleware('auth');
 Route::resource('estados', 'EstadoController')->middleware('auth');
 Route::resource('desplazamientos', 'DesplazamientoController')->middleware('auth');
-Route::resource('cuentas', 'CuentaController')->middleware('auth');
+
 
 //Route::post('alquiler', 'AlquilereController')->middleware('auth');
 

@@ -419,12 +419,12 @@ $(document).ready( function () {
     });//fin click
 
 
-    $('#borrar_cuentas').click(function(){
-        
+    $('#borrar_alquiler').click(function(){
+         var alq_id = $(this).closest('tr').data()['alq_id'];
          $.ajax({
-            url: 'http://localhost/gestion_alquiler_maquinaria/public/cuentas/'+1,
+            url: 'alquiler/'+alq_id,
 
-            method: 'POST',
+            method: 'DELETE',
             data: {
                 _method: 'DELETE',
                 "_token": $("meta[name='csrf-token']").attr("content")
@@ -435,11 +435,8 @@ $(document).ready( function () {
 
  
          });//fin ajax
-
-         $('#modal_editar_nombre_empresa').hide();
-        
-          $(`this td`).html('ddd');               
-     });//fin bontón editar cliente
+            
+     });//fin borrar alquiler
 
   
 

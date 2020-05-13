@@ -89,12 +89,7 @@
         <button  class="uk-button uk-button-primary">Añadir contrato a alquiler</button>
         <a class="uk-button uk-button-default" href="{{url('/alquiler')}}">VOLVER</a>
         
-
-
-
     </form>
-
-
 
 @endsection
 
