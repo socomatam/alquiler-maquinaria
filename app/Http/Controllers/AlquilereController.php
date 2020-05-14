@@ -103,7 +103,7 @@ class AlquilereController extends Controller
 
         $valorFormulario = $request->input('nuevo');
 
-        //dd($request);
+        
 
         $precioTotalAlquiler = 0;
         $precioMaquina = 0;
@@ -180,16 +180,20 @@ class AlquilereController extends Controller
         //guarda 
         $arrayComplementos = $request->input('complementos');
 
-        foreach($arrayComplementos as $complemento){
-            $complementosObjeto = new Complemento_contrato;
-            $complementosObjeto->contrato_id = $contrato->id;
-            $complementosObjeto->complemento_id = $complemento;
-            $complementosObjeto->save();
+        //Sin no se ha seleccionado complementos se hará la consulta para guardarlos
+        if(!empty($arrayComplementos)){
+  
+            foreach($arrayComplementos as $complemento){
+                $complementosObjeto = new Complemento_contrato;
+                $complementosObjeto->contrato_id = $contrato->id;
+                $complementosObjeto->complemento_id = $complemento;
+                $complementosObjeto->save();
 
-            Complemento::where('id', $complemento)
-            ->update(['com_estado'=>'Alquilado']);
+                Complemento::where('id', $complemento)
+                ->update(['com_estado'=>'Alquilado']);
 
-        }//fin for each
+            }//fin for each
+        }//fin if
         
 
         //Marca una maquina como alquilada, por lo que no se cargará en el formulario
@@ -280,9 +284,13 @@ class AlquilereController extends Controller
     }//fin update
 
     /**
-     * Remove the specified resource from storage.
+     * Borra un registro que sea un alquiler.
+     * Primero hace una consulta SQL para recuperar los id relacionados con un alquiler.
+     * Luego cambia el estado de las máquinas de Alquiladas a Libres
+     * Después, por medio de una consulta SQL cuenta el número de contratos asociados a un alquiler.
+     * Por último borra los contratos y el alquiler.
      *
-     * @param  \App\Alquilere  $alquilere
+     * @param  \App\Alquilere  $alquiler
      * @return \Illuminate\Http\Response
      */
     public function destroy($alquiler){
