@@ -129,12 +129,29 @@
 
         <div class="layout_contenedor">
             @yield('content')
+            <br>
+          
+        </div>
+
+    </div>
+    <div class="uk-section uk-section-large uk-section-muted">
+    <div class="uk-container">
+
+        <h3>Section Large</h3>
+
+        <div class="uk-grid-match uk-child-width-1-3@m" uk-grid>
+            <div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+            </div>
+            <div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+            </div>
+            <div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+            </div>
         </div>
     </div>
-    
-    <div class="layout_pie">
-        
-    </div>
+</div>
 
     
     
@@ -192,7 +209,7 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+          
         </main>
     </div>
     -->

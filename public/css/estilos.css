@@ -1,3 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+
+html, body{
+    margin:0px;
+    height:100%;
+  }
+.pie_aplicacion{
+    width: 100%;
+    background-color: green;
+    height: 50%;
+}
+
+body > div > div.layout_menu_lateral.uk-width-1-6\@s{
+    background-color: white;
+}
+
+.uk-flex{
+    background-color: #f2f2f2;
+}
+
 /*fija el menú lateral del layout*/
 #posicion_fija{
   position:fixed;
@@ -11,7 +31,7 @@
     padding-top: 30px;
     width: 14%;
     padding-left: 1%;
-    background-color: lightgreen;
+    
 }
 
 .layout_pie{
@@ -21,6 +41,8 @@
 .layout_contenedor{
     margin-left:30px;
     margin-top: 30px;
+
+  
 
 }
 
