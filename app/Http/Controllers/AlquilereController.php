@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Session;
 use App\Alquilere;
 use App\User;
 use App\Maquina;
@@ -17,6 +18,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Quotation;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\AlquilerRequest;
 
 class AlquilereController extends Controller
 {
@@ -99,11 +101,9 @@ class AlquilereController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request){
+    public function store(AlquilerRequest $request){
 
         $valorFormulario = $request->input('nuevo');
-
-        
 
         $precioTotalAlquiler = 0;
         $precioMaquina = 0;
@@ -203,6 +203,9 @@ class AlquilereController extends Controller
 
         //compruba si el alquiler es nuevo 
         $nuevo = false;
+
+        Session::flash('finalizar_alquiler', 'El alquiler se ha creado correctamente.');
+        Session::flash('continuar_alquiler', 'Máquina añadida a este alquiler.');	
 
 
         return view('alquiler.crear_alquiler', compact('nuevo','complementos','clientes', 'maquinas', 'empleado'));

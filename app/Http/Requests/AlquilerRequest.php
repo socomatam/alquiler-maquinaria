@@ -13,7 +13,7 @@ class AlquilerRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,12 @@ class AlquilerRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            //'nombre' => 'required|max:20|min:2',
+			//'apellido_1' => 'required|max:20|min:2|alpha',
+			//'apellido_2' => 'required|max:20|min:2|alpha',
+			//'telefono' => ['required','max:9','min:9', new Telefono],
+            'from' => 'required|date|after:today',
+            'to' => 'required|date|after:from',
         ];
     }
 }

@@ -1,7 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-
+      @if(Session::has('continuar_alquiler'))
+		<div class="ui success message">
+  			<i class="close icon"></i>
+			<div class="uk-alert-success" uk-alert>
+                <a class="uk-alert-close" uk-close></a>
+                <p>Alquiler creado con éxito.</p>
+            </div>
+  			<p>{{Session::get('finalizar_alquiler')}}</p>
+		</div>
+	@endif
 
     <div class='alq_contenedor'>
         

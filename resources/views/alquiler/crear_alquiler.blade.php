@@ -4,10 +4,37 @@
 
     <h2 class="uk-heading-divider">Añadir nueva máquina</h2>
 
+    
+	@if (count($errors) > 0)
+		<div class="ui negative message">
+			<i class="close icon"></i>
+			<div class="header">
+				<ul>
+					@foreach ($errors->all() as $error)
+                    <span class="uk-label uk-label-danger">{{ $error }}</span>
+                    <br>
+						
+					@endforeach
+				</ul>
+			</div>
+		</div>
+	@endif
+
+    @if(Session::has('continuar_alquiler'))
+		<div class="ui success message">
+  			<i class="close icon"></i>
+			<div class="uk-alert-success" uk-alert>
+                <a class="uk-alert-close" uk-close></a>
+                <p>Maquina añadida a este alquiler.</p>
+            </div>
+  			<p>{{Session::get('continuar_alquiler')}}</p>
+		</div>
+	@endif
+
+
     <form class="formularios uk-form-stacked" method="POST" action="{{url('/alquiler')}}" class="uk-form-stacked">
 
         @csrf
-
         <input id="invisible_id" name="contador" type="hidden" value="">
         <div>    
             <label class="uk-form-label" for="">NOMBRE DE LA EMPRESA</label>
