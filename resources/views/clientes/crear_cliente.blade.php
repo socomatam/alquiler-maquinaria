@@ -27,7 +27,7 @@
         @csrf
         <div class="uk-width-1-1@m">
             <label class="uk-form-label" for="cli_nombre">NOMBRE DE LA EMPRESA</label>
-            <input class="uk-input" id="cli_nombre" name="cli_nombre_empresa" type="text" required value={{old('cli_nombre')}} >    
+            <input class="uk-input" id="cli_nombre" name="cli_nombre_empresa" type="text" required value={{old('cli_nombre_empresa')}} >    
         </div>
         <br>
 

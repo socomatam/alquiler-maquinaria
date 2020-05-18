@@ -146,6 +146,17 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'cli_nombre_empresa' => "Nombre de la empresa",
+        'cli_telefono' => "Teléfono",
+        'cli_email' => "Email",
+        'cli_direccion' => "Dirección",
+        'cli_pais' => "País",
+        'cli_ciudad' => "Ciudad",
+        'cli_contacto' => "Contacto",
+        
+
+        
+    ],
 
 ];
