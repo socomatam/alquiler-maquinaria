@@ -1,17 +1,22 @@
 @extends('layouts.app')
 @section('content')
 
+    <h2 class="uk-heading-divider">Añadir nuevo cleinte</h2>
+
+
     @if (count($errors) > 0)
-		<div class="ui negative message">
-			<i class="close icon"></i>
-			<div class="header">
-				<ul>
-					@foreach ($errors->all() as $error)
-						<li>{{ $error }}</li>
-					@endforeach
-				</ul>
-			</div>
-		</div>
+    <div class="ui negative message">
+        <i class="close icon"></i>
+        <div class="header">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <span class="uk-label uk-label-danger">{{ $error }}</span>
+                <br>
+
+                @endforeach
+            </ul>
+        </div>
+    </div>
     @endif
     
    
