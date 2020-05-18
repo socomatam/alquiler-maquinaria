@@ -204,7 +204,7 @@ class AlquilereController extends Controller
         //compruba si el alquiler es nuevo 
         $nuevo = false;
 
-        Session::flash('finalizar_alquiler', 'El alquiler se ha creado correctamente.');
+        Session::flash('finalizar_registro', 'El registro se ha creado correctamente.');
         Session::flash('continuar_alquiler', 'Máquina añadida a este alquiler.');	
 
 

@@ -38,7 +38,7 @@ class ClienteController extends Controller
      */
     public function store(ClienteRequest $request)
     {
-        Session::flash('finalizar_cliente', 'El cliente se ha creado correctamente.');
+        Session::flash('finalizar_registro', 'El cliente se ha creado correctamente.');
         Cliente::create($request->all());
         return redirect('clientes');
     }//fin cuardar cliente
@@ -60,9 +60,10 @@ class ClienteController extends Controller
      * @param  \App\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cliente $cliente)
+    public function edit( $id)
     {
-        //
+        $cliente = Cliente::find($id);
+        return view('clientes.editar_cliente', compact('cliente'));
     }
 
     /**
@@ -72,9 +73,16 @@ class ClienteController extends Controller
      * @param  \App\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cliente $cliente)
+    public function update(ClienteRequest $request, $id)
     {
-        //
+
+        $request = request()->except('_token','_method');
+		
+		Cliente::where('id',$id)->update($request);
+		
+		Session::flash('editar_registro', 'El cliente se ha editado correctamente.');	
+		
+        return redirect('clientes');
     }
 
     /**
@@ -83,8 +91,9 @@ class ClienteController extends Controller
      * @param  \App\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cliente $cliente)
+    public function destroy($id)
     {
-        //
+        $cliente = Cliente::where('id', '=', $id);
+        $cliente->delete(); 
     }
 }

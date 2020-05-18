@@ -453,6 +453,41 @@ $(document).ready( function () {
 
     //-----------FIN ALQUILER--------------//
 
+    //-----------CLIENTE-------------------//
+
+    $('.borrar_cliente').click(function(){
+        
+        var id = $(this).closest('tr').data()['id'];
+        var tr = $(this).closest('tr');
+        
+        UIkit.modal.confirm('¿Está seguro que desea borrar a este cliente?',{
+            labels: {
+                cancel: 'Cancelar',
+                ok: 'Aceptar'
+              }
+        }).then(function() {
+            $.ajax({
+                url: 'clientes/'+id,
+                method: 'DELETE',
+                data: {
+                    _method: 'DELETE',
+                    "_token": $("meta[name='csrf-token']").attr("content")
+                },
+                success: function(respuesta) {
+                    console.log(respuesta);
+                    $(tr).fadeOut();
+                    UIkit.notification({message: 'Cliente borrado con éxito', status: 'success'});
+
+                },error: function(respuesta){
+                    UIkit.notification({message: 'Cliente vinculado a un alquiler, no se puede borrar.', status: 'warning'});
+                },
+            });//fin ajax
+        }, function () {
+            
+        });
+
+     });//fin borrar cliente
+
     
    
 

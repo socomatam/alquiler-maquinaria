@@ -6,14 +6,25 @@
 
     <h2 class="uk-heading-divider">Listado clientes</h2>
 
-    @if(Session::has('finalizar_cliente'))
+    @if(Session::has('finalizar_registro'))
     <div class="ui success message">
         <i class="close icon"></i>
         <div class="uk-alert-success" uk-alert>
             <a class="uk-alert-close" uk-close></a>
-            <p>Alquiler creado con éxito.</p>
+            <p>Cliente creado con éxito.</p>
         </div>
-        <p>{{Session::get('finalizar_cliente')}}</p>
+        <p>{{Session::get('finalizar_registro')}}</p>
+    </div>
+    @endif
+
+      @if(Session::has('editar_registro'))
+    <div class="ui success message">
+        <i class="close icon"></i>
+        <div class="uk-alert-success" uk-alert>
+            <a class="uk-alert-close" uk-close></a>
+            <p>Cliente editado con éxito.</p>
+        </div>
+        <p>{{Session::get('editar_registro')}}</p>
     </div>
     @endif
 
@@ -38,7 +49,7 @@
         <tbody>
 
             @foreach($clientes as $cli)
-            <tr data-cli_id="{{$cli->id}}">
+            <tr data-id="{{$cli->id}}">
                 <td>{{$cli->id}}</td>
                 <td>{{$cli->cli_nombre_empresa}}</td>
                 <td>{{$cli->cli_nif}}</td>
@@ -46,8 +57,8 @@
                 <td>{{$cli->cli_telefono}}</td>
                 <td>{{$cli->cli_email }}</td>
                 <td>{{$cli->cli_direccion}} </td>
-                <td class="centrar_celda alq_editar"><a class="" uk-icon="icon: file-edit"></a></td>
-                <td class="centrar_celda"><a class="borrar_alquiler" uk-icon="icon: trash"></a></td>
+                <td class="centrar_celda"><a  href="{{url('/clientes')}}/{{$cli->id}}/edit"  uk-icon="icon: file-edit"></a></td>
+                <td class="centrar_celda"><a class="borrar_cliente" uk-icon="icon: trash"></a></td>
 
                 @endforeach
 

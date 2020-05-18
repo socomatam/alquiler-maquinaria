@@ -6,14 +6,14 @@
 <div class='alq_contenedor'>
 
     <h2 class="uk-heading-divider">Listado alquiler</h2>
-    @if(Session::has('continuar_alquiler'))
+    @if(Session::has('finalizar_registro'))
     <div class="ui success message">
         <i class="close icon"></i>
         <div class="uk-alert-success" uk-alert>
             <a class="uk-alert-close" uk-close></a>
             <p>Alquiler creado con éxito.</p>
         </div>
-        <p>{{Session::get('finalizar_alquiler')}}</p>
+        <p>{{Session::get('finalizar_registro')}}</p>
     </div>
     @endif
 

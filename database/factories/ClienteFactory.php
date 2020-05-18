@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Cliente::class, function (Faker $faker) {
     return [
-        'cli_nombre_empresa'=>'Construcciones'.' '.$faker->company(),
+        'cli_nombre_empresa'=>$faker->company(),
         'cli_nif'=>$faker->dni(),
         'cli_telefono'=>$faker->unique()->numberBetween(600000000, 999999999),
         'cli_email'=>$faker->freeEmail(),

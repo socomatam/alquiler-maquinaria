@@ -30,7 +30,7 @@ class ClienteRequest extends FormRequest
         return [
             'cli_nombre_empresa' => 'required|max:100|min:2',
 			'cli_telefono' => ['required','max:9','min:9', new Telefono],
-			'cli_nif' => ['required','max:10','min:9','unique:clientes', new Dni],
+			'cli_nif' => ['required','max:10','min:9', new Dni],
 			'cli_pais' => 'required|max:50|min:2',
             'cli_ciudad' => 'required|max:50|min:2',
             'cli_direccion' => 'required|max:100|min:2',

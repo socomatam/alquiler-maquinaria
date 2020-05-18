@@ -15,7 +15,7 @@ $factory->define(Alquilere::class, function (Faker $faker) {
             'Con incidencias',
             'Sin incidencias',
         ]),//fin incidencia
-        'cliente_id' => App\Cliente::all()->random()->id,
-        'trabajador_id' => App\Cliente::all()->random()->id,
+        //'cliente_id' => App\Cliente::all()->random()->id,
+        //'trabajador_id' => App\Trabajadore::all()->random()->id,
     ];
 });
