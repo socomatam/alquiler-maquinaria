@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Session;
 use App\Trabajadore;
 use Illuminate\Http\Request;
+use App\Http\Requests\TrabajadorRequest;
 
 class TrabajadoreController extends Controller
 {
@@ -25,7 +27,7 @@ class TrabajadoreController extends Controller
      */
     public function create()
     {
-        //
+        return view('trabajadores.crear_trabajador');
     }
 
     /**
@@ -34,9 +36,11 @@ class TrabajadoreController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TrabajadorRequest $request)
     {
-        //
+        Session::flash('finalizar_registro', 'El trabajador se ha creado correctamente.');
+        Trabajadore::create($request->all());
+        return redirect('trabajadores');
     }
 
     /**
@@ -56,9 +60,10 @@ class TrabajadoreController extends Controller
      * @param  \App\Trabajadore  $trabajadore
      * @return \Illuminate\Http\Response
      */
-    public function edit(Trabajadore $trabajadore)
+    public function edit($id)
     {
-        //
+        $trabajador = Trabajadore::find($id);
+        return view('trabajadores.editar_trabajador', compact('trabajador'));
     }
 
     /**
@@ -68,9 +73,15 @@ class TrabajadoreController extends Controller
      * @param  \App\Trabajadore  $trabajadore
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Trabajadore $trabajadore)
+    public function update(TrabajadorRequest $request, $id)
     {
-        //
+        $request = request()->except('_token','_method');
+		
+		Trabajadore::where('id',$id)->update($request);
+		
+		Session::flash('editar_registro', 'El trabajador se ha editado correctamente.');	
+		
+        return redirect('trabajadores');
     }
 
     /**
@@ -79,8 +90,9 @@ class TrabajadoreController extends Controller
      * @param  \App\Trabajadore  $trabajadore
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Trabajadore $trabajadore)
+    public function destroy($id)
     {
-        //
+        $trabajador = Trabajadore::where('id', '=', $id);
+        $trabajador->delete(); 
     }
 }

@@ -11,9 +11,9 @@
         <i class="close icon"></i>
         <div class="uk-alert-success" uk-alert>
             <a class="uk-alert-close" uk-close></a>
-            <p>Cliente creado con éxito.</p>
+             <p>{{Session::get('finalizar_registro')}}</p>
         </div>
-        <p>{{Session::get('finalizar_registro')}}</p>
+       
     </div>
     @endif
 
@@ -22,9 +22,9 @@
         <i class="close icon"></i>
         <div class="uk-alert-success" uk-alert>
             <a class="uk-alert-close" uk-close></a>
-            <p>Cliente editado con éxito.</p>
+             <p>{{Session::get('editar_registro')}}</p>
         </div>
-        <p>{{Session::get('editar_registro')}}</p>
+       
     </div>
     @endif
 

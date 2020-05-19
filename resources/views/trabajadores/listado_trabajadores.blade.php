@@ -1,32 +1,51 @@
 @extends('layouts.app')
 
 @section('content')
+     <h2 class="uk-heading-divider">Listado trabajadores</h2>
 
+    @if(Session::has('finalizar_registro'))
+    <div class="ui success message">
+        <i class="close icon"></i>
+        <div class="uk-alert-success" uk-alert>
+            <a class="uk-alert-close" uk-close></a>
+           
+            <p>{{Session::get('finalizar_registro')}}</p>
+        </div>
+       
+    </div>
+    @endif
 
-    <div class='alq_contenedor'>
+      @if(Session::has('editar_registro'))
+    <div class="ui success message">
+        <i class="close icon"></i>
+        <div class="uk-alert-success" uk-alert>
+            <a class="uk-alert-close" uk-close></a>
+            
+            <p>{{Session::get('editar_registro')}}</p>
+        </div>
         
-        <button id="cli_btn_nuevo_cliente" class="uk-button uk-button-primary uk-button-small"><a href="{{url('/clientes/create')}}">CREAR NUEVO TRABAJADOR</a></button>
+    </div>
+    @endif
+        
+        <button id="cli_btn_nuevo_cliente" class="uk-button uk-button-primary uk-button-small"><a href="{{url('/trabajadores/create')}}">CREAR NUEVO TRABAJADOR</a></button>
         
         <table id="tra_tabla_id" class="display">
             <thead >
                 <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>DNI</th>
-                    <th>Fecha de nacimiento</th>
-                    <th>Fecha de alta</th>
-                    <th>Nº Teléfono</th>
-                    <th>E-mail</th>
-                    <th>Editar</th>
-                    <th>Borrar</th>
-                   
-                   
+                    <th class="centrar_celda">ID</th>
+                    <th class="centrar_celda">Nombre</th>
+                    <th class="centrar_celda">DNI</th>
+                    <th class="centrar_celda">Fecha de nacimiento</th>
+                    <th class="centrar_celda">Fecha de alta</th>
+                    <th class="centrar_celda">Nº Teléfono</th>
+                    <th class="centrar_celda">E-mail</th>
+                    <th class="centrar_celda">Editar</th>
+                    <th class="centrar_celda">Borrar</th>
                 </tr>
             </thead>
             <tbody>
-
                 @foreach($trabajadores as $trabajador)
-                    <tr data-tra_id="{{$trabajador->id}}">
+                    <tr data-id="{{$trabajador->id}}">
                         <td>{{$trabajador->id}}</td>
                         <td>{{$trabajador->tra_nombre_trabajador}} {{$trabajador->tra_apellido_1}} {{$trabajador->tra_apellido_2}}</td>
                         <td>{{$trabajador->tra_dni}}</td>
@@ -34,16 +53,10 @@
                         <td>{{$trabajador->tra_fecha_alta}}</td>
                         <td>{{$trabajador->tra_telefono}}</td>
                         <td>{{$trabajador->tra_email}}</td>
-                        <td>Editar</td>
-                        <td>Borrar</td>
-                        
+                        <td class="centrar_celda"><a  href="{{url('/trabajadores')}}/{{$trabajador->id}}/edit"  uk-icon="icon: file-edit"></a></td>
+                        <td class="centrar_celda"><a class="borrar_trabajador" uk-icon="icon: trash"></a></td>
                 @endforeach
-                
-                
             </tbody>
-            <tfoot></tfoot>
+           
         </table> 
-    <div>
-
-
 @endsection

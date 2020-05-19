@@ -137,17 +137,17 @@
     <div class="uk-section uk-section-large uk-section-muted">
     <div class="uk-container">
 
-        <h3>Section Large</h3>
+        <h3></h3>
 
         <div class="uk-grid-match uk-child-width-1-3@m" uk-grid>
             <div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+                <p></p>
             </div>
             <div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+                <p></p>
             </div>
             <div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+                <p></p>
             </div>
         </div>
     </div>

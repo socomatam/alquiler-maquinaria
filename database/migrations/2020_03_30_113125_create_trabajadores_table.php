@@ -22,7 +22,7 @@ class CreateTrabajadoresTable extends Migration
             $table->string('tra_telefono',15);
             $table->string('tra_email')->nullable();
             $table->string('tra_dni',9);
-            $table->date('tra_fecha_alta');
+            $table->date('tra_fecha_alta')->nullable();
             $table->timestamps();
         });
     }
