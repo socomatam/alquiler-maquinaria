@@ -13,11 +13,11 @@ class ExampleTest extends DuskTestCase
      *
      * @return void
      */
-    public function testBasicExample()
+    public function testLoging()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/')
-                    ->assertSee('Laravel');
+            $browser->visit('http://localhost/gestion_alquiler_maquinaria/public/')
+            ->assertSee('NOMBRE DE USUARIO O DIRECCIÓN EMAIL');
         });
     }
 }
