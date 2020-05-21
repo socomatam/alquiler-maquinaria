@@ -9,6 +9,8 @@ use App\Modelo;
 use App\Categoria;
 use App\Desplazamiento;
 use Illuminate\Http\Request;
+use Session;
+use App\Http\Requests\MaquinaRequest;
 
 class MaquinaController extends Controller
 {
@@ -45,7 +47,7 @@ class MaquinaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request){
+    public function store(MaquinaRequest $request){
         
         $maquina = new Maquina;
         $maquina->maq_marca = $request->input('marca');
@@ -61,6 +63,7 @@ class MaquinaController extends Controller
         $maquina->maq_estado = 'Libre';
         $maquina->maq_seguro = 'Vigente';
         $maquina->save();
+        Session::flash('finalizar_registro', 'La máquina se ha creado correctamente.');
 
         return redirect('maquinas');
     }
@@ -82,9 +85,16 @@ class MaquinaController extends Controller
      * @param  \App\Maquina  $maquina
      * @return \Illuminate\Http\Response
      */
-    public function edit(Maquina $maquina)
+    public function edit($id)
     {
-        //
+        $maquinas = Maquina::all();
+        $marcas = Marca::all();
+        $modelos = Modelo::all();
+        $categorias = Categoria::all();
+        $desplazamientos = Desplazamiento::all();
+        $tipos = Tipo::all();
+        $maquina = Maquina::find($id);
+        return view('maquinas.editar_maquina', compact('maquina','desplazamientos','tipos','categorias','maquinas','marcas', 'modelos'));
     }
 
     /**
@@ -94,9 +104,17 @@ class MaquinaController extends Controller
      * @param  \App\Maquina  $maquina
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Maquina $maquina)
+    public function update(Request $request, $id)
     {
-        //
+        
+        
+        $request = request()->except('_token','_method');
+		
+		Maquina::where('id',$id)->update($request);
+		
+		Session::flash('editar_registro', 'La máquina se ha editado correctamente.');	
+		
+        return redirect('maquinas');
     }
 
     /**
@@ -107,6 +125,7 @@ class MaquinaController extends Controller
      */
     public function destroy(Maquina $maquina)
     {
-        //
+        $cliente = Maquina::where('id', '=', $id);
+        $cliente->delete(); 
     }
 }
