@@ -13,7 +13,7 @@ class AutenticacionTest extends DuskTestCase
      *
      * @return void
      */
-    public function testExample()
+    public function testAutenticacion()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('http://localhost/gestion_alquiler_maquinaria/public/');

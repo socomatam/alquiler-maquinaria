@@ -25,6 +25,10 @@ class AlquilereController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * Realiza una consulta a la base de datos, recuperando todos de la tabla alquiler 
+     * y los datos de la tabla contratos. Luego retorna la vista listado_alquiler.blade.php  
+     * mostrando todo el listado de los alquileres que haya almacenados en el sistema.
+     * 
      * @return \Illuminate\Http\Response
      */
     public function index(){

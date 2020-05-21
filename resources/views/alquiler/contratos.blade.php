@@ -73,4 +73,10 @@
 </div>
 
 
+<style>
+    .uk-nav-primary > li:nth-child(2) > a:nth-child(1){
+        color: #1da1f2 !important;
+    }
+</style>
+
 @endsection

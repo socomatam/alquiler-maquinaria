@@ -76,7 +76,7 @@
 
         <div class="uk-width-1-5@m">
             <label class="uk-form-label" for="maq_peso">PESO (kg)</label>
-            <input class="uk-input" id="maq_peso" name="peso" type="number" step=".01" required value={{old("peso")}} >    
+            <input class="uk-input" id="maq_peso" name="peso" type="number" step=".01" pattern="^[0-9]+" required value={{old("peso")}} >    
         </div>
         <br>
         <div uk-grid>
@@ -108,7 +108,15 @@
         <button id='btn_limpiar' class="uk-button uk-button-default">LIMPIAR FORMULARIO</button>
     </form>
 
-    
+    <style>
+    .uk-parent > a:nth-child(1) {
+        color: #1da1f2 !important;
+    }
+
+    .uk-nav-sub > li:nth-child(1) > a:nth-child(1){
+         color: #1da1f2 !important;
+    }
+    </style>
 
 
 @endsection
