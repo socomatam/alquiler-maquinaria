@@ -80,9 +80,10 @@ $(document).ready( function () {
     });//fin datetable
 
 
-    $('#alq_tabla_id').DataTable({
+   var table = $('#alq_tabla_id').DataTable({
         colReorder: true,
         fixedHeader: false,
+        
        
         "pageLength": 15,
         "lengthMenu": [ 10, 15, 20, 25, 50, 75, 100 ],
@@ -405,7 +406,9 @@ $(document).ready( function () {
                     "_token": $("meta[name='csrf-token']").attr("content")
                 },
                 success: function(respuesta) {
-              
+
+                    //provisional buscar el modo de recargar la tabla
+                    window.location.href = 'http://localhost/gestion_alquiler_maquinaria/public/alquiler';
                 },//FIN SUCCESS
 
      
