@@ -120,7 +120,7 @@ class MaquinaController extends Controller
      * @param  \App\Maquina  $maquina
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Maquina $maquina)
+    public function destroy($id)
     {
         $cliente = Maquina::where('id', '=', $id);
         $cliente->delete(); 

@@ -530,6 +530,46 @@ $(document).ready( function () {
      });//fin borrar cliente
 
      //---------FIN--TRABAJADOR-------------------//
+
+
+
+     //-----------MAQUINA-------------------//
+
+
+     $('.borrar_maquina').click(function(){
+        
+        var id = $(this).closest('tr').data()['id'];
+        var tr = $(this).closest('tr');
+        
+        UIkit.modal.confirm('¿Está seguro que desea borrar esta máquina?',{
+            labels: {
+                cancel: 'Cancelar',
+                ok: 'Aceptar'
+              }
+        }).then(function() {
+            $.ajax({
+                url: 'maquinas/'+id,
+                method: 'DELETE',
+                data: {
+                    _method: 'DELETE',
+                    "_token": $("meta[name='csrf-token']").attr("content")
+                },
+                success: function(respuesta) {
+                    console.log(respuesta);
+                    $(tr).fadeOut();
+                    UIkit.notification({message: 'Máquina borrado con éxito', status: 'success'});
+
+                },error: function(respuesta){
+                    UIkit.notification({message: 'Máquina vinculado a un alquiler, no se puede borrar.', status: 'warning'});
+                },
+            });//fin ajax
+        }, function () {
+            
+        });
+
+     });//fin borrar cliente
+
+     //---------FIN--TRABAJADOR-------------------//
     
    
 
