@@ -23,6 +23,9 @@ class CreateContratosTable extends Migration
             $table->unsignedBigInteger('alquiler_id')->nullable();
             $table->unsignedBigInteger('maquina_id')->nullable();
             $table->unsignedBigInteger('complemento_id')->nullable();
+            $table->foreign('alquiler_id')->references('id')->on('alquileres');
+            $table->foreign('maquina_id')->references('id')->on('maquinas');
+            $table->foreign('complemento_id')->references('id')->on('complementos');
             $table->timestamps();
         });
     }

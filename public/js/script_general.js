@@ -567,9 +567,51 @@ $(document).ready( function () {
             
         });
 
-     });//fin borrar cliente
+     });//fin borrar máquina
 
-     //---------FIN--TRABAJADOR-------------------//
+     $('.maq_editar').click(function(){
+        id = $(this).closest('tr').data()['id'];
+
+        var tr = $(this).closest('tr');
+        
+        UIkit.modal('#modal_editar_estado_maquina').show();
+
+        console.log(id);
+
+        $('#btn_moda_editar_estado_maquina').click(function(){
+
+           
+            var texto = $( "#val_estado option:selected" ).text();
+
+            console.log(id);
+            
+             $.ajax({
+                url: 'editarestadoalquiler/',
+                method: 'PUT',
+                data: {
+                    _method: 'PUT',
+                    'id': id,
+                    'estado': texto,
+                    "_token": $("meta[name='csrf-token']").attr("content")
+                },
+                success: function(respuesta) {
+
+                    //provisional buscar el modo de recargar la tabla
+                   window.location.href = 'http://localhost/gestion_alquiler_maquinaria/public/maquinas';
+                },//FIN SUCCESS
+
+     
+             });//fin ajax
+
+             $('#modal_editar_nombre_empresa').hide();
+            
+              $(`this td`).html('ddd');               
+         });//fin bontón editar cliente
+    
+    });//fin click
+
+
+     //---------FIN--Maquina-------------------//
     
    
 

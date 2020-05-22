@@ -35,6 +35,7 @@ Route::resource('marcas', 'MarcaController')->middleware('auth');
 Route::resource('estados', 'EstadoController')->middleware('auth');
 Route::resource('desplazamientos', 'DesplazamientoController')->middleware('auth');
 
+Route::put('/editarestadoalquiler','MaquinaController@editarEstado' )->middleware('auth');
 
 //Route::post('alquiler', 'AlquilereController')->middleware('auth');
 

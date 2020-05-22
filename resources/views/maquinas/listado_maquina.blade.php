@@ -57,6 +57,8 @@
                 <tr data-id="{{$maquina->id}}" id="alq_pasados">
             @elseif($maquina->maq_estado == 'Libre')
                  <tr data-id="{{$maquina->id}}" id="alq_vigente">
+            @elseif($maquina->maq_estado == 'Avería')
+                <tr data-id="{{$maquina->id}}" id="alq_incidencia">
             @endif
 
                     <td>{{$maquina->id}}</td>
@@ -73,10 +75,14 @@
                     <td>{{$maquina->maq_estado}}</td>
 
                     @if($maquina->maq_estado == 'Alquilada')
-                        <td class="centrar_celda"><a href="#"></a></td>
-                    @else
-                        <td class="centrar_celda"><a href="{{url('/maquinas')}}/{{$maquina->id}}/edit" uk-icon="icon: file-edit"></a></td>
-                    @endif    
+                        <td  class="maq_editar centrar_celda"><a href="#" uk-icon="icon: file-edit"></a></td>
+                    @elseif($maquina->maq_estado == 'Avería')
+                        <td  class="maq_editar centrar_celda"><a href="#" uk-icon="icon: file-edit"></a></td>
+                    @elseif($maquina->maq_estado == 'Libre')
+                    <td class="centrar_celda"><a href="{{url('/maquinas')}}/{{$maquina->id}}/edit" uk-icon="icon: file-edit"></a></td>
+                    @endif
+
+
                     @if (Auth::user()->rol == 'admin')
                         <td class="centrar_celda"><a class="borrar_maquina" uk-icon="icon: trash"></a></td>
                     @endif    
@@ -109,15 +115,15 @@
 
 
 
-    <div id="modal_editar_nombre_empresa" uk-modal="bg-close:false;">
+    <div id="modal_editar_estado_maquina" uk-modal="bg-close:false;">
         <div class="uk-modal-dialog uk-modal-body">
             <h2 class="uk-modal-title">Editar nombre de empresa</h2>
             <div>
                 <label class="uk-form-label" for="">NOMBRE DE LA EMPRESA</label>
                 <br>
-                <select id="val_empresa" class="uk-select" name="nombre_empresa">
-                    @foreach($maquinas as $maquina)
-                    <option value="{{$maquina->id}}">{{$maquina->id}}</option>
+                <select id="val_estado" class="uk-select" name="nombre_empresa">
+                    @foreach($estados as $estado)
+                    <option value="{{$estado->est_estado}}">{{$estado->est_estado}}</option>
                     @endforeach
                 </select>
             </div>
@@ -127,7 +133,7 @@
             <br>
             <p class="uk-text-right">
                 <button class="uk-button uk-button-default uk-modal-close" type="button">Cancelar</button>
-                <button id="btn_moda_edit_cliente" class="uk-button uk-button-primary " type="button">Guardar</button>
+                <button id="btn_moda_editar_estado_maquina" class="uk-button uk-button-primary " type="button">Guardar</button>
             </p>
         </div>
     </div>

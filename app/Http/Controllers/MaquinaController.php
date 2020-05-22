@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\Maquina;
+use App\Contrato;
+use App\Alquilere;
+use App\Estado;
 use App\Tipo;
 use App\Marca;
 use App\Modelo;
@@ -21,7 +25,8 @@ class MaquinaController extends Controller
      */
     public function index(){
         $maquinas = Maquina::all();
-        return view('maquinas.listado_maquina', compact('maquinas'));
+        $estados = Estado::all();
+        return view('maquinas.listado_maquina', compact('maquinas', 'estados'));
     }
 
     /**
@@ -96,6 +101,59 @@ class MaquinaController extends Controller
         $maquina = Maquina::find($id);
         return view('maquinas.editar_maquina', compact('maquina','desplazamientos','tipos','categorias','maquinas','marcas', 'modelos'));
     }
+
+    /**
+     * Cambia el estado de una maquina
+     * 
+     * 
+     */
+    public function editarEstado(Request $request){
+        $estado = $request->input('estado');
+        $id = $request->input('id');
+
+        if($estado == 'Avería'){
+            //cambia el estado de la máquina
+            Maquina::where('id',$id)
+            ->update(['maq_estado'=>'Avería']);
+
+            //marca una incidencia en el contrato
+            Contrato::where('maquina_id',$id)
+            ->update(['con_incidencia'=>'Con incidencias']);
+
+            //Averigua el ide 
+            $contrato = DB::table('contratos')->where('maquina_id', $id)->first();
+
+            //cambia el estado del alquiler
+            Alquilere::where('id',$contrato->alquiler_id)
+            ->update(['alq_incidencia'=>'Con incidencias']);
+
+        }else if($estado == 'Alquilada'){
+            Maquina::where('id',$id)
+            ->update(['maq_estado'=>'Alquilada']);
+
+             //marca una sin incidencia en el contrato
+             Contrato::where('maquina_id',$id)
+             ->update(['con_incidencia'=>'Sin incidencias']);
+
+             $contrato = DB::table('contratos')->where('maquina_id', $id)->first();
+
+             Alquilere::where('id',$contrato->alquiler_id)
+            ->update(['alq_incidencia'=>'Sin incidencias']);
+
+
+        }else if($estado == 'Libre'){
+            Maquina::where('id',$id)
+            ->update(['maq_estado'=>'Libre']);
+        }
+
+       
+
+
+
+
+
+
+    }//fin editarEstado
 
     /**
      * Update the specified resource in storage.
