@@ -45,7 +45,9 @@
             <th>Precio día</th>
             <th>Estado</th>
             <th>Editar</th>
-            <th>Borrar</th>
+            @if (Auth::user()->rol == 'admin')
+                <th>Borrar</th>
+            @endif
         </tr>
     </thead>
     <tbody>
@@ -64,14 +66,38 @@
             <td>{{$maquina->maq_dimension_alto}}</td>
             <td>{{$maquina->maq_precio_dia}}</td>
             <td>{{$maquina->maq_estado}}</td>
+
+            @if($maquina->estado == 'Alquilada')
             <td class="centrar_celda"><a href="{{url('/maquinas')}}/{{$maquina->id}}/edit" uk-icon="icon: file-edit"></a></td>
-            <td class="centrar_celda"><a class="borrar_maquina" uk-icon="icon: trash"></a></td>
+            @endif
+
+            @if (Auth::user()->rol == 'admin')
+                <td class="centrar_celda"><a class="borrar_maquina" uk-icon="icon: trash"></a></td>
+            @endif    
         </tr>
         @endforeach
 
 
     </tbody>
-    <tfoot></tfoot>
+    <tfoot>
+         <th>ID</th>
+            <th>Categoría</th>
+            <th>Tipo</th>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Traslación</th>
+            <th>Peso</th>
+            <th>Ancho</th>
+            <th>Largo</th>
+            <th>Alto</th>
+            <th>Precio día</th>
+            <th>Estado</th>
+            <th>Editar</th>
+            @if (Auth::user()->rol == 'admin')
+                <th>Borrar</th>
+            @endif
+    
+    </tfoot>
 </table>
 
 <style>

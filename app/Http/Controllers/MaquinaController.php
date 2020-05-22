@@ -107,11 +107,8 @@ class MaquinaController extends Controller
     public function update(Request $request, $id)
     {
         
-        
         $request = request()->except('_token','_method');
-		
 		Maquina::where('id',$id)->update($request);
-		
 		Session::flash('editar_registro', 'La máquina se ha editado correctamente.');	
 		
         return redirect('maquinas');

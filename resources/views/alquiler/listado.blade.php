@@ -41,12 +41,13 @@
         <tbody>
 
             @foreach($alquiler as $alq)
-            @if($alq->fin <= $fechaActual) <tr data-alq_id="{{$alq->id_alquiler}}" id="alq_pasados">
+                @if($alq->fin <= $fechaActual) 
+                    <tr data-alq_id="{{$alq->id_alquiler}}" id="alq_pasados">
                 @elseif($alq->incidencia == "Con incidencias")
-                <tr data-alq_id="{{$alq->id_alquiler}}" id="alq_incidencia">
-                    @elseif($alq->fin > $fechaActual)
-                <tr data-alq_id="{{$alq->id_alquiler}}" id="alq_vigente">
-                    @endif
+                    <tr data-alq_id="{{$alq->id_alquiler}}" id="alq_incidencia">
+                @elseif($alq->fin > $fechaActual)
+                    <tr data-alq_id="{{$alq->id_alquiler}}" id="alq_vigente">
+                @endif
                     <td>{{$alq->id_alquiler}}</td>
                     <td class="hola">{{$alq->empresa}}</td>
                     <td>{{$alq->inicio}}</td>
@@ -63,6 +64,20 @@
 
 
         </tbody>
+        <tfoot>
+            <th>ID</th>
+                <th class="centrar_celda">Nombre de la empresa</th>
+                <th class="centrar_celda">Inicio</th>
+                <th class="centrar_celda">Final</th>
+                <th>Duración del alquiler</th>
+                <th>Precio total</th>
+                <th class="centrar_celda">Empleados</th>
+                <th>Contratos</th>
+                <th>Editar</th>
+                <th>Borrar</th>
+                <th class="centrar_celda">Incidencias</th>
+        
+        </tfoot>
 
     </table>
 

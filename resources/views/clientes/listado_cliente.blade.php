@@ -42,8 +42,9 @@
             <th class="centrar_celda">E-mail</th>
             <th class="centrar_celda">Dirección</th>
             <th class="centrar_celda">Editar</th>
-
-            <th class="centrar_celda">Borrar</th>
+            @if (Auth::user()->rol == 'admin')
+                <th class="centrar_celda">Borrar</th>
+            @endif
         </tr>
     </thead>
     <tbody>
@@ -58,13 +59,28 @@
             <td>{{$cli->cli_email }}</td>
             <td>{{$cli->cli_direccion}} </td>
             <td class="centrar_celda"><a href="{{url('/clientes')}}/{{$cli->id}}/edit" uk-icon="icon: file-edit"></a></td>
-            <td class="centrar_celda"><a class="borrar_cliente" uk-icon="icon: trash"></a></td>
-
+            @if (Auth::user()->rol == 'admin')
+                <td class="centrar_celda"><a class="borrar_cliente" uk-icon="icon: trash"></a></td>
+            @endif
             @endforeach
 
 
     </tbody>
-    <tfoot></tfoot>
+    <tfoot>
+         <th>ID</th>
+            <th class="centrar_celda">Nombre de la empresa</th>
+            <th class="centrar_celda">NIF</th>
+            <th class="centrar_celda">Contacto</th>
+            <th class="centrar_celda">Teléfono</th>
+            <th class="centrar_celda">E-mail</th>
+            <th class="centrar_celda">Dirección</th>
+            <th class="centrar_celda">Editar</th>
+            @if (Auth::user()->rol == 'admin')
+                <th class="centrar_celda">Borrar</th>
+            @endif
+    
+    
+    </tfoot>
 </table>
 <style>
     .uk-nav-primary>li:nth-child(3)>a:nth-child(1) {

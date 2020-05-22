@@ -102,7 +102,9 @@
                 <li class="uk-active"><a href="#">Menú de navegación </a></li>
                 <li><a href="{{url('/alquiler')}}">Alquiler</a></li>
                 <li><a href="{{url('/clientes')}}">Clientes</a></li>
-                <li><a href="{{url('/trabajadores')}}">Trabajadores</a></li>
+                @if (Auth::user()->rol == 'admin')
+                    <li><a href="{{url('/trabajadores')}}">Trabajadores</a></li>
+                @endif
                 <li class="uk-parent">
                     <a href="#">Gestión Máquinas</a>
                     <ul class="uk-nav-sub">
