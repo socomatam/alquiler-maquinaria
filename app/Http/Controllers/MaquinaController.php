@@ -81,7 +81,8 @@ class MaquinaController extends Controller
      */
     public function show($id)
     {
-        return view('maquinas.mapa_maquina');
+        $maquina = Maquina::find($id);
+        return view('maquinas.mapa_maquina', compact('maquina'));
     }
 
     /**
