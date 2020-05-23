@@ -16,6 +16,7 @@ use Carbon\Carbon;
 use DateTime;
 use Illuminate\Http\Request;
 use DB;
+use PDF;
 use App\Quotation;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\AlquilerRequest;
@@ -272,9 +273,23 @@ class AlquilereController extends Controller
      * @param  \App\Alquilere  $alquilere
      * @return \Illuminate\Http\Response
      */
-    public function edit(Alquilere $alquilere)
+    public function edit($id)
     {
-        //
+
+        $data = [
+            'titulo' => 'Styde.net'
+        ];
+     
+        return PDF::loadView('alquiler.pdf', $data)
+            ->stream('archivo.pdf');
+
+        /*
+        $pdf = app('dompdf.wrapper');
+        $pdf->loadHTML('<h1>Styde.net</h1>');
+ 
+        //return $pdf->download('mi-archivo.pdf');
+        return view('alquiler.pdf', compact('pdf'));
+        */
     }
 
     /**

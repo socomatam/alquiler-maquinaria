@@ -33,6 +33,7 @@
                 <th>Precio total</th>
                 <th class="centrar_celda">Empleados</th>
                 <th>Contratos</th>
+                <th>Factura</th>
                 <th>Editar</th>
                 <th>Borrar</th>
                 <th class="centrar_celda">Incidencias</th>
@@ -56,6 +57,7 @@
                     <td class="centrar_celda">{{$alq->alq_precio }} €</td>
                     <td>{{$alq->nombre_trabajador}} {{ $alq->apellido_trabajador_1}} {{ $alq->apellido_trabajador_2}} </td>
                     <td class="centrar_celda"><a href="{{url('/alquiler')}}/{{$alq->id_alquiler}}" uk-icon="icon: plus-circle"></a></a> </td>
+                    <td class="centrar_celda"><a href="{{url('/alquiler')}}/{{$alq->id_alquiler}}/edit"  target="_blank" uk-icon="file-text"></a></td>
                     <td class="centrar_celda alq_editar"><a class="" uk-icon="icon: file-edit"></a></td>
                     <td class="centrar_celda"><a class="borrar_alquiler" uk-icon="icon: trash"></a></td>
                     <td>{{$alq->incidencia}}</td>
@@ -73,6 +75,7 @@
                 <th>Precio total</th>
                 <th class="centrar_celda">Empleados</th>
                 <th>Contratos</th>
+                <th>Factura</th>
                 <th>Editar</th>
                 <th>Borrar</th>
                 <th class="centrar_celda">Incidencias</th>
@@ -80,6 +83,9 @@
         </tfoot>
 
     </table>
+
+
+     <span><a href="{{url('/maquinas')}}/8/edit">Hola</a><span>
 
 
     <div id="modal_editar_nombre_empresa" uk-modal="bg-close:false;">
