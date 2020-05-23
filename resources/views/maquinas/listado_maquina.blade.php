@@ -3,6 +3,11 @@
 @section('content')
 
 
+
+
+
+
+
 <h2 class="uk-heading-divider">Listado maquinas</h2>
 
     @if(Session::has('finalizar_registro'))
@@ -116,17 +121,30 @@
 
 
 
+    <a class="uk-button uk-button-default" href="#modal-container" uk-toggle>Open</a>
+
+<div id="modal-container" class="uk-modal-container" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <h2 class="uk-modal-title">Headline</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+</div>
+
+
+
 
     <div id="modal_editar_estado_maquina" uk-modal="bg-close:false;">
         <div class="uk-modal-dialog uk-modal-body">
-            <h2 class="uk-modal-title">Editar nombre de empresa</h2>
+            <h2 class="uk-modal-title">Editar estado de la máquina</h2>
             <div>
-                <label class="uk-form-label" for="">NOMBRE DE LA EMPRESA</label>
+                <label class="uk-form-label" for="">Estado de la máquina</label>
                 <br>
                 <select id="val_estado" class="uk-select" name="nombre_empresa">
-                    @foreach($estados as $estado)
-                    <option value="{{$estado->est_estado}}">{{$estado->est_estado}}</option>
-                    @endforeach
+                 
+                    <option value="Avería">Avería</option>
+                    <option value="Alquilada">Alquilada</option>
+                    
                 </select>
             </div>
 

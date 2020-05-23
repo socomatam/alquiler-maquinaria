@@ -22,6 +22,7 @@
             <th>Días</th>
             <th class="centrar_celda">Inicio</th>
             <th class="centrar_celda">Fin</th>
+            <th>Ubicación</th>
             <th>Estado</th>
 
 
@@ -54,6 +55,7 @@
             <td class="centrar_celda">{{$contrato->dias}}</td>
             <td>{{$contrato->fecha_inicio}}</td>
             <td>{{$contrato->fecha_final}}</td>
+            <td  class="centrar_celda"><a href="{{url('/maquinas')}}/{{$contrato->maquina_id}}" uk-icon="icon: location"></a></td>
             <td>{{$contrato->maq_estado}}</td>
 
 
@@ -68,19 +70,10 @@
 </table>
 
 
-
-
-<a class="uk-button uk-button-default" href="#modal-center" uk-toggle>Open</a>
-
-<div id="modal-center" class="uk-flex-top" uk-modal>
-    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
-
-        <button class="uk-modal-close-default" type="button" uk-close></button>
-        <div class="alq_lista_maquinas"></div>
-
-    </div>
-</div>
-
+    <br>
+    
+    <a href="{{url('/alquiler')}}" class="uk-button uk-button-primary">Volver</a>
+    <br>
 
 <style>
     .uk-nav-primary > li:nth-child(2) > a:nth-child(1){

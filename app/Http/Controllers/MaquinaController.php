@@ -81,6 +81,7 @@ class MaquinaController extends Controller
      */
     public function show($id)
     {
+        
         $maquina = Maquina::find($id);
         return view('maquinas.mapa_maquina', compact('maquina'));
     }
@@ -113,7 +114,7 @@ class MaquinaController extends Controller
         $id = $request->input('id');
 
         if($estado == 'Avería'){
-            //cambia el estado de la máquina
+            //cambia el estado de la máquina 
             Maquina::where('id',$id)
             ->update(['maq_estado'=>'Avería']);
 
@@ -157,11 +158,9 @@ class MaquinaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
         $request = request()->except('_token','_method');
 		Maquina::where('id',$id)->update($request);
-		Session::flash('editar_registro', 'La máquina se ha editado correctamente.');	
-		
+		Session::flash('editar_registro', 'La máquina se ha editado correctamente.');		
         return redirect('maquinas');
     }
 

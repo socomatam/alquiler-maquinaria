@@ -25,9 +25,10 @@
         <i class="close icon"></i>
         <div class="uk-alert-success" uk-alert>
             <a class="uk-alert-close" uk-close></a>
-            <p>Maquina añadida a este alquiler.</p>
+            <p>Contrato añadida al alquiler.</p>
+            <p>Añada otro contrato o finalice el alquiler</p>
         </div>
-        <p>{{Session::get('continuar_alquiler')}}</p>
+        
     </div>
     @endif
 
@@ -56,16 +57,16 @@
 
         <div>
             <label class="uk-form-label" for="">MÁQUINA</label>
-            <select id="val_aquina" class="uk-select" name="id_maquina">
+            <select class="alq_cre_letra" id="val_aquina" class="uk-select" name="id_maquina">
                 @foreach($maquinas as $maquina)
                 <option value="{{$maquina->id}}">
-                    {{$maquina->maq_categoria}} |
-                    {{$maquina->maq_tipo}} |
-                    {{$maquina->maq_peso}}kg |
-                    ({{$maquina->maq_dimension_largo}}cm x {{$maquina->maq_dimension_ancho}}cm x {{$maquina->maq_dimension_alto}}cm) |
-                    {{$maquina->maq_marca}} |
-                    {{$maquina->maq_modelo}} |
-                    {{$maquina->maq_precio_dia}} |
+                    {{$maquina->maq_categoria}} -
+                    {{$maquina->maq_tipo}} -
+                    {{$maquina->maq_peso}}kg -
+                    ({{$maquina->maq_dimension_largo}}cm x {{$maquina->maq_dimension_ancho}}cm x {{$maquina->maq_dimension_alto}}cm) -
+                    {{$maquina->maq_marca}} -
+                    {{$maquina->maq_modelo}} -
+                    {{$maquina->maq_precio_dia}}
                 </option>
                 @endforeach
             </select>
@@ -118,13 +119,21 @@
         <a class="uk-button uk-button-default" href="{{url('/alquiler')}}">FINALIZAR ALQUILER</a>
     </form>
 
+        <form class="formularios uk-form-stacked" method="POST" action="{{url('/alquiler')}}" class="uk-form-stacked">
+        @csrf
+        <input name="_method" type="hidden" value="PUT">
 
+        
+        </form>
 </div>
 
 <style>
     .uk-nav-primary > li:nth-child(2) > a:nth-child(1){
         color: #1da1f2 !important;
     }
+
+
+ 
 </style>
 
 @endsection

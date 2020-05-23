@@ -145,9 +145,9 @@ class AlquilereController extends Controller
         
         
         //optiene el id del último cliente para dejar solo el del actual cliente en el formulario
-        $datosAlquiler = Alquilere::latest('id')->first();
-        $clientes = Cliente::where('id', $datosAlquiler->cliente_id)->get();
-
+        $datosalquiler = Alquilere::latest('id')->first();
+        $clientes = Cliente::where('id', $datosalquiler->cliente_id)->get();
+        
 
         //Crea y guarda un objeto de tipo Contrato y lo guarda en la base de datos
         $contrato = new Contrato;
@@ -158,18 +158,18 @@ class AlquilereController extends Controller
         $contrato->con_precio = Maquina::select('maq_precio_dia')
                                       ->where('id', $request->input('id_maquina'))
                                 ->get()[0]->maq_precio_dia;
-        $contrato->alquiler_id = $datosAlquiler->id;
+        $contrato->alquiler_id = $datosalquiler->id;
         $contrato->save();
 
         //actualiza el estado de la maquina alquilada
         Maquina::where('id',$request->input('id_maquina'))
             ->update(['maq_estado'=>'Alquilada']);
 
-        if($contrato->alq_fecha_fin > $datosAlquiler->alq_fecha_fin){
-            Alquilere::where('id',$datosAlquiler->id)
+        if($contrato->alq_fecha_fin > $datosalquiler->alq_fecha_fin){
+            Alquilere::where('id',$datosalquiler->id)
             ->update(['alq_fecha_fin'=>$contrato->con_fecha_fin]);
-        }elseif($contrato->alq_fecha_inicio < $datosAlquiler->alq_fecha_inicio ){
-            Alquilere::where('id',$datosAlquiler->id)
+        }elseif($contrato->alq_fecha_inicio < $datosalquiler->alq_fecha_inicio ){
+            Alquilere::where('id',$datosalquiler->id)
             ->update(['alq_fecha_inicio'=>$contrato->con_fecha_inicio]);
         }    
   
@@ -212,7 +212,7 @@ class AlquilereController extends Controller
         Session::flash('continuar_alquiler', 'Máquina añadida a este alquiler.');	
 
 
-        return view('alquiler.crear_alquiler', compact('nuevo','complementos','clientes', 'maquinas', 'empleado'));
+        return view('alquiler.crear_alquiler', compact('nuevo','complementos','clientes', 'maquinas', 'empleado','datosalquiler'));
     }//fin store
 
 
@@ -247,6 +247,7 @@ class AlquilereController extends Controller
             'maquinas.maq_categoria AS maq_categoria',
             'maquinas.maq_estado AS maq_estado',
             'maquinas.maq_precio_dia AS maq_precio',
+            'maquinas.id AS maquina_id',
             DB::raw("DATEDIFF(contratos.con_fecha_fin,contratos.con_fecha_inicio) AS dias")
             
         )->join(

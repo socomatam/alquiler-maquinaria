@@ -31,12 +31,12 @@
             <form class="uk-form-stacked uk-background-default uk-padding-large" method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="uk-margin">
-                    <label class="uk-form-label uk-text-bold" for="form-stacked-text"><span class="uk-margin-small-right" uk-icon="user"></span>NOMBRE DE USUARIO O DIRECCIÓN EMAIL</label>
+                    <label class="uk-form-label uk-text-bold" for="form-stacked-text"><span class="uk-margin-small-right" uk-icon="user"></span>DIRECCIÓN EMAIL</label>
                     <div class="uk-form-controls">
                         <input id="email" type="email" class="uk-input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                         @error('email')
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                    <p>{{ $message }}<p>
                                 </span>
                         @enderror
                    </div>
@@ -63,5 +63,8 @@
     </body>
 </html>
 
+<style>
+    
+</style>
 
 

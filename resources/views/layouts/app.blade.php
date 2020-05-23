@@ -69,16 +69,16 @@
         <div class="uk-navbar-left">
 
             <ul class="uk-navbar-nav">
-                <li class="uk-active"><a href="#">GMP</a></li>
+                <li class="uk-active"><a href="#"><h4>ALQUILER MAQUINARIA</h4></a></li>
             </ul>
 
         </div>
         <div class="uk-navbar-right">
-        {{Auth::user()->name}}
+       
             <ul class="uk-navbar-nav">
             <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                       <span class="caret"></span>
+                       <span class="caret lay_user" > {{Auth::user()->name}}</span>
                   </a>
 
                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -101,6 +101,7 @@
        <div class="layout_menu_lateral uk-width-1-6@s">
             <ul uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky" class="uk-nav-primary uk-nav-parent-icon" uk-nav>
                 <li class="uk-active"><a href="#">Menú de navegación </a></li>
+               <hr>
                 <li><a href="{{url('/alquiler')}}">Alquiler</a></li>
                 <li><a href="{{url('/clientes')}}">Clientes</a></li>
                 @if (Auth::user()->rol == 'admin')
