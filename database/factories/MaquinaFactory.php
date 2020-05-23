@@ -72,5 +72,8 @@ $factory->define(Maquina::class, function (Faker $faker) {
         'maq_seguro'=> 'Vigente',
         
         'maq_estado' => 'Libre',
+
+        'maq_latitud' => $faker->latitude(),
+        'maq_longitud' => $faker->longitude(),
     ];
 });

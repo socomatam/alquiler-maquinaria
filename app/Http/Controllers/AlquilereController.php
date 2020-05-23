@@ -233,6 +233,7 @@ class AlquilereController extends Controller
 
         $contratos = Contrato::select(
             'contratos.id AS id',
+            'contratos.con_incidencia AS incidencia',
             'contratos.con_fecha_inicio AS fecha_inicio',
             'contratos.con_fecha_fin AS fecha_final',
             'maquinas.maq_marca AS maq_marca',

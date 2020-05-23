@@ -44,6 +44,7 @@
             <th>Alto</th>
             <th>Precio día</th>
             <th>Estado</th>
+            <th>Localización</th>
             <th>Editar</th>
             @if (Auth::user()->rol == 'admin')
                 <th>Borrar</th>
@@ -73,7 +74,7 @@
                     <td>{{$maquina->maq_dimension_alto}}</td>
                     <td>{{$maquina->maq_precio_dia}}</td>
                     <td>{{$maquina->maq_estado}}</td>
-
+                    <td  class="centrar_celda"><a href="{{url('/maquinas')}}/{{$maquina->id}}" uk-icon="icon: location"></a></td>
                     @if($maquina->maq_estado == 'Alquilada')
                         <td  class="maq_editar centrar_celda"><a href="#" uk-icon="icon: file-edit"></a></td>
                     @elseif($maquina->maq_estado == 'Avería')
@@ -104,6 +105,7 @@
             <th>Alto</th>
             <th>Precio día</th>
             <th>Estado</th>
+            <th>Localización</th>
             <th>Editar</th>
             @if (Auth::user()->rol == 'admin')
                 <th>Borrar</th>

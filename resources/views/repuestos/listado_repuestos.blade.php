@@ -3,7 +3,7 @@
 @section('content')
 
 
-    <div class='alq_contenedor'>
+    
         
         <button id="cli_btn_nuevo_cliente" class="uk-button uk-button-primary uk-button-small"><a href="{{url('/clientes/create')}}">CREAR NUEVO TRABAJADOR</a></button>
         
@@ -37,7 +37,7 @@
             </tbody>
             <tfoot></tfoot>
         </table> 
-    <div>
+   
 
 
 @endsection

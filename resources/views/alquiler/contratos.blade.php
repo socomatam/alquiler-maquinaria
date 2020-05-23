@@ -31,9 +31,18 @@
     </thead>
     <tbody>
 
+
+            
+
         @foreach($contratos as $contrato)
-        <tr data-con_id="{{$contrato->id}}">
-            <td>{{$contrato->id}}</td>
+
+            @if($contrato->incidencia == 'Con incidencias')
+                <tr id="alq_incidencia"  data-con_id="{{$contrato->id}}" >
+            @else
+                 <tr data-con_id="{{$contrato->id}}">
+            @endif
+           
+            <td >{{$contrato->id}}</td>
             <td>{{$contrato->maq_categoria}}</td>
             <td>{{$contrato->maq_tipo}}</td>
             <td>{{$contrato->maq_marca}}</td>

@@ -17,6 +17,7 @@ class AutenticacionTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('http://localhost/gestion_alquiler_maquinaria/public/');
+           // $browser->assertStatus(200);
             $browser->assertSee('NOMBRE DE USUARIO O DIRECCIÓN EMAIL');
             $browser->type('#email' ,'admin@admin.com');
             $browser->type('#password' ,'csas1234');

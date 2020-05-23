@@ -79,9 +79,9 @@ class MaquinaController extends Controller
      * @param  \App\Maquina  $maquina
      * @return \Illuminate\Http\Response
      */
-    public function show(Maquina $maquina)
+    public function show($id)
     {
-        //
+        return view('maquinas.mapa_maquina');
     }
 
     /**
@@ -145,14 +145,6 @@ class MaquinaController extends Controller
             Maquina::where('id',$id)
             ->update(['maq_estado'=>'Libre']);
         }
-
-       
-
-
-
-
-
-
     }//fin editarEstado
 
     /**

@@ -4,7 +4,7 @@
 
 
 
-<div class='alq_contenedor'>
+
         
         <button id="cli_btn_nuevo_cliente" class="uk-button uk-button-primary uk-button-small"><a href="{{url('/clientes/create')}}">CREAR NUEVA MÁQUINA</a></button>
         
@@ -40,16 +40,9 @@
             </tbody>
             <tfoot></tfoot>
         </table> 
-    <div>
+   
 
 
-<div id="modal-center" class="uk-flex-top" uk-modal>
-    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
 
-        <button class="uk-modal-close-default" type="button" uk-close></button>
-        <div class="alq_lista_maquinas"></div>
-
-    </div>
-</div>
 
 @endsection
