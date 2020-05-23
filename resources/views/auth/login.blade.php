@@ -18,6 +18,14 @@
     </head>
     <body>
 
+    <div class="uk-position-top-center">
+            <br>
+            <br>
+             <br>
+            <br>
+            <h1 class="uk-heading-medium">ALQUILER MAQUINARIA</h1>
+    </div>
+
     <div class="uk-position-center uk-overlay uk-overlay-default">
         <div class="uk-box-shadow-bottom uk-box-shadow-small">
             <form class="uk-form-stacked uk-background-default uk-padding-large" method="POST" action="{{ route('login') }}">
