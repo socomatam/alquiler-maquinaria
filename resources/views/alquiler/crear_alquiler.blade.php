@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class='alq_contenedor'>
     <h2 class="uk-heading-divider">Añadir nueva máquina</h2>
 
@@ -33,7 +34,7 @@
     @endif
 
 
-    <form class="formularios uk-form-stacked" method="POST" action="{{url('/alquiler')}}" class="uk-form-stacked">
+    <form id="alq_formulario" class="formularios uk-form-stacked" method="POST" action="{{url('/alquiler')}}" class="uk-form-stacked">
 
         @csrf
         <input id="invisible_id" name="contador" type="hidden" value="">
@@ -76,11 +77,11 @@
         <div class="uk-grid-small uk-child-width-expand@s" uk-grid>
             <div>
                 <label class="uk-form-label" for="from">DESDE</label>
-                <input class="uk-input uk-width-1-2" id="from" name=from type="text">
+                <input class="uk-input uk-width-1-2" id="from" name=from type="text" required>
             </div>
             <div>
                 <label class="uk-form-label" for="to">HASTA</label>
-                <input class="uk-input uk-width-1-2" id="to" name=to type="text">
+                <input class="uk-input uk-width-1-2" id="to" name=to type="text" required>
             </div>
         </div>
         <br>
@@ -114,14 +115,14 @@
 
 
 
-        <button class="uk-button uk-button-primary">Añadir contrato a alquiler</button>
+        <button  class="uk-button enviar uk-button-primary">Añadir contrato a alquiler</button>
 
         <a class="uk-button uk-button-default" href="{{url('/alquiler')}}">FINALIZAR ALQUILER</a>
     </form>
 
         <form class="formularios uk-form-stacked" method="POST" action="{{url('/alquiler')}}" class="uk-form-stacked">
         @csrf
-        <input name="_method" type="hidden" value="PUT">
+        <input name="_method" type="hidden" value="DELETE">
 
         
         </form>
@@ -135,5 +136,6 @@
 
  
 </style>
+
 
 @endsection

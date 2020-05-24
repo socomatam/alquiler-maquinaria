@@ -5,7 +5,7 @@
 
 
 
-<button id="cli_btn_nuevo_cliente" class="uk-button uk-button-primary uk-button-small"><a href="{{url('/clientes/create')}}">AÑADIR UN CONTRATO</a></button>
+<button id="cli_btn_nuevo_cliente" class="uk-button uk-button-primary uk-button-small"><a href="{{url('/alquiler/contrato')}}/{{$id}}">AÑADIR UN CONTRATO</a></button>
 
 <table id="con_tabla_id" class="display">
     <thead>
@@ -51,7 +51,7 @@
             <td>{{$contrato->maq_largo}} x {{$contrato->maq_ancho}} x {{$contrato->maq_alto}}</td>
             <td>{{$contrato->maq_peso}}kg</td>
             <td>{{$contrato->maq_traslacion}}kg</td>
-            <td>{{$contrato->dias * $contrato->maq_precio}}€</td>
+            <td>{{$contrato->con_precio}}€</td>
             <td class="centrar_celda">{{$contrato->dias}}</td>
             <td>{{$contrato->fecha_inicio}}</td>
             <td>{{$contrato->fecha_final}}</td>

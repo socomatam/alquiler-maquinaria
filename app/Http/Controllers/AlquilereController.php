@@ -96,6 +96,28 @@ class AlquilereController extends Controller
         return view('alquiler.crear_alquiler', compact('nuevo', 'complementos','clientes', 'maquinas', 'empleado'));
     }//fin crear
 
+
+    public function anyadirContrato($idAlquiler){
+
+         //Solo carga en el objeto las máquinas que estén marcadas como libres
+         $maquinas = Maquina::where('maq_estado','Libre')->get();
+         $complementos = Complemento::where('com_estado', 'Libre')->get();
+ 
+         //$idUsuario = Auth::id();//obtiene el id del usuario autenticado en el sistema
+         $id = Auth::id();
+         $empleado = User::find($id)->trabajador;//obtiene los datos del emprledo autenticado
+ 
+         //optiene el id del último cliente para dejar solo el del actual cliente en el formulario
+         $datosalquiler = Alquilere::find($idAlquiler);
+         $clientes = Cliente::where('id', $datosalquiler->cliente_id)->get();
+        
+         $nuevo = false;
+
+
+         return view('alquiler.crear_alquiler', compact('nuevo', 'complementos','clientes', 'maquinas', 'empleado'));
+
+    }//
+
     /**
      * Recoge el id del usario autenticado en el sistema.
      * Crea un objeto de tipo alquiler y lo guarda en la base de datos.
@@ -106,7 +128,7 @@ class AlquilereController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AlquilerRequest $request){
+    public function store(Request $request){
 
         $valorFormulario = $request->input('nuevo');
 
@@ -118,19 +140,24 @@ class AlquilereController extends Controller
     
 
 
+        //Calcula la cantidad de días de cada contrato
+        $fecha1 = new DateTime($request->input('from'));
+        $fecha2 = new DateTime($request->input('to'));
+            
+            
+        $dias = $fecha1->diff($fecha2);
+        $precioMaquina = Maquina::select('maq_precio_dia')
+                            ->where('id', $request->input('id_maquina'))
+                          ->get()[0]->maq_precio_dia;
+
+
+        
+
+        //crea un nuevo alquiler solo una vez para el cliente actual
         if($valorFormulario == 'nuevo'){
             $alquiler = new Alquilere;
             $alquiler->cliente_id = $request->input('nombre_empresa');
-    
-            $fecha1 = new DateTime($request->input('from'));
-            $fecha2 = new DateTime($request->input('to'));
-            
-            
-            $dias = $fecha1->diff($fecha2);
-            $precioMaquina = Maquina::select('maq_precio_dia')
-                            ->where('id', $request->input('id_maquina'))
-                          ->get()[0]->maq_precio_dia;
-    
+            //crea el precio total la primera vez
             $precioTotalAlquiler  = $precioTotalAlquiler + ($precioMaquina * $dias->format('%a'));
             $alquiler->alq_fecha_inicio = $fecha1;
             $alquiler->alq_fecha_fin = $fecha2;
@@ -139,7 +166,14 @@ class AlquilereController extends Controller
             $alquiler->alq_precio = $precioTotalAlquiler;
             $alquiler->trabajador_id = $id;
             $alquiler->save();
+
+            $fecha1 = 0;
+            $fecha2 = 0;
+
         }//fin if
+
+       
+
         
         //Crea un objeto de tipo alquiler y lo guarda en la base de datos
      
@@ -156,16 +190,32 @@ class AlquilereController extends Controller
         $contrato->con_fecha_fin = $request->input('to');
         $contrato->maquina_id = $request->input('id_maquina');
         $contrato->con_detalle_trabajo = $request->input('descripcion');
-        $contrato->con_precio = Maquina::select('maq_precio_dia')
-                                      ->where('id', $request->input('id_maquina'))
-                                ->get()[0]->maq_precio_dia;
+        $contrato->con_precio = $precioMaquina * $dias->format('%a');
         $contrato->alquiler_id = $datosalquiler->id;
         $contrato->save();
+
+
+
+        if($valorFormulario == 'viejo'){
+           //recupera el precio del alquiler acutual
+            $precioAlquiler = Alquilere::select('alq_precio')
+            ->where('id',$contrato->alquiler_id)
+             ->get()[0]->alq_precio;
+
+            //Actualiza el precio del alquiler
+            Alquilere::where('id',$contrato->alquiler_id)
+            ->update(['alq_precio'=> $precioAlquiler + $contrato->con_precio]);
+
+        }//fin if
+
+       
+         
 
         //actualiza el estado de la maquina alquilada
         Maquina::where('id',$request->input('id_maquina'))
             ->update(['maq_estado'=>'Alquilada']);
 
+        //determina la duración del alquiler, comporbando la fecha más tardía
         if($contrato->alq_fecha_fin > $datosalquiler->alq_fecha_fin){
             Alquilere::where('id',$datosalquiler->id)
             ->update(['alq_fecha_fin'=>$contrato->con_fecha_fin]);
@@ -234,6 +284,8 @@ class AlquilereController extends Controller
 
         $contratos = Contrato::select(
             'contratos.id AS id',
+            'contratos.con_precio AS con_precio',
+            'contratos.alquiler_id AS id_alquiler',
             'contratos.con_incidencia AS incidencia',
             'contratos.con_fecha_inicio AS fecha_inicio',
             'contratos.con_fecha_fin AS fecha_final',
@@ -264,7 +316,7 @@ class AlquilereController extends Controller
         //$contratos = DB::table('contratos')->where('alquiler_id', $id)->get();
         
         
-        return view('alquiler.contratos', compact('contratos'));
+        return view('alquiler.contratos', compact('contratos','id'));
     }
 
     /**
@@ -276,9 +328,41 @@ class AlquilereController extends Controller
     public function edit($id)
     {
 
-        $data = [
-            'titulo' => 'Styde.net'
-        ];
+        //$alquiler =  Alquilere::find($id);
+
+
+        $alquiler = Alquilere::select(
+            'trabajadores.id AS id_trabajador',
+            'clientes.id AS id_clientes',
+            'alquileres.id AS id',
+            'clientes.cli_nombre_empresa AS empresa',
+            'clientes.cli_direccion AS direccion',
+            'clientes.cli_email AS email',
+            'alquileres.alq_fecha_inicio AS inicio',
+            'alquileres.alq_fecha_fin AS fin',
+            'alquileres.alq_incidencia AS incidencia',
+            'alquileres.alq_precio AS alq_precio',
+            'trabajadores.tra_nombre_trabajador AS nombre_trabajador',
+            'trabajadores.tra_apellido_1 AS apellido_trabajador_1',
+            'trabajadores.tra_apellido_2 AS apellido_trabajador_2',
+            DB::raw("DATEDIFF(alquileres.alq_fecha_fin,alquileres.alq_fecha_inicio) AS dias")
+        )->join(
+            'clientes', 'alquileres.cliente_id', '=', 'clientes.id'
+        )->join(
+            'trabajadores', 'alquileres.trabajador_id', '=', 'trabajadores.id'
+        )->find($id);
+
+        //Fecha actual
+        $fecha = new DateTime('now');
+        $fecha =  $fecha->format('Y-m-d');
+
+        $data = array (
+            'numero' => $id,
+            'fecha' => $fecha,
+            'nombre_empresa' => $alquiler->empresa,
+            'direccion' => $alquiler->direccion,
+            'email' => $alquiler->email,
+        );
      
         return PDF::loadView('alquiler.pdf', $data)
             ->stream('archivo.pdf');
