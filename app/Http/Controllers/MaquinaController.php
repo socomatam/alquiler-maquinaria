@@ -113,6 +113,8 @@ class MaquinaController extends Controller
         $estado = $request->input('estado');
         $id = $request->input('id');
 
+      
+
         if($estado == 'Avería'){
             //cambia el estado de la máquina 
             Maquina::where('id',$id)

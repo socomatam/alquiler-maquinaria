@@ -38,9 +38,9 @@
         @foreach($contratos as $contrato)
 
             @if($contrato->incidencia == 'Con incidencias')
-                <tr id="alq_incidencia"  data-id="{{$contrato->id}}" >
+                <tr id="alq_incidencia"  data-id="{{$contrato->id_alquiler}}" >
             @else
-                 <tr data-id="{{$contrato->id}}">
+                 <tr data-id="{{$contrato->id_alquiler}}">
             @endif
            
             <td >{{$contrato->id}}</td>
@@ -115,9 +115,10 @@
 
     $( document ).ready(function() {
         $('.con_editar').click(function(){
-        id = $(this).closest('tr').data()['id'];
+        var idContrato = $(this).closest('tr').data()['id'];
 
-        var tr = $(this).closest('tr');
+        var id = '{{$contrato->maquina_id}}';
+
         
         UIkit.modal('#modal_editar_estado_maquina').show();
 
@@ -129,9 +130,10 @@
             var texto = $( "#val_estado option:selected" ).text();
 
             console.log(id);
+            console.log(texto);
             
              $.ajax({
-                url: 'editarestadoalquiler/',
+                url: '{{url("editarestadoalquiler")}}',
                 method: 'PUT',
                 data: {
                     _method: 'PUT',
@@ -142,7 +144,7 @@
                 success: function(respuesta) {
 
                     //provisional buscar el modo de recargar la tabla
-                   window.location.href = `{{url('/alquiler')}}/${id}`;
+                  window.location.href = `{{url('/alquiler')}}/${idContrato}`;
                 },//FIN SUCCESS
 
      

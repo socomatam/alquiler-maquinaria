@@ -110,7 +110,7 @@
 
 
         <div class="uk-width-1-2">
-            <label class="uk-form-label" for="nombre_empleado">NOMBRE DE TRABAJADOR</label>
+            <label class="uk-form-label" for="nombre_empleado">NOMBRE</label>
             <input class="uk-input" id="nombre_empleado" name="nombre_empleado" type="text" value="{{$empleado->tra_nombre_trabajador}} {{$empleado->tra_apellido_1}} {{$empleado->tra_apellido_2}}" readonly>
         </div>
         <br>
