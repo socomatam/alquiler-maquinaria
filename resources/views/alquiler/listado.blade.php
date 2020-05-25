@@ -85,7 +85,7 @@
     </table>
 
 
-     <span><a href="{{url('/maquinas')}}/8/edit">Hola</a><span>
+     
 
 
     <div id="modal_editar_nombre_empresa" uk-modal="bg-close:false;">
@@ -114,7 +114,7 @@
 </div>
 
 <style>
-    .uk-nav-primary > li:nth-child(2) > a:nth-child(1){
+    .menu_alq{
         color: #1da1f2 !important;
     }
 </style>

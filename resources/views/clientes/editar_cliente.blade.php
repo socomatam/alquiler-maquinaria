@@ -79,11 +79,11 @@
         <button id='btn_limpiar' class="uk-button uk-button-default">LIMPIAR FORMULARIO</button>
     </form>
 
-    <style>
-    .uk-nav-primary > li:nth-child(3) > a:nth-child(1){
+   <style>
+    .menu_cli{
         color: #1da1f2 !important;
     }
-    </style>
+</style>
 
 
 @endsection

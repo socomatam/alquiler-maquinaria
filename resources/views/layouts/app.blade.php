@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>AMP</title>
 
     <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -102,15 +102,15 @@
             <ul uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky" class="uk-nav-primary uk-nav-parent-icon" uk-nav>
                 <li class="uk-active"><a href="#">Menú de navegación </a></li>
                <hr>
-                <li><a href="{{url('/alquiler')}}">Alquiler</a></li>
-                <li><a href="{{url('/clientes')}}">Clientes</a></li>
+                <li><a class="menu_alq" href="{{url('/alquiler')}}">Alquiler</a></li>
+                <li><a class="menu_cli" href="{{url('/clientes')}}">Clientes</a></li>
                 @if (Auth::user()->rol == 'admin')
-                    <li><a href="{{url('/trabajadores')}}">Trabajadores</a></li>
+                    <li><a class="menu_tra" href="{{url('/trabajadores')}}">Trabajadores</a></li>
                 @endif
                 <li class="uk-parent">
-                    <a href="#">Gestión Máquinas</a>
+                    <a class="menu_maq" href="#">Gestión Máquinas</a>
                     <ul class="uk-nav-sub">
-                        <li><a href="{{url('/maquinas')}}">Máquinas</a></li>
+                        <li><a  class="menu_maq"  href="{{url('/maquinas')}}">Máquinas</a></li>
                         <li><a href="{{url('/marcas')}}">Marcas</a></li>
                         <li><a href="{{url('/modelos')}}">Modelos</a></li>
                         <li><a href="{{url('/categorias')}}">Categorías</a></li>

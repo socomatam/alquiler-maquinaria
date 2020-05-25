@@ -170,16 +170,10 @@
 
 
 
-
 <style>
-    .uk-parent > a:nth-child(1) {
+    .menu_maq{
         color: #1da1f2 !important;
     }
-
-    .uk-nav-sub > li:nth-child(1) > a:nth-child(1){
-         color: #1da1f2 !important;
-    }
-    </style>
-
+</style>
 
 @endsection
