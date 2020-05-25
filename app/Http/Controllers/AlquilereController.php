@@ -182,7 +182,7 @@ class AlquilereController extends Controller
         //optiene el id del último cliente para dejar solo el del actual cliente en el formulario
         $datosalquiler = Alquilere::latest('id')->first();
         $clientes = Cliente::where('id', $datosalquiler->cliente_id)->get();
-        
+        $idalquiler = $datosalquiler->id;        
 
         //Crea y guarda un objeto de tipo Contrato y lo guarda en la base de datos
         $contrato = new Contrato;
@@ -263,7 +263,7 @@ class AlquilereController extends Controller
         Session::flash('continuar_alquiler', 'Máquina añadida a este alquiler.');	
 
 
-        return view('alquiler.crear_alquiler', compact('nuevo','complementos','clientes', 'maquinas', 'empleado','datosalquiler'));
+        return view('alquiler.crear_alquiler', compact('nuevo','complementos','clientes', 'maquinas', 'empleado','datosalquiler','idalquiler'));
     }//fin store
 
 

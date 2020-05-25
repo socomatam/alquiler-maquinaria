@@ -34,6 +34,7 @@ Route::resource('tipos', 'TipoController')->middleware('auth');
 Route::resource('modelos', 'ModeloController')->middleware('auth');
 Route::resource('marcas', 'MarcaController')->middleware('auth');
 Route::resource('estados', 'EstadoController')->middleware('auth');
+Route::resource('contratos', 'ContratoController')->middleware('auth');
 Route::resource('desplazamientos', 'DesplazamientoController')->middleware('auth');
 
 Route::put('/editarestadoalquiler','MaquinaController@editarEstado' )->middleware('auth');

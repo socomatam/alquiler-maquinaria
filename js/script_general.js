@@ -275,7 +275,7 @@ $(document).ready( function () {
 
     from = $( "#from" )
         .datepicker({
-            defaultDate: "+1w",
+            defaultDate: "+1d",
             changeMonth: true,
             numberOfMonths: 1,
             minDate: 0,
@@ -286,7 +286,7 @@ $(document).ready( function () {
             
         }),
     to = $( "#to" ).datepicker({
-        defaultDate: "+1w",
+        defaultDate: "+3d",
         changeMonth: true,
         numberOfMonths: 1,
         minDate: 0,
@@ -312,79 +312,25 @@ $(document).ready( function () {
    
     //-------------ALQUILER-------------------//
 
-    /*
-    $( "#guarda_maq" ).click(function(evento) {
-        event.preventDefault();
-        
-        var valor = $( "#val_maquina option:selected" ).val();
-        var textoMaquina = $( "#val_maquina option:selected" ).text();
-        var textoDescripcion = $( "#alq_descripcion" ).val();
-        var fechaDesde = $( "#from" ).val();
-        var fechaHasta = $( "#to" ).val();
 
-        console.log(textoDescripcion);
-    
-        $('.contenedor_maquinas').append(
+    $('.alq_cancelar').click(function(e){
+        e.preventDefault();
+        UIkit.modal.confirm('<h3>¿Está seguro que desea cancelar este alquiler?</h3> Si lo que desea es finalizar el alquiler use el botón de FINALIZAR ALQUILER',{
+            labels: {
+                cancel: 'Cancelar',
+                ok: 'Aceptar'
+              }
+        }).then(function() {
+           $('.form_cancelar').submit();
+        }, function () {
+            
+        });
 
-            `<label class="uk-form-label" for="from">MAQUINA ${contadorMaquinas + 1}</label>
-            <div class="caja_maquinas caja${contadorMaquinas+1}">
-                <label class="uk-form-label">ID DE CONTRATO</label>
-                
-                <div class="uk-width-1-4">
-                    <input class="uk-input" name="maquina${contadorMaquinas}" type="text" value="${valor}" readonly>
-                </div>
+     });//fin cancelar alquiler
 
 
-                <div class="uk-grid-small uk-child-width-expand@s" uk-grid>
-                    <div>
-                        <label class="uk-form-label" for="from">DESDE</label>
-                        <input class="uk-input" name="from${contadorMaquinas}" type="text" value="${fechaDesde}" readonly>
-                    </div>
-                    <div>
-                        <label class="uk-form-label" for="to">HASTA</label>
-                        <input class="uk-input" name="to${contadorMaquinas}" type="text" value="${fechaHasta}" readonly>
-                    </div>
-                </div>
-
-                <div class="uk-margin">
-                    <label class="uk-form-label" for="to">DESCRIPCIÓN DEL TRABAJO</label>
-                    <textarea name="descripcion${contadorMaquinas}" class="uk-textarea" rows="5">${textoDescripcion}</textarea>
-                </div>
-                <br>
-                
-
-                
-
-                <p>${textoMaquina}</p
-                <br>
-                <span onclick="borrarMaquina(${contadorMaquinas+1})" id="quitar_maquina" class="uk-button uk-button-danger">QUITAR MÁQUINA</span>
-            </div>
-            <br>`
-        );//fin ocntenedor máquina
-
-        $('#invisible_id').val(contadorMaquinas);
-        
-        contadorMaquinas++;
 
 
-        $.ajax({
-            url: 'http://localhost/gestion_alquiler_maquinaria/public/cuentas',
-            type: 'POST',
-            data: {
-                
-                'id_maquina': valor,
-                "_token": $("meta[name='csrf-token']").attr("content")
-            },
-            success: function(respuesta) {
-          
-            },//FIN SUCCESS
-
- 
-         });//fin ajax
-        
-    });//fin añadir máquina
-
-    */
 
     $('.alq_editar').click(function(){
         id = $(this).closest('tr').data();
@@ -410,7 +356,7 @@ $(document).ready( function () {
                 success: function(respuesta) {
 
                     //provisional buscar el modo de recargar la tabla
-                    window.location.href = 'http://localhost/gestion_alquiler_maquinaria/public/alquiler';
+                    window.location.href = 'http://localhost/gestion_alquiler_maquinaria/alquiler';
                 },//FIN SUCCESS
 
      
@@ -599,7 +545,7 @@ $(document).ready( function () {
                 success: function(respuesta) {
 
                     //provisional buscar el modo de recargar la tabla
-                   window.location.href = 'http://localhost/gestion_alquiler_maquinaria/public/maquinas';
+                   window.location.href = 'http://localhost/gestion_alquiler_maquinaria/maquinas';
                 },//FIN SUCCESS
 
      

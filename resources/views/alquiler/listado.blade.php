@@ -17,6 +17,17 @@
     </div>
     @endif
 
+     @if(Session::has('cancelar_registro'))
+    <div class="ui success message">
+        <i class="close icon"></i>
+        <div class="uk-alert-success" uk-alert>
+            <a class="uk-alert-close" uk-close></a>
+            <p>Alquiler cancelado con éxito.</p>
+        </div>
+        <p>{{Session::get('cancelar_registro')}}</p>
+    </div>
+    @endif
+
 
 
     <button id="alq_btn_nuevo_alquiler" class="uk-button uk-button-primary uk-button-small"><a href="{{url('/alquiler/create')}}">CREAR NUEVO ALQUILER</a></button>

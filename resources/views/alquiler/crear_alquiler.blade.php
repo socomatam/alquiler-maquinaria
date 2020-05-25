@@ -3,6 +3,8 @@
 @section('content')
 
 <div class='alq_contenedor'>
+
+    <div>
     <h2 class="uk-heading-divider">Añadir nueva máquina</h2>
 
 
@@ -119,20 +121,35 @@
 
         <a class="uk-button uk-button-default" href="{{url('/alquiler')}}">FINALIZAR ALQUILER</a>
     </form>
+    </div>
 
-        <form class="formularios uk-form-stacked" method="POST" action="{{url('/alquiler')}}" class="uk-form-stacked">
+    <div class="btn_cancelar">
+     @if($nuevo == false && isset($idalquiler))
+        <form class="form_cancelar uk-form-stacked" method="POST" action="{{url('/contratos')}}/{{$idalquiler}}" class="uk-form-stacked">
         @csrf
-        <input name="_method" type="hidden" value="DELETE">
-
-        
+            <input name="_method" type="hidden" value="DELETE">
+            <button class="uk-button uk-button-danger alq_cancelar">Cancelar alquiler</button>
         </form>
+    @endif
+    </div>
 </div>
 
 <style>
     .menu_alq{
         color: #1da1f2 !important;
     }
+
+    .alq_contenedor{
+        display: flex;
+    }
+
+    .btn_cancelar{
+        align-self: flex-end;
+    }
 </style>
+
+
+
 
 
 @endsection
