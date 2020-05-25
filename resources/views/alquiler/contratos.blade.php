@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
 
@@ -38,9 +38,9 @@
         @foreach($contratos as $contrato)
 
             @if($contrato->incidencia == 'Con incidencias')
-                <tr id="alq_incidencia"  data-con_id="{{$contrato->id}}" >
+                <tr id="alq_incidencia"  data-id="{{$contrato->id}}" >
             @else
-                 <tr data-con_id="{{$contrato->id}}">
+                 <tr data-id="{{$contrato->id}}">
             @endif
            
             <td >{{$contrato->id}}</td>
@@ -59,7 +59,7 @@
             <td>{{$contrato->maq_estado}}</td>
 
 
-            <th class="centrar_celda"><a href="#" uk-icon="icon: file-edit"></a></th>
+            <td  class="con_editar centrar_celda"><a href="#" uk-icon="icon: file-edit"></a></td>
             <th class="centrar_celda">Borrar</th>
 
             @endforeach
@@ -75,10 +75,85 @@
     <a href="{{url('/alquiler')}}" class="uk-button uk-button-primary">Volver</a>
     <br>
 
+
+
+
+   <div id="modal_editar_estado_maquina" uk-modal="bg-close:false;">
+        <div class="uk-modal-dialog uk-modal-body">
+            <h2 class="uk-modal-title">Editar estado de la máquina</h2>
+            <div>
+                <label class="uk-form-label" for="">Estado de la máquina</label>
+                <br>
+                <select id="val_estado" class="uk-select" name="nombre_empresa">
+                 
+                    <option value="Avería">Avería</option>
+                    <option value="Alquilada">Alquilada</option>
+                    
+                </select>
+            </div>
+
+
+
+            <br>
+            <p class="uk-text-right">
+                <button class="uk-button uk-button-default uk-modal-close" type="button">Cancelar</button>
+                <button id="btn_moda_editar_estado_maquina" class="uk-button uk-button-primary " type="button">Guardar</button>
+            </p>
+        </div>
+    </div>
+
+
+
 <style>
     .uk-nav-primary > li:nth-child(2) > a:nth-child(1){
         color: #1da1f2 !important;
     }
 </style>
+
+<script>
+
+
+    $( document ).ready(function() {
+        $('.con_editar').click(function(){
+        id = $(this).closest('tr').data()['id'];
+
+        var tr = $(this).closest('tr');
+        
+        UIkit.modal('#modal_editar_estado_maquina').show();
+
+        console.log(id);
+
+        $('#btn_moda_editar_estado_maquina').click(function(){
+
+           
+            var texto = $( "#val_estado option:selected" ).text();
+
+            console.log(id);
+            
+             $.ajax({
+                url: 'editarestadoalquiler/',
+                method: 'PUT',
+                data: {
+                    _method: 'PUT',
+                    'id': id,
+                    'estado': texto,
+                    "_token": $("meta[name='csrf-token']").attr("content")
+                },
+                success: function(respuesta) {
+
+                    //provisional buscar el modo de recargar la tabla
+                   window.location.href = `{{url('/alquiler')}}/${id}`;
+                },//FIN SUCCESS
+
+     
+             });//fin ajax
+          
+         });//fin bontón editar cliente
+    
+    });//fin click
+    });
+      
+
+</script>
 
 @endsection

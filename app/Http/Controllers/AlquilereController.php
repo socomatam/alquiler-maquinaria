@@ -195,7 +195,7 @@ class AlquilereController extends Controller
         $contrato->save();
 
 
-
+        //actualiza el precio solo si el alquiler no es nuevo
         if($valorFormulario == 'viejo'){
            //recupera el precio del alquiler acutual
             $precioAlquiler = Alquilere::select('alq_precio')

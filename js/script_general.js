@@ -604,10 +604,7 @@ $(document).ready( function () {
 
      
              });//fin ajax
-
-             $('#modal_editar_nombre_empresa').hide();
-            
-              $(`this td`).html('ddd');               
+          
          });//fin bontón editar cliente
     
     });//fin click
