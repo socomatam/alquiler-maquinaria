@@ -334,6 +334,7 @@ class AlquilereController extends Controller
         $alquiler = Alquilere::select(
             'trabajadores.id AS id_trabajador',
             'clientes.id AS id_clientes',
+            'clientes.cli_nombre_contacto AS cli_contacto',
             'alquileres.id AS id',
             'clientes.cli_nombre_empresa AS empresa',
             'clientes.cli_direccion AS direccion',
@@ -356,24 +357,34 @@ class AlquilereController extends Controller
         $fecha = new DateTime('now');
         $fecha =  $fecha->format('Y-m-d');
 
+        //optiene una colección de contratos, con sus máquina y precios
+        $contratos = Contrato::select(
+            'contratos.alquiler_id AS alquiler_id',
+            'contratos.id AS id_contrato',
+            'alquileres.alq_precio AS alq_precio',
+            'contratos.con_precio AS con_precio' ,
+            'maquinas.maq_marca AS maq_marca',
+            'maquinas.maq_modelo AS maq_modelo'
+        )->join(
+            'alquileres', 'contratos.alquiler_id', '=', 'alquileres.id'
+        )->join(
+            'maquinas', 'contratos.maquina_id', '=', 'maquinas.id'
+        )->where('alquiler_id', $alquiler->id)->get();
+
+
+        //Array de datos que serán pasados a la vista que genera la factura y que será mostrada en un PDF.
         $data = array (
             'numero' => $id,
             'fecha' => $fecha,
             'nombre_empresa' => $alquiler->empresa,
             'direccion' => $alquiler->direccion,
             'email' => $alquiler->email,
+            'contacto' => $alquiler->cli_contacto,
+            'maquinas' => $contratos, 
         );
      
         return PDF::loadView('alquiler.pdf', $data)
             ->stream('archivo.pdf');
-
-        /*
-        $pdf = app('dompdf.wrapper');
-        $pdf->loadHTML('<h1>Styde.net</h1>');
- 
-        //return $pdf->download('mi-archivo.pdf');
-        return view('alquiler.pdf', compact('pdf'));
-        */
     }
 
     /**

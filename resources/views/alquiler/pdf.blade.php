@@ -126,7 +126,7 @@
                             
                             <td>
                                 <?php echo $nombre_empresa; ?><br>
-                                John Doe<br>
+                                <?php echo $contacto; ?><br>
                                 <?php echo $email; ?><br>
                             </td>
                         </tr>
@@ -134,72 +134,32 @@
                 </td>
             </tr>
             
-            <tr class="heading">
-                <td>
-                    Payment Method
-                </td>
-                
-                <td>
-                    Check #
-                </td>
-            </tr>
+         
             
-            <tr class="details">
-                <td>
-                    Check
-                </td>
-                
-                <td>
-                    1000
-                </td>
-            </tr>
+            
             
             <tr class="heading">
                 <td>
-                    Item
+                    Máquina
                 </td>
                 
                 <td>
-                    Price
+                    Precio
                 </td>
             </tr>
+
             
-            <tr class="item">
-                <td>
-                    Website design
-                </td>
-                
-                <td>
-                    $300.00
-                </td>
-            </tr>
-            
-            <tr class="item">
-                <td>
-                    Hosting (3 months)
-                </td>
-                
-                <td>
-                    $75.00
-                </td>
-            </tr>
-            
-            <tr class="item last">
-                <td>
-                    Domain name (1 year)
-                </td>
-                
-                <td>
-                    $10.00
-                </td>
-            </tr>
-            
-            <tr class="total">
-                <td></td>
-                
-                <td>
-                   Total: $385.00
-                </td>
-            </tr>
+            <?php
+                $total = 0;
+                foreach($maquinas as $maquina){
+                    $total = $total + $maquina->con_precio;
+                    echo "<tr><td>$maquina->maq_marca $maquina->maq_modelo</td><td>$maquina->con_precio €</td></tr>";
+                }
+
+                echo "<tr class='total'><td></td><td> Total: $total € </td> </tr>";
+
+            ?> 
+
         </table>
+
     </div>
