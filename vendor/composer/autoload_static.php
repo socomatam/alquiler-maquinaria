@@ -34,7 +34,6 @@ class ComposerStaticInit43ddf0bcac6019a39d6c8aad1df787d9
     public static $prefixLengthsPsr4 = array (
         'v' => 
         array (
-            'voku\\tests\\' => 11,
             'voku\\' => 5,
         ),
         'p' => 
@@ -174,10 +173,6 @@ class ComposerStaticInit43ddf0bcac6019a39d6c8aad1df787d9
     );
 
     public static $prefixDirsPsr4 = array (
-        'voku\\tests\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/voku/portable-ascii/tests',
-        ),
         'voku\\' => 
         array (
             0 => __DIR__ . '/..' . '/voku/portable-ascii/src/voku',
