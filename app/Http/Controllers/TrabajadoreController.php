@@ -9,6 +9,13 @@ use App\Http\Requests\TrabajadorRequest;
 
 class TrabajadoreController extends Controller
 {
+    public function RegistroNuevoEmpleado(){
+        return view('auth.nuevousuario');
+    }//
+
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -41,6 +48,14 @@ class TrabajadoreController extends Controller
         Session::flash('finalizar_registro', 'El trabajador se ha creado correctamente.');
         Trabajadore::create($request->all());
         return redirect('trabajadores');
+    }
+
+
+    public function storeNuevoEmpleado(TrabajadorRequest $request)
+    {
+        //Session::flash('finalizar_registro', 'El trabajador se ha creado correctamente.');
+        Trabajadore::create($request->all());
+        return redirect('login');
     }
 
     /**

@@ -76,7 +76,7 @@
             <div class="uk-form-controls">
             <select id="cli_select" class="uk-select" name="trabajador">
                 @foreach($trabajadores as $trabajador)
-                <option value="{{$trabajador->id}}">{{$trabajador->tra_nombre_trabajador}}</option>
+                <option value="{{$trabajador->id}}">{{$trabajador->tra_nombre_trabajador}} {{$trabajador->tra_apellido_1}} {{$trabajador->tra_apellido_2}}</option>
                 @endforeach
             </select>
 

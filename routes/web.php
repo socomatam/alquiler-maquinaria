@@ -22,6 +22,8 @@ Route::get('/', function () {
 
 //Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/nuevousuario', 'TrabajadoreController@RegistroNuevoEmpleado')->name('');
+
 Route::resource('alquiler', 'AlquilereController')->middleware('auth');
 Route::get('alquiler/contrato/{id}', 'AlquilereController@AnyadirContrato')->middleware('auth');
 Route::resource('clientes', 'ClienteController')->middleware('auth');
@@ -41,7 +43,7 @@ Route::put('/editarestadoalquiler','MaquinaController@editarEstado' )->middlewar
 
 //Route::post('alquiler', 'AlquilereController')->middleware('auth');
 
-
+Route::post('/guardarempleado','TrabajadoreController@storeNuevoEmpleado');
 
 //Route::post('alquilerdos', 'AlquilereController@createDos')->middleware('auth');
 
