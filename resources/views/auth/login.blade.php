@@ -23,7 +23,7 @@
             <br>
              <br>
             <br>
-            <h1 class="uk-heading-medium">ALQUILER MAQUINARIA</h1>
+            <h1 class="uk-heading-small">ALQUILER MAQUINARIA</h1>
     </div>
 
     <div class="uk-position-center uk-overlay uk-overlay-default">

@@ -4,24 +4,48 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
-
-    <!-- UIkit CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.3.7/dist/css/uikit.min.css" />
-
-    <!-- UIkit JS -->
+    <title>GMP</title>
+      <!-- UIkit JS -->
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.3.7/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.3.7/dist/js/uikit-icons.min.js"></script>
+
+     <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.3.7/dist/css/uikit.min.css" />
+
+
+
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
+     <!--Dependencias select 2-->
+    <script src="{{ asset('js/select2.js') }}" defer></script>
+    <link href="{{ asset('css/select2.css') }}" rel="stylesheet">
+
+   
+
+   
+
+    
+
+  
 
 </head>
 <body>
 
+     <div class="uk-position-top-center">
+           
+            <h1 class="uk-heading-small">ALQUILER MAQUINARIA</h1>
+    </div>
+
     <div class="uk-position-center uk-overlay uk-overlay-default">
+    
         <div class="uk-box-shadow-bottom uk-box-shadow-small">
-            <form class="uk-form-stacked uk-background-default uk-padding-large" method="POST" action="{{ route('register') }}"">
+           
+            <form class="uk-form-stacked uk-background-default uk-padding-large" method="POST" action="{{ route('register') }}">
+                
+                    <h2 class="uk-heading-line uk-text-center"><span>REGISTRO</span></h2>
                 @csrf
                 <div class=" uk-margin">
-                <label class="uk-form-label uk-text-bold" for="form-stacked-text"><span class="uk-margin-small-right"></span>NOMBRE</label>
+                <label class="uk-form-label uk-text-bold" for="form-stacked-text"><span class="uk-margin-small-right"></span>NOMBRE USUARIO</label>
                 <div class="uk-form-controls">
                     <input id="name" type="text" class="uk-input @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
@@ -44,6 +68,33 @@
                     <p>{{ $message }}</p>
                 </span>
                 @enderror
+            </div>
+        </div>
+
+        <div class="uk-margin">
+            <label class="uk-form-label uk-text-bold" for="form-stacked-text"><span class="uk-margin-small-right"></span>EMPLEADO</label>
+            <div class="uk-form-controls">
+            <select id="cli_select" class="uk-select" name="trabajador">
+                @foreach($trabajadores as $trabajador)
+                <option value="{{$trabajador->id}}">{{$trabajador->tra_nombre_trabajador}}</option>
+                @endforeach
+            </select>
+
+                
+            </div>
+        </div>
+
+         <div class="uk-margin">
+            <label class="uk-form-label uk-text-bold" for="form-stacked-text"><span class="uk-margin-small-right"></span>ROL</label>
+            <div class="uk-form-controls">
+            <select id="cli_select" class="uk-select" name="rol">
+                
+                <option value="admin">Administrador</option>
+                <option value="admin">Trabajador</option>
+                
+            </select>
+
+                
             </div>
         </div>
 
@@ -85,3 +136,11 @@
 
 </body>
 </html>
+
+<script>
+    $( document ).ready(function() {
+        $('select').select2({
+        
+        });
+    });
+</script>
