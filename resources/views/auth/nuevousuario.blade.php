@@ -36,58 +36,75 @@
         <h1 class="uk-heading-small">ALQUILER MAQUINARIA</h1>
     </div>
 
+
+
     <div class="uk-position-center uk-overlay uk-overlay-default">
 
         <div class="uk-box-shadow-bottom uk-box-shadow-small">
 
             <form class="uk-form-stacked uk-background-default uk-padding-large" method="POST" action="{{ url('guardarempleado') }}">
 
-                <h2 class="uk-heading-line uk-text-center"><span>REGISTRO de EMPLEADO</span></h2>
+                @if (count($errors) > 0)
+                <div class="ui negative message">
+                    <i class="close icon"></i>
+                    <div class="header">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <span class="uk-label uk-label-danger">{{ $error }}</span>
+                            <br>
+
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+                @endif
+
+                <h2 class="uk-heading-line uk-text-center"><span>REGISTRO DE EMPLEADO</span></h2>
                 @csrf
 
 
-                 <div uk-grid>
-        <div class="uk-width-1-4">
-            <label class="uk-form-label" for="tra_nombre_trabajador">NOMBRE</label>
-            <input class="uk-input" id="tra_nombre_trabajador" name="tra_nombre_trabajador" type="text" required value={{old('tra_nombre_trabajador')}}>
-        </div>
-        <div class="uk-width-1-4@m">
-            <label class="uk-form-label" for="tra_apellido_1">PRIMER APELLIDO</label>
-            <input class="uk-input" id="tra_apellido_1" name="tra_apellido_1" type="text" value={{old('tra_apellido_1')}}>
-        </div>
-        <div class="uk-width-1-4@m">
-            <label class="uk-form-label" for="tra_apellido_2">SEGUNDO APELLIDO</label>
-            <input class="uk-input" id="tra_apellido_2" name="tra_apellido_2" type="text" value={{old('cli_ciudad')}}>
-        </div>
-    </div>
-    <br>
+                <div uk-grid>
+                    <div class="uk-width-1-4">
+                        <label class="uk-form-label" for="tra_nombre_trabajador">NOMBRE</label>
+                        <input class="uk-input" id="tra_nombre_trabajador" name="tra_nombre_trabajador" type="text" required value={{old('tra_nombre_trabajador')}}>
+                    </div>
+                    <div class="uk-width-1-4@m">
+                        <label class="uk-form-label" for="tra_apellido_1">PRIMER APELLIDO</label>
+                        <input class="uk-input" id="tra_apellido_1" name="tra_apellido_1" type="text" value={{old('tra_apellido_1')}}>
+                    </div>
+                    <div class="uk-width-1-4@m">
+                        <label class="uk-form-label" for="tra_apellido_2">SEGUNDO APELLIDO</label>
+                        <input class="uk-input" id="tra_apellido_2" name="tra_apellido_2" type="text" value={{old('cli_ciudad')}}>
+                    </div>
+                </div>
+                <br>
 
-    <div class="uk-width-1-5@m">
-        <label class="uk-form-label" for="tra_dni">Nº NIF</label>
-        <input class="uk-input " id="tra_dni" name="tra_dni" type="text" required value={{old('tra_dni')}}>
-    </div>
-    <br>
+                <div class="uk-width-1-5@m">
+                    <label class="uk-form-label" for="tra_dni">Nº DNI</label>
+                    <input class="uk-input " id="tra_dni" name="tra_dni" type="text" required value={{old('tra_dni')}}>
+                </div>
+                <br>
 
-    <br>
+                <br>
 
-    <div class="uk-width-1-5@m">
-        <label class="uk-form-label" for="tra_fecha_nacimiento">FECHA DE NACIMIENTO</label>
-        <input class="uk-input " id="tra_fecha_nacimiento" name="tra_fecha_nacimiento" type="date" required value={{old('tra_fecha_nacimiento')}}>
-    </div>
-    <br>
+                <div class="uk-width-1-5@m">
+                    <label class="uk-form-label" for="tra_fecha_nacimiento">FECHA DE NACIMIENTO</label>
+                    <input class="uk-input " id="tra_fecha_nacimiento" name="tra_fecha_nacimiento" type="date" required value={{old('tra_fecha_nacimiento')}}>
+                </div>
+                <br>
 
-    <div uk-grid>
-        <div class="uk-width-1-5">
-            <label class="uk-form-label" for="tra_telefono">Nº TELÉFONO</label>
-            <input class="uk-input" id="tra_telefono" name="tra_telefono" type="text" required value={{old('tra_telefono')}}>
-        </div>
-        <div class="uk-width-1-3@m">
-            <label class="uk-form-label" for="tra_email">EMAIL</label>
-            <input class="uk-input" id="tra_email" name=tra_email type="text" value={{old('tra_email')}}>
-        </div>
-    </div>
+                <div uk-grid>
+                    <div class="uk-width-1-5">
+                        <label class="uk-form-label" for="tra_telefono">Nº TELÉFONO</label>
+                        <input class="uk-input" id="tra_telefono" name="tra_telefono" type="text" required value={{old('tra_telefono')}}>
+                    </div>
+                    <div class="uk-width-1-3@m">
+                        <label class="uk-form-label" for="tra_email">EMAIL</label>
+                        <input class="uk-input" id="tra_email" name=tra_email type="text" value={{old('tra_email')}}>
+                    </div>
+                </div>
 
-    <br>
+                <br>
 
 
 
@@ -102,7 +119,7 @@
 
             </form>
             <div>
-        </div>
+            </div>
 
 
 
