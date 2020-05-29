@@ -29,6 +29,7 @@
     <div class="uk-position-center uk-overlay uk-overlay-default">
         <div class="uk-box-shadow-bottom uk-box-shadow-small">
             <form class="uk-form-stacked uk-background-default uk-padding-large" method="POST" action="{{ route('login') }}">
+            <h2 class="uk-heading-line uk-text-center"><span>AUTENTICACIÓN</span></h2>
                 @csrf
                 <div class="uk-margin">
                     <label class="uk-form-label uk-text-bold" for="form-stacked-text"><span class="uk-margin-small-right" uk-icon="user"></span>DIRECCIÓN EMAIL</label>
@@ -55,6 +56,8 @@
                 
                 <button type="submit" class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom">ACCEDER<a href="" uk-icon="icon:  sign-in"></a></button>
                 <a class="uk-link-muted" href="#">Recuperar contraseña.</a>
+                <br>
+                 <a class="uk-link-muted" href="#">Solicitar creación de cuenta.</a>
             </form>
         <div>
     </div>
