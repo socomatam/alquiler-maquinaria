@@ -12,7 +12,7 @@ $(document).ready( function () {
     $('#cli_tabla_id').DataTable({
         colReorder: true,
         fixedHeader: false,
-        responsive: true,
+        responsive: false,
         "pageLength": 15,
         "lengthMenu": [ 10, 15, 20, 25, 50, 75, 100 ],
         "order": [[ 0, "asc" ]],
@@ -51,7 +51,7 @@ $(document).ready( function () {
         "pageLength": 15,
         "lengthMenu": [ 10, 15, 20, 25, 50, 75, 100 ],
        
-        columnDefs: [ { orderable: false, targets: [] }],
+        columnDefs: [ { orderable: false, targets: [12,14,15] }],
         language:{
             "decimal":        "",
             "emptyTable":     "No hay datos disponibles",
@@ -88,7 +88,7 @@ $(document).ready( function () {
         "pageLength": 15,
         "lengthMenu": [ 10, 15, 20, 25, 50, 75, 100 ],
         "order": [[ 3, "desc" ]],
-        columnDefs: [ { orderable: false, targets: [0,6,7,8,9] }],
+        columnDefs: [ { orderable: false, targets: [7,8,9,10] }],
         language:{
             "decimal":        "",
             "emptyTable":     "No hay datos disponibles",

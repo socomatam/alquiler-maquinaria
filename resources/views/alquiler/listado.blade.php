@@ -5,7 +5,17 @@
 @section('content')
 <div class='alq_contenedor'>
 
-    <h2 class="uk-heading-divider">Listado alquiler</h2>
+    <h2 class="uk-heading-divider">Listado alquiler
+        <span style="float:right;">
+            
+            <span class="uk-label uk-label-success">VIGENTE</span>
+            <span style="background-color:lightgray;"  class="uk-label">FINALIZADO</span>
+            <span class="uk-label uk-label-danger">INCIDENCIA</span>
+        </span>
+    
+    
+    </h2>
+
     @if(Session::has('finalizar_registro'))
     <div class="ui success message">
         <i class="close icon"></i>

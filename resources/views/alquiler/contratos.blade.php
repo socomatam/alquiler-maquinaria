@@ -4,6 +4,18 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
+ <h2 class="uk-heading-divider">Listado contratos
+        <span style="float:right;">
+            
+            <span class="uk-label uk-label-success">VIGENTE</span>
+            <span style="background-color:lightgray;"  class="uk-label">FINALIZADO</span>
+            <span class="uk-label uk-label-danger">INCIDENCIA</span>
+        </span>
+    
+    
+    </h2>
+
+
 
 <button id="cli_btn_nuevo_cliente" class="uk-button uk-button-primary uk-button-small"><a href="{{url('/alquiler/contrato')}}/{{$id}}">AÑADIR UN CONTRATO</a></button>
 
