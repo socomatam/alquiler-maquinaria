@@ -310,13 +310,14 @@ class AlquilereController extends Controller
         )->where('alquiler_id', $id)->get();
 
 
-
+        $fechaActual = new DateTime('now');
+        $fechaActual =  $fechaActual->format('Y-m-d');
 
 
         //$contratos = DB::table('contratos')->where('alquiler_id', $id)->get();
         
         
-        return view('alquiler.contratos', compact('contratos','id'));
+        return view('alquiler.contratos', compact('contratos','id','fechaActual'));
     }
 
     /**

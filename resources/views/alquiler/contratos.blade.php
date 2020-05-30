@@ -48,37 +48,38 @@
             
 
         @foreach($contratos as $contrato)
-
-            @if($contrato->incidencia == 'Con incidencias')
-                <tr id="alq_incidencia"  data-id="{{$contrato->id_alquiler}}" >
-            @else
-                 <tr data-id="{{$contrato->id_alquiler}}">
+    
+            @if($contrato->fecha_final <= $fechaActual)
+                <tr style="background-color: lightgrey"  data-id="{{$contrato->id_alquiler}}" data-maquina_id="{{$contrato->maquina_id}}">
+            @elseif($contrato->incidencia == 'Con incidencias')
+                <tr style="background-color: #ff8787"  data-id="{{$contrato->id_alquiler}}" data-maquina_id="{{$contrato->maquina_id}}">
+            @elseif($contrato->fecha_final > $fechaActual) 
+                <tr data-id="{{$contrato->id_alquiler}}" style="background-color: lightgreen" data-maquina_id="{{$contrato->maquina_id}}">
             @endif
-           
-            <td >{{$contrato->id}}</td>
-            <td>{{$contrato->maq_categoria}}</td>
-            <td>{{$contrato->maq_tipo}}</td>
-            <td>{{$contrato->maq_marca}}</td>
-            <td>{{$contrato->maq_modelo}}</td>
-            <td>{{$contrato->maq_largo}} x {{$contrato->maq_ancho}} x {{$contrato->maq_alto}}</td>
-            <td>{{$contrato->maq_peso}}kg</td>
-            <td>{{$contrato->maq_traslacion}}kg</td>
-            <td>{{$contrato->con_precio}}€</td>
-            <td class="centrar_celda">{{$contrato->dias}}</td>
-            <td>{{$contrato->fecha_inicio}}</td>
-            <td>{{$contrato->fecha_final}}</td>
-            <td  class="centrar_celda"><a href="{{url('/maquinas')}}/{{$contrato->maquina_id}}" uk-icon="icon: location"></a></td>
-            <td>{{$contrato->maq_estado}}</td>
+                <td >{{$contrato->id}}</td>
+                <td>{{$contrato->maq_categoria}}</td>
+                <td>{{$contrato->maq_tipo}}</td>
+                <td>{{$contrato->maq_marca}}</td>
+                <td>{{$contrato->maq_modelo}}</td>
+                <td>{{$contrato->maq_largo}} x {{$contrato->maq_ancho}} x {{$contrato->maq_alto}}</td>
+                <td>{{$contrato->maq_peso}}kg</td>
+                <td>{{$contrato->maq_traslacion}}kg</td>
+                <td>{{$contrato->con_precio}}€</td>
+                <td class="centrar_celda">{{$contrato->dias}}</td>
+                <td>{{$contrato->fecha_inicio}}</td>
+                <td>{{$contrato->fecha_final}}</td>
+                <td  class="centrar_celda"><a href="{{url('/maquinas')}}/{{$contrato->maquina_id}}" uk-icon="icon: location"></a></td>
+                <td>{{$contrato->maq_estado}}</td>
 
 
-            <td  class="con_editar centrar_celda"><a href="#" uk-icon="icon: file-edit"></a></td>
-            <th class="centrar_celda">Borrar</th>
-
+                <td  class="con_editar centrar_celda"><a href="#" uk-icon="icon: file-edit"></a></td>
+                <td class="centrar_celda"><a class="" uk-icon="icon: trash"></a></td>
+            </tr>
             @endforeach
 
 
     </tbody>
-    <tfoot></tfoot>
+   
 </table>
 
 
@@ -129,7 +130,7 @@
         $('.con_editar').click(function(){
         var idContrato = $(this).closest('tr').data()['id'];
 
-        var id = '{{$contrato->maquina_id}}';
+        var id = $(this).closest('tr').data()['maquina_id'];
 
         
         UIkit.modal('#modal_editar_estado_maquina').show();
@@ -141,8 +142,8 @@
            
             var texto = $( "#val_estado option:selected" ).text();
 
-            console.log(id);
-            console.log(texto);
+            //console.log(id);
+            //console.log(texto);
             
              $.ajax({
                 url: '{{url("editarestadoalquiler")}}',

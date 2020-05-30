@@ -47,7 +47,7 @@ $(document).ready( function () {
     $('#con_tabla_id').DataTable({
         colReorder: true,
         fixedHeader: false,
-        responsive: true,
+        responsive: false,
         "pageLength": 15,
         "lengthMenu": [ 10, 15, 20, 25, 50, 75, 100 ],
        

@@ -110,6 +110,8 @@ class MaquinaController extends Controller
      * 
      */
     public function editarEstado(Request $request){
+
+      
         $estado = $request->input('estado');
         $id = $request->input('id');
 
