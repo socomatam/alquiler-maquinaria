@@ -33,6 +33,19 @@ class AlquilereController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
+
+        //optiene la fecha actual
+        $fechaActual = new DateTime('now');
+        $fechaActual =  $fechaActual->format('Y-m-d');
+
+       
+
+       Contrato::join('maquinas', 'contratos.maquina_id', '=', 'maquinas.id')
+        ->where('con_fecha_fin', '<', $fechaActual)->update(['maq_estado'=>'Libre']);
+
+
+
+
         $clientes = Cliente::all();
         $alquiler = Alquilere::select(
             'trabajadores.id AS id_trabajador',
@@ -53,8 +66,7 @@ class AlquilereController extends Controller
             'trabajadores', 'alquileres.trabajador_id', '=', 'trabajadores.id'
         )->get();
 
-        $fechaActual = new DateTime('now');
-        $fechaActual =  $fechaActual->format('Y-m-d');
+        
 
         return view('alquiler.listado', compact('alquiler', 'fechaActual', 'clientes'));
     }//fin index

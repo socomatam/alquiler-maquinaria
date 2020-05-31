@@ -8,7 +8,16 @@
 
 
 
-<h2 class="uk-heading-divider">Listado maquinas</h2>
+<h2 class="uk-heading-divider">Listado maquinas
+     <span style="float:right;">
+            
+            <span class="uk-label uk-label-success">DISPONIBLE</span>
+            <span style="background-color:lightgray;"  class="uk-label">ALQUILADA</span>
+            <span class="uk-label uk-label-danger">INCIDENCIA</span>
+        </span>
+
+
+</h2>
 
     @if(Session::has('finalizar_registro'))
     <div class="ui success message">
@@ -122,9 +131,6 @@
 
 
    
-
-
-    <a class="uk-button uk-button-default" href="#modal-container" uk-toggle>Open</a>
 
 <div id="modal-container" class="uk-modal-container" uk-modal>
     <div class="uk-modal-dialog uk-modal-body">
