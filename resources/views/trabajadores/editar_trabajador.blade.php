@@ -29,15 +29,15 @@
          <div uk-grid>
             <div class="uk-width-1-4">
                 <label class="uk-form-label" for="tra_nombre_trabajador">NOMBRE</label>
-                <input class="uk-input" id="tra_nombre_trabajador" name="tra_nombre_trabajador" type="text" required value={{$trabajador->tra_nombre_trabajador}}  >
+                <input class="uk-input" id="tra_nombre_trabajador" name="tra_nombre_trabajador" type="text" required value="{{$trabajador->tra_nombre_trabajador}}"  >
             </div>
             <div class="uk-width-1-4@m">
                 <label class="uk-form-label" for="tra_apellido_1">PRIMER APELLIDO</label>
-                <input class="uk-input" id="tra_apellido_1" name="tra_apellido_1" type="text" required value={{$trabajador->tra_apellido_1}} >
+                <input class="uk-input" id="tra_apellido_1" name="tra_apellido_1" type="text" required value="{{$trabajador->tra_apellido_1}}" >
             </div>
             <div class="uk-width-1-4@m">
                 <label class="uk-form-label" for="tra_apellido_2">SEGUNDO APELLIDO</label>
-                <input class="uk-input" id="tra_apellido_2" name="tra_apellido_2" type="text" required value={{$trabajador->tra_apellido_2}} >
+                <input class="uk-input" id="tra_apellido_2" name="tra_apellido_2" type="text" required value="{{$trabajador->tra_apellido_2}}" >
             </div>
         </div>
         <br>

@@ -13,4 +13,8 @@ class Contrato extends Model{
     public function alquilere(){
         return $this->hasMany('App\Alquilere');
     }
+
+    public function complementos(){
+		return $this->belongsToMany('App\Complemento', 'complemento_contratos');
+	}
 }

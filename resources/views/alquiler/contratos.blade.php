@@ -17,7 +17,7 @@
 
 
 
-<button id="cli_btn_nuevo_cliente" class="uk-button uk-button-primary uk-button-small"><a href="{{url('/alquiler/contrato')}}/{{$id}}">AÑADIR UN CONTRATO</a></button>
+<button id="cli_btn_nuevo_cliente" class="uk-button uk-button-primary uk-button-medium"><a href="{{url('/alquiler/contrato')}}/{{$id}}">AÑADIR UN CONTRATO</a></button>
 
 <table id="con_tabla_id" class="display">
     <thead>
@@ -34,6 +34,7 @@
             <th>Días</th>
             <th class="centrar_celda">Inicio</th>
             <th class="centrar_celda">Fin</th>
+            <th class="centrar_celda">Complementos</th>
             <th>Ubicación</th>
             <th>Estado</th>
 
@@ -50,11 +51,11 @@
         @foreach($contratos as $contrato)
     
             @if($contrato->fecha_final <= $fechaActual)
-                <tr style="background-color: lightgrey"  data-id="{{$contrato->id_alquiler}}" data-maquina_id="{{$contrato->maquina_id}}">
+                <tr style="background-color: lightgrey"  data-id="{{$contrato->id_alquiler}}" data-maquina_id="{{$contrato->maquina_id}}" data-contrato_id="{{$contrato->id}}">
             @elseif($contrato->incidencia == 'Con incidencias')
-                <tr style="background-color: #ff8787"  data-id="{{$contrato->id_alquiler}}" data-maquina_id="{{$contrato->maquina_id}}">
+                <tr style="background-color: #ff8787"  data-id="{{$contrato->id_alquiler}}" data-maquina_id="{{$contrato->maquina_id}}" data-contrato_id="{{$contrato->id}}">
             @elseif($contrato->fecha_final > $fechaActual) 
-                <tr data-id="{{$contrato->id_alquiler}}" style="background-color: lightgreen" data-maquina_id="{{$contrato->maquina_id}}">
+                <tr data-id="{{$contrato->id_alquiler}}" style="background-color: lightgreen" data-maquina_id="{{$contrato->maquina_id}}" data-contrato_id="{{$contrato->id}}">
             @endif
                 <td >{{$contrato->id}}</td>
                 <td>{{$contrato->maq_categoria}}</td>
@@ -68,6 +69,7 @@
                 <td class="centrar_celda">{{$contrato->dias}}</td>
                 <td>{{$contrato->fecha_inicio}}</td>
                 <td>{{$contrato->fecha_final}}</td>
+                <td class="centrar_celda"><a class="carga_complementos" uk-toggle="target: #modal_ver_complemetos"uk-icon="icon: plus-circle"></a></a> </td>
                 <td  class="centrar_celda"><a href="{{url('/maquinas')}}/{{$contrato->maquina_id}}" uk-icon="icon: location"></a></td>
                 <td>{{$contrato->maq_estado}}</td>
 
@@ -90,7 +92,7 @@
 
 
 
-
+    <!--MODAL PARA EDITAR ESTADO DE UNA MÁQUINA-->
    <div id="modal_editar_estado_maquina" uk-modal="bg-close:false;">
         <div class="uk-modal-dialog uk-modal-body">
             <h2 class="uk-modal-title">Editar estado de la máquina</h2>
@@ -111,6 +113,26 @@
             <p class="uk-text-right">
                 <button class="uk-button uk-button-default uk-modal-close" type="button">Cancelar</button>
                 <button id="btn_moda_editar_estado_maquina" class="uk-button uk-button-primary " type="button">Guardar</button>
+            </p>
+        </div>
+    </div>
+
+     <!--MODAL PARA VER LOS COMPLEMENTOS DE UNA MÁQUINA -->
+   <div id="modal_ver_complemetos" uk-modal="bg-close:false;">
+        <div class="uk-modal-dialog uk-modal-body">
+            <h2 class="uk-modal-title">Listado de complementos</h2>
+            <div class="caja_modal">
+                
+                
+                
+            </div>
+
+
+
+            <br>
+            <p class="uk-text-right">
+              
+                <button  class="uk-button uk-button-primary uk-modal-close " type="button">Cerrar</button>
             </p>
         </div>
     </div>
@@ -166,7 +188,55 @@
          });//fin bontón editar cliente
     
     });//fin click
-    });
+
+     $('.carga_complementos').click(function(){
+       var id = $(this).closest('tr').data()['contrato_id'];
+
+       
+        
+        $.ajax({
+            url: '{{url("complementos")}}/'+ id,
+            method: 'GET',
+            success: function(respuesta) {
+                console.log(respuesta.length);
+                var html = `<table class="uk-table uk-table-striped">
+                        <thead>
+                            <tr>
+                                <th>Complemento</th>
+                                <th>Tipo</th>
+                                <th>Precio</th>
+                            </tr>
+                         </thead>
+                        <tbody>`;
+
+                for(var i = 0; i < respuesta.length; i++){
+
+                html = html + `<tr>
+                                    <td>${respuesta[i].com_complemento}</td> 
+                                    <td>${respuesta[i].com_tipo}</td>
+                                    <td>${respuesta[i].com_precio}€</td>
+                                </tr>`;    
+                    
+                }//fin for
+
+                html = html + `</tbody>
+                                </table>`;
+                
+                $('.caja_modal').html(html);
+
+               // console.log(respuesta);
+                
+            },//FIN SUCCESS
+
+ 
+         });//fin ajax
+    });//fin carga complemento
+
+
+
+
+
+    });//fin ready
       
 
 </script>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Complemento;
+use App\Contrato;
 use Illuminate\Http\Request;
 
 class ComplementoController extends Controller
@@ -44,9 +45,13 @@ class ComplementoController extends Controller
      * @param  \App\Complemento  $complemento
      * @return \Illuminate\Http\Response
      */
-    public function show(Complemento $complemento)
+    public function show($id)
     {
-        //
+        $contratos = Contrato::find($id);
+       //$hola = $contratos->complementos;
+        
+
+        return $contratos->complementos;
     }
 
     /**

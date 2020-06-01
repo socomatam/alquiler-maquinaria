@@ -40,9 +40,9 @@
 
 
 
-    <button id="alq_btn_nuevo_alquiler" class="uk-button uk-button-primary uk-button-small"><a href="{{url('/alquiler/create')}}">CREAR NUEVO ALQUILER</a></button>
+    <button id="alq_btn_nuevo_alquiler" class="uk-button uk-button-primary uk-button-medium"  ><a href="{{url('/alquiler/create')}}" >CREAR NUEVO ALQUILER </a> </button>
 
-
+    
     <table id="alq_tabla_id" class="display">
         <thead>
             <tr>

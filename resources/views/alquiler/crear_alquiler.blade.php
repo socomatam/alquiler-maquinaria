@@ -63,13 +63,13 @@
             <select class="alq_cre_letra" id="val_aquina" class="uk-select" name="id_maquina">
                 @foreach($maquinas as $maquina)
                 <option value="{{$maquina->id}}">
-                    {{$maquina->maq_categoria}} -
-                    {{$maquina->maq_tipo}} -
-                    {{$maquina->maq_peso}}kg -
-                    ({{$maquina->maq_dimension_largo}}cm x {{$maquina->maq_dimension_ancho}}cm x {{$maquina->maq_dimension_alto}}cm) -
-                    {{$maquina->maq_marca}} -
-                    {{$maquina->maq_modelo}} -
-                    {{$maquina->maq_precio_dia}}
+                    {{$maquina->maq_categoria}} /
+                    {{$maquina->maq_tipo}} /
+                    {{$maquina->maq_peso}}kg /
+                    ({{$maquina->maq_dimension_largo}}cm x {{$maquina->maq_dimension_ancho}}cm x {{$maquina->maq_dimension_alto}}cm) /
+                    {{$maquina->maq_marca}} /
+                    {{$maquina->maq_modelo}} /
+                    {{$maquina->maq_precio_dia}}€
                 </option>
                 @endforeach
             </select>

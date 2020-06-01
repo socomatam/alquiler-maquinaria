@@ -63,12 +63,12 @@ body > div > div.layout_menu_lateral.uk-width-1-6\@s{
 #alq_btn_nuevo_alquiler a{
     color: white;
     text-decoration: none;
-    margin-bottom: 20px;
+    
 }
 
 #alq_btn_nuevo_alquiler{
     margin-bottom: 20px;
-}
+}   
 
 #alq_pasados{
     background-color:lightgrey;

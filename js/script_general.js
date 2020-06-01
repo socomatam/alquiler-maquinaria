@@ -558,7 +558,9 @@ $(document).ready( function () {
 
      //---------FIN--Maquina-------------------//
     
+    //------------CONTRATO-------------------//
    
+    //-----------FIN CONTRATO ----------------//
 
 
 } );//fin ready
