@@ -54,6 +54,19 @@ class MaquinaController extends Controller
      */
     public function store(MaquinaRequest $request){
         
+
+    
+        $imagen = $request->file('file');
+        
+       
+       
+     
+        $nombreImg = $request->file('file')->getClientOriginalName();
+            
+                         
+       
+        $imagen->move('image', $nombreImg);
+
         $maquina = new Maquina;
         $maquina->maq_marca = $request->input('marca');
         $maquina->maq_modelo = $request->input('modelo');
@@ -65,6 +78,7 @@ class MaquinaController extends Controller
         $maquina->maq_dimension_ancho = $request->input('ancho');
         $maquina->maq_categoria = $request->input('categoria');
         $maquina->maq_precio_dia = $request->input('precio');
+        $maquina->maq_imagen = $nombreImg;
         $maquina->maq_estado = 'Libre';
         $maquina->maq_seguro = 'Vigente';
         $maquina->save();
