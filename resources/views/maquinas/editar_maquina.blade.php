@@ -20,7 +20,7 @@
     @endif
     
    
-    <form class="formularios" method="POST" action="{{url('/maquinas')}}/{{$maquina->id}}" class="uk-form-stacked">
+    <form class="formularios" method="POST" action="{{url('/maquinas')}}/{{$maquina->id}}"  enctype="multipart/form-data" class="uk-form-stacked">
         @csrf
         <input name="_method" type="hidden" value="PUT">
         <div uk-grid>
@@ -103,7 +103,17 @@
             <input class="uk-input" id="maq_peso" name="maq_precio_dia"  type="number" step=".01" value={{$maquina->maq_precio_dia}} >    
         </div>
         <br>
-       
+         <div class="uk-width-1-1@m uk-margin" uk-margin>
+        <label class="uk-form-label" for="maq_imagen">IMAGEN</label>
+        <div class="uk-margin" uk-margin>
+            <div uk-form-custom="target: true">
+                <input type="file" name="file">
+                <input class="uk-input uk-form-width-medium" type="text" placeholder="Examinar" disabled>
+            </div>
+
+        </div>
+
+    </div>
 
 
 

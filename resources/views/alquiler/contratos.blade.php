@@ -23,6 +23,7 @@
     <thead>
         <tr>
             <th>ID</th>
+            <th style="width: 5%;">Foto</th>
             <th>Categoria</th>
             <th class="centrar_celda">Tipo</th>
             <th class="centrar_celda">Marca</th>
@@ -58,11 +59,12 @@
                 <tr data-id="{{$contrato->id_alquiler}}" style="background-color: lightgreen" data-maquina_id="{{$contrato->maquina_id}}" data-contrato_id="{{$contrato->id}}">
             @endif
                 <td >{{$contrato->id}}</td>
+                <td><img class="img_hover" src="{{url('image')}}/{{$contrato->imagen}}"></td>
                 <td>{{$contrato->maq_categoria}}</td>
                 <td>{{$contrato->maq_tipo}}</td>
                 <td>{{$contrato->maq_marca}}</td>
                 <td>{{$contrato->maq_modelo}}</td>
-                <td>{{$contrato->maq_largo}} x {{$contrato->maq_ancho}} x {{$contrato->maq_alto}}</td>
+                <td>{{$contrato->maq_largo}}x{{$contrato->maq_ancho}}x{{$contrato->maq_alto}}</td>
                 <td>{{$contrato->maq_peso}}kg</td>
                 <td>{{$contrato->maq_traslacion}}kg</td>
                 <td>{{$contrato->con_precio}}€</td>

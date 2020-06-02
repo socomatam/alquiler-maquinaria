@@ -222,16 +222,16 @@ class AlquilereController extends Controller
 
        
          
-
+        
         //actualiza el estado de la maquina alquilada
         Maquina::where('id',$request->input('id_maquina'))
             ->update(['maq_estado'=>'Alquilada']);
 
         //determina la duración del alquiler, comporbando la fecha más tardía
-        if($contrato->alq_fecha_fin > $datosalquiler->alq_fecha_fin){
+        if($datosalquiler->alq_fecha_fin < $contrato->con_fecha_fin ){
             Alquilere::where('id',$datosalquiler->id)
             ->update(['alq_fecha_fin'=>$contrato->con_fecha_fin]);
-        }elseif($contrato->alq_fecha_inicio < $datosalquiler->alq_fecha_inicio ){
+        }elseif(  $datosalquiler->alq_fecha_inicio > $contrato->con_fecha_inicio  ){
             Alquilere::where('id',$datosalquiler->id)
             ->update(['alq_fecha_inicio'=>$contrato->con_fecha_inicio]);
         }    
@@ -296,6 +296,7 @@ class AlquilereController extends Controller
 
         $contratos = Contrato::select(
             'contratos.id AS id',
+            'maquinas.maq_imagen AS imagen', 
             'contratos.con_precio AS con_precio',
             'contratos.alquiler_id AS id_alquiler',
             'contratos.con_incidencia AS incidencia',

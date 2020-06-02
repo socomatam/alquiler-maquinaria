@@ -47,7 +47,7 @@
     <thead>
         <tr>
             <th>ID</th>
-            <th style="width: 10%;">Foto</th>
+            <th style="width: 5%;">Foto</th>
             <th>Categoría</th>
             <th>Tipo</th>
             <th>Marca</th>
@@ -78,7 +78,7 @@
             @endif
 
                     <td>{{$maquina->id}}</td>
-                    <td><img  src="{{url('image')}}/{{$maquina->maq_imagen}}"></td>
+                    <td><img class="img_hover" src="{{url('image')}}/{{$maquina->maq_imagen}}"></td>
                     <td>{{$maquina->maq_categoria}}</td>
                     <td>{{$maquina->maq_tipo}}</td>
                     <td>{{$maquina->maq_marca}}</td>

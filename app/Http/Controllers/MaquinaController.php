@@ -57,14 +57,8 @@ class MaquinaController extends Controller
 
     
         $imagen = $request->file('file');
-        
-       
-       
-     
         $nombreImg = $request->file('file')->getClientOriginalName();
             
-                         
-       
         $imagen->move('image', $nombreImg);
 
         $maquina = new Maquina;
@@ -176,8 +170,19 @@ class MaquinaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request = request()->except('_token','_method');
-		Maquina::where('id',$id)->update($request);
+        $imagen = $request->file('file');
+        $nombreImg = $request->file('file')->getClientOriginalName();     
+        $imagen->move('image', $nombreImg);
+
+        Maquina::where('id',$id)
+        ->update(['maq_imagen'=>$nombreImg]);
+
+        $request = request()->except('_token','_method','file');
+        Maquina::where('id',$id)->update($request);
+        
+       
+
+
 		Session::flash('editar_registro', 'La máquina se ha editado correctamente.');		
         return redirect('maquinas');
     }
