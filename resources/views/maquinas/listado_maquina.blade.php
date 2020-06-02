@@ -84,11 +84,11 @@
                     <td>{{$maquina->maq_marca}}</td>
                     <td>{{$maquina->maq_modelo}}</td>
                     <td>{{$maquina->maq_traslacion}}</td>
-                    <td>{{$maquina->maq_peso}}</td>
-                    <td>{{$maquina->maq_dimension_ancho}}</td>
-                    <td>{{$maquina->maq_dimension_largo}}</td>
-                    <td>{{$maquina->maq_dimension_alto}}</td>
-                    <td>{{$maquina->maq_precio_dia}}</td>
+                    <td>{{$maquina->maq_peso}}kg</td>
+                    <td>{{$maquina->maq_dimension_ancho}}m</td>
+                    <td>{{$maquina->maq_dimension_largo}}m</td>
+                    <td>{{$maquina->maq_dimension_alto}}m</td>
+                    <td>{{$maquina->maq_precio_dia}}€</td>
                     <td>{{$maquina->maq_estado}}</td>
                     <td  class="centrar_celda"><a href="{{url('/maquinas')}}/{{$maquina->id}}" uk-icon="icon: location"></a></td>
                     @if($maquina->maq_estado == 'Alquilada')

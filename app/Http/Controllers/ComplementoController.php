@@ -48,9 +48,6 @@ class ComplementoController extends Controller
     public function show($id)
     {
         $contratos = Contrato::find($id);
-       //$hola = $contratos->complementos;
-        
-
         return $contratos->complementos;
     }
 

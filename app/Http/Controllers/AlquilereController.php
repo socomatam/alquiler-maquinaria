@@ -427,12 +427,36 @@ class AlquilereController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($alquiler){
+
+
         
+        
+        //obtiene los id de las contratos
+         $contratoIds = DB::table('contratos')
+         ->select(DB::raw("id AS id"))
+         ->where('alquiler_id', $alquiler)->get();
+
+         //cambia el estado de los complementos por el estado libre
+        foreach($contratoIds as $id){
+           $cc =  DB::table('complemento_contratos')
+           ->select(DB::raw("complemento_id AS id_complemento"))
+           ->where('contrato_id', $id->id)->get();
+
+           foreach($cc as $idC){
+                Complemento::where('id', $idC->id_complemento)
+                ->update(['com_estado'=>'Libre']);
+           }//fin foreach
+        }//fin foreach
+        
+
+
+
+        //obtiene el id de las máquinas
         $maquinaIds = DB::table('contratos')
         ->select(DB::raw("maquina_id AS id_maquina"))
         ->where('alquiler_id', $alquiler)->get();
 
-        
+        //Actualiza el estado de las máquinas
         foreach($maquinaIds as $id){
             Maquina::where('id', $id->id_maquina)
             ->update(['maq_estado'=>'Libre']);
@@ -444,9 +468,12 @@ class AlquilereController extends Controller
         ->where('alquiler_id', $alquiler)->get();
 
         //Conseguimos el objeto
-        $contrato=Contrato::where('alquiler_id', '=', $alquiler);    
+        $contrato=Contrato::where('alquiler_id', '=', $alquiler);
         // Lo eliminamos de la base de datos
         $contrato->delete();
+
+
+
 
         $objAlquiler = Alquilere::where('id', '=', $alquiler);
         $objAlquiler->delete(); 
