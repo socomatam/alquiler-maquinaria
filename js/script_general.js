@@ -16,7 +16,7 @@ $(document).ready( function () {
         "pageLength": 15,
         "lengthMenu": [ 10, 15, 20, 25, 50, 75, 100 ],
         "order": [[ 0, "asc" ]],
-        columnDefs: [ { orderable: false, targets: [] }],
+        columnDefs: [ { orderable: false, targets: [7,8] }],
         language:{
             "decimal":        "",
             "emptyTable":     "No hay datos disponibles",
@@ -51,7 +51,7 @@ $(document).ready( function () {
         "pageLength": 15,
         "lengthMenu": [ 10, 15, 20, 25, 50, 75, 100 ],
        
-        columnDefs: [ { orderable: false, targets: [12,14,15] }],
+        columnDefs: [ { orderable: false, targets: [1,13,14,16,17] }],
         language:{
             "decimal":        "",
             "emptyTable":     "No hay datos disponibles",
@@ -119,10 +119,10 @@ $(document).ready( function () {
     $('#maq_tabla_id').DataTable({
         colReorder: true,
         fixedHeader: false,
-        "pageLength": 15,
+        "pageLength": 10,
         "lengthMenu": [ 10, 15, 20, 25, 50, 75, 100 ],
-        "order": [[ 3, "desc" ]],
-        columnDefs: [ { orderable: false, targets: [0,1] }],
+        "order": [[ 0, "asc" ]],
+        columnDefs: [ { orderable: false, targets: [1,13,14,15] }],
         language:{
             "decimal":        "",
             "emptyTable":     "No hay datos disponibles",

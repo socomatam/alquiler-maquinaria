@@ -39,10 +39,12 @@ class AlquilereController extends Controller
         $fechaActual =  $fechaActual->format('Y-m-d');
 
        
-
+       //pasada la fecha actual cambia el estado de las máquinas por el de libres para alquiler 
        Contrato::join('maquinas', 'contratos.maquina_id', '=', 'maquinas.id')
         ->where('con_fecha_fin', '<', $fechaActual)->update(['maq_estado'=>'Libre']);
 
+
+      
 
 
 
@@ -65,7 +67,7 @@ class AlquilereController extends Controller
         )->join(
             'trabajadores', 'alquileres.trabajador_id', '=', 'trabajadores.id'
         )->get();
-
+           
         
 
         return view('alquiler.listado', compact('alquiler', 'fechaActual', 'clientes'));
@@ -150,7 +152,9 @@ class AlquilereController extends Controller
 
         $id = Auth::id();//recoge del usuario actualmente logeado en el sistema
     
-
+        $idEmpleado = User::select('trabajador_id')
+        ->where('id',$id)
+         ->get()[0]->trabajador_id;
 
         //Calcula la cantidad de días de cada contrato
         $fecha1 = new DateTime($request->input('from'));
@@ -176,9 +180,9 @@ class AlquilereController extends Controller
     
             $alquiler->alq_incidencia = 'Sin incidencias';
             $alquiler->alq_precio = $precioTotalAlquiler;
-            $alquiler->trabajador_id = $id;
+            $alquiler->trabajador_id = $idEmpleado;
             $alquiler->save();
-
+            
             $fecha1 = 0;
             $fecha2 = 0;
 
@@ -220,6 +224,10 @@ class AlquilereController extends Controller
 
         }//fin if
 
+
+
+
+
        
          
         
@@ -227,11 +235,22 @@ class AlquilereController extends Controller
         Maquina::where('id',$request->input('id_maquina'))
             ->update(['maq_estado'=>'Alquilada']);
 
+
+
+
+        $alquilerFin = new DateTime($datosalquiler->alq_fecha_fin);
+        $contratoFin = new DateTime($contrato->con_fecha_fin);
+    
+        $alquilerInicio = new DateTime($datosalquiler->alq_fecha_inicio);
+        $contratoInicio = new DateTime($contrato->con_fecha_inicio);
+
         //determina la duración del alquiler, comporbando la fecha más tardía
-        if($datosalquiler->alq_fecha_fin < $contrato->con_fecha_fin ){
+        if($alquilerFin < $contratoFin ){
             Alquilere::where('id',$datosalquiler->id)
             ->update(['alq_fecha_fin'=>$contrato->con_fecha_fin]);
-        }elseif(  $datosalquiler->alq_fecha_inicio > $contrato->con_fecha_inicio  ){
+           
+        }
+        if( $alquilerInicio > $contratoInicio  ){
             Alquilere::where('id',$datosalquiler->id)
             ->update(['alq_fecha_inicio'=>$contrato->con_fecha_inicio]);
         }    
@@ -240,8 +259,11 @@ class AlquilereController extends Controller
         $id = Auth::id();
         $empleado = User::find($id)->trabajador;//obtiene los datos del emprledo autenticado
 
-    
 
+        
+        
+
+     
 
 
         //guarda 
@@ -438,10 +460,11 @@ class AlquilereController extends Controller
 
          //cambia el estado de los complementos por el estado libre
         foreach($contratoIds as $id){
+            //obtiene un objeto para sacar los id de los complementos
            $cc =  DB::table('complemento_contratos')
            ->select(DB::raw("complemento_id AS id_complemento"))
            ->where('contrato_id', $id->id)->get();
-
+            //cambia el estado de los complementos que han sido borrados
            foreach($cc as $idC){
                 Complemento::where('id', $idC->id_complemento)
                 ->update(['com_estado'=>'Libre']);

@@ -27,7 +27,7 @@
     </div>
     @endif
         
-        <button id="cli_btn_nuevo_cliente" class="uk-button uk-button-primary uk-button-small"><a href="{{url('/trabajadores/create')}}">CREAR NUEVO TRABAJADOR</a></button>
+        <button id="cli_btn_nuevo_cliente" class="uk-button uk-button-primary uk-button-medium"><a href="{{url('/trabajadores/create')}}">CREAR NUEVO TRABAJADOR</a></button>
         
         <table id="tra_tabla_id" class="display">
             <thead >

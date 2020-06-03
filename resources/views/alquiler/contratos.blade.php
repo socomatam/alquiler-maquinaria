@@ -71,13 +71,13 @@
                 <td class="centrar_celda">{{$contrato->dias}}</td>
                 <td>{{$contrato->fecha_inicio}}</td>
                 <td>{{$contrato->fecha_final}}</td>
-                <td class="centrar_celda"><a class="carga_complementos" uk-toggle="target: #modal_ver_complemetos"uk-icon="icon: plus-circle"></a></a> </td>
-                <td  class="centrar_celda"><a href="{{url('/maquinas')}}/{{$contrato->maquina_id}}" uk-icon="icon: location"></a></td>
+                <td class="centrar_celda"><a class="carga_complementos" uk-toggle="target: #modal_ver_complemetos"uk-icon="icon: plus-circle; ratio:1.5"></a></a> </td>
+                <td  class="centrar_celda"><a href="{{url('/maquinas')}}/{{$contrato->maquina_id}}" uk-icon="icon: location; ratio:1.5"></a></td>
                 <td>{{$contrato->maq_estado}}</td>
 
 
-                <td  class="con_editar centrar_celda"><a href="#" uk-icon="icon: file-edit"></a></td>
-                <td class="centrar_celda"><a class="" uk-icon="icon: trash"></a></td>
+                <td  class="con_editar centrar_celda"><a href="#" uk-icon="icon: file-edit; ratio:1.5"></a></td>
+                <td class="centrar_celda"><a class="" uk-icon="icon: trash; ratio:1.5"></a></td>
             </tr>
             @endforeach
 

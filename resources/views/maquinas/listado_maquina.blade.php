@@ -7,7 +7,6 @@
 
 
 
-
 <h2 class="uk-heading-divider">Listado maquinas
      <span style="float:right;">
             
@@ -41,15 +40,17 @@
     </div>
     @endif
 
+
+
 <button id="cli_btn_nuevo_cliente" class="uk-button uk-button-primary uk-button-medium"><a href="{{url('/maquinas/create')}}">CREAR NUEVA MÁQUINA</a></button>
 
 <table id="maq_tabla_id" class="display">
-    <thead>
-        <tr>
+    <thead >
+        <tr class=" uk-navbar-sticky">
             <th>ID</th>
             <th style="width: 5%;">Foto</th>
             <th>Categoría</th>
-            <th>Tipo</th>
+            <th class="centrar_celda">Tipo</th>
             <th>Marca</th>
             <th>Modelo</th>
             <th>Traslación</th>
@@ -77,31 +78,31 @@
                 <tr data-id="{{$maquina->id}}" id="alq_incidencia">
             @endif
 
-                    <td>{{$maquina->id}}</td>
+                    <td class="centrar_celda">{{$maquina->id}}</td>
                     <td><img class="img_hover" src="{{url('image')}}/{{$maquina->maq_imagen}}"></td>
                     <td>{{$maquina->maq_categoria}}</td>
                     <td>{{$maquina->maq_tipo}}</td>
                     <td>{{$maquina->maq_marca}}</td>
                     <td>{{$maquina->maq_modelo}}</td>
                     <td>{{$maquina->maq_traslacion}}</td>
-                    <td>{{$maquina->maq_peso}}kg</td>
-                    <td>{{$maquina->maq_dimension_ancho}}m</td>
-                    <td>{{$maquina->maq_dimension_largo}}m</td>
-                    <td>{{$maquina->maq_dimension_alto}}m</td>
-                    <td>{{$maquina->maq_precio_dia}}€</td>
+                    <td>{{$maquina->maq_peso}} kg</td>
+                    <td>{{$maquina->maq_dimension_ancho}} m</td>
+                    <td>{{$maquina->maq_dimension_largo}} m</td>
+                    <td>{{$maquina->maq_dimension_alto}} m</td>
+                    <td>{{$maquina->maq_precio_dia}} €</td>
                     <td>{{$maquina->maq_estado}}</td>
-                    <td  class="centrar_celda"><a href="{{url('/maquinas')}}/{{$maquina->id}}" uk-icon="icon: location"></a></td>
+                    <td  class="centrar_celda"><a href="{{url('/maquinas')}}/{{$maquina->id}}" uk-icon="icon: location; ratio:1.5"></a></td>
                     @if($maquina->maq_estado == 'Alquilada')
-                        <td  class="maq_editar centrar_celda"><a href="#" uk-icon="icon: file-edit"></a></td>
+                        <td  class="maq_editar centrar_celda"><a href="#" uk-icon="icon: file-edit ; ratio:1.5"></a></td>
                     @elseif($maquina->maq_estado == 'Avería')
-                        <td  class="maq_editar centrar_celda"><a href="#" uk-icon="icon: file-edit"></a></td>
+                        <td  class="maq_editar centrar_celda"><a href="#" uk-icon="icon: file-edit ; ratio:1.5"></a></td>
                     @elseif($maquina->maq_estado == 'Libre')
-                    <td class="centrar_celda"><a href="{{url('/maquinas')}}/{{$maquina->id}}/edit" uk-icon="icon: file-edit"></a></td>
+                    <td class="centrar_celda"><a href="{{url('/maquinas')}}/{{$maquina->id}}/edit" uk-icon="icon: file-edit ; ratio:1.5"></a></td>
                     @endif
 
 
                     @if (Auth::user()->rol == 'admin')
-                        <td class="centrar_celda"><a class="borrar_maquina" uk-icon="icon: trash"></a></td>
+                        <td class="centrar_celda"><a class="borrar_maquina" uk-icon="icon: trash ; ratio:1.5"></a></td>
                     @endif    
                 </tr>
         @endforeach

@@ -29,7 +29,7 @@
 @endif
 
 
-<button id="cli_btn_nuevo_cliente" class="uk-button uk-button-primary uk-button-small"><a href="{{url('/clientes/create')}}">CREAR NUEVO CLIENTE</a></button>
+<button id="cli_btn_nuevo_cliente" class="uk-button uk-button-primary uk-button-medium"><a href="{{url('/clientes/create')}}">CREAR NUEVO CLIENTE</a></button>
 
 <table id="cli_tabla_id" class="display">
     <thead>

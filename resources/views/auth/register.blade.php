@@ -61,7 +61,13 @@
         <div class="uk-margin">
             <label class="uk-form-label uk-text-bold" for="form-stacked-text"><span class="uk-margin-small-right"></span>E-MAIL</label>
             <div class="uk-form-controls">
-                <input id="email" type="email" class="uk-input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+               
+
+                 <select id="cli_select" class="uk-select" name="email">
+                @foreach($trabajadores as $trabajador)
+                <option value="{{$trabajador->tra_email}}">{{$trabajador->tra_email}}</option>
+                @endforeach
+            </select>
 
                 @error('email')
                 <span class="invalid-feedback" role="alert">

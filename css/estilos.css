@@ -61,6 +61,7 @@ body > div > div.layout_menu_lateral.uk-width-1-6\@s{
 }
 
 
+
 /*LISTADO ALQUILER*/
 
 #alq_btn_nuevo_alquiler a{
@@ -78,7 +79,7 @@ body > div > div.layout_menu_lateral.uk-width-1-6\@s{
 }
 
 #alq_vigente{
-    background-color: lightgreen;
+    background-color: #b3ffb3;
 }
 
 #alq_incidencia{

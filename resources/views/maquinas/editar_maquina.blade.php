@@ -27,8 +27,10 @@
             <div class="uk-width-1-3">
                 <label class="uk-form-label" for="maq_marca">MARCA</label>
                 <br>
-                <select class="uk-select" name="maq_marca">
+                <select class="uk-select" name="maq_marca" value="hoal">
+                    <option value="{{$maquina->maq_marca}}" selected>{{$maquina->maq_marca}}</option>
                     @foreach($marcas as $marca)
+                        
                         <option value="{{$marca->mar_marca}}">{{$marca->mar_marca}}</option>
                     @endforeach
                 </select>
@@ -37,7 +39,9 @@
                 <label class="uk-form-label" for="maq_modelo">MODELO</label>
                 <br>
                 <select class="uk-select" name="maq_modelo">
+                     <option value="{{$maquina->maq_modelo}}" selected>{{$maquina->maq_modelo}}</option>
                     @foreach($modelos as $modelo)
+                       
                         <option value="{{$modelo->mod_modelo}}">{{$modelo->mod_modelo}}</option>
                     @endforeach
                 </select>
@@ -50,7 +54,9 @@
                 <label class="uk-form-label" for="maq_marca">CATEGORIA</label>
                 <br>
                 <select class="uk-select" name="maq_categoria">
+                    <option value="{{$maquina->maq_categoria}}" selected>{{$maquina->maq_categoria}}</option>
                     @foreach($categorias as $categoria)
+                       
                         <option value="{{$categoria->cat_categoria}}">{{$categoria->cat_categoria}}</option>
                     @endforeach
                 </select>
@@ -59,7 +65,9 @@
                 <label class="uk-form-label" for="maq_modelo">TIPO</label>
                 <br>
                 <select class="uk-select" name="maq_tipo">
+                    <option value="{{$maquina->maq_tipo}}" selected>{{$maquina->maq_tipo}}</option>
                     @foreach($tipos as $tipo)
+                        
                         <option value="{{$tipo->tip_tipo}}">{{$tipo->tip_tipo}}</option>
                     @endforeach
                 </select>
@@ -68,7 +76,8 @@
                 <label class="uk-form-label" for="maq_modelo">TRASLACIÓN</label>
                 <br>
                  <select class="uk-select" name="maq_traslacion">
-                    @foreach($desplazamientos as $desplazamiento)
+                    <option value="{{$maquina->maq_traslacion}}" selected>{{$maquina->maq_traslacion}}</option>
+                    @foreach($desplazamientos as $desplazamiento) 
                         <option value="{{$desplazamiento->des_desplazamiento}}">{{$desplazamiento->des_desplazamiento}}</option>
                     @endforeach
                 </select>
@@ -107,7 +116,7 @@
         <label class="uk-form-label" for="maq_imagen">IMAGEN</label>
         <div class="uk-margin" uk-margin>
             <div uk-form-custom="target: true">
-                <input type="file" name="file">
+                <input type="file" name="file" value={{$maquina->maq_imagen}} required>
                 <input class="uk-input uk-form-width-medium" type="text" placeholder="Examinar" disabled>
             </div>
 
