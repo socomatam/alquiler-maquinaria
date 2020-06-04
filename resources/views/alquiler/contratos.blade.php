@@ -105,6 +105,7 @@
                  
                     <option value="Avería">Avería</option>
                     <option value="Alquilada">Alquilada</option>
+                     <option value="Alquilada">Libre</option>
                     
                 </select>
             </div>

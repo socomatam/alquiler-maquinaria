@@ -44,6 +44,8 @@
             <th class="centrar_celda">Editar</th>
             @if (Auth::user()->rol == 'admin')
                 <th class="centrar_celda">Borrar</th>
+            @elseif(Auth::user()->rol == 'trabajador')
+                <th class="centrar_celda">Borrar</th>
             @endif
         </tr>
     </thead>
@@ -61,6 +63,8 @@
             <td class="centrar_celda"><a href="{{url('/clientes')}}/{{$cli->id}}/edit" uk-icon="icon: file-edit"></a></td>
             @if (Auth::user()->rol == 'admin')
                 <td class="centrar_celda"><a class="borrar_cliente" uk-icon="icon: trash"></a></td>
+            @elseif(Auth::user()->rol == 'trabajador')
+                <th class="centrar_celda"></th>
             @endif
             @endforeach
 
@@ -76,6 +80,8 @@
             <th class="centrar_celda">Dirección</th>
             <th class="centrar_celda">Editar</th>
             @if (Auth::user()->rol == 'admin')
+                <th class="centrar_celda">Borrar</th>
+            @elseif(Auth::user()->rol == 'trabajador')
                 <th class="centrar_celda">Borrar</th>
             @endif
     

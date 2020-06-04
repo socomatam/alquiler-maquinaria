@@ -64,6 +64,8 @@
             <th>Editar</th>
             @if (Auth::user()->rol == 'admin')
                 <th>Borrar</th>
+            @elseif(Auth::user()->rol == 'trabajador')
+                <th>Borrar</th>
             @endif
         </tr>
     </thead>
@@ -76,6 +78,7 @@
                  <tr data-id="{{$maquina->id}}" id="alq_vigente">
             @elseif($maquina->maq_estado == 'Avería')
                 <tr data-id="{{$maquina->id}}" id="alq_incidencia">
+
             @endif
 
                     <td class="centrar_celda">{{$maquina->id}}</td>
@@ -91,18 +94,20 @@
                     <td>{{$maquina->maq_dimension_alto}} m</td>
                     <td>{{$maquina->maq_precio_dia}} €</td>
                     <td>{{$maquina->maq_estado}}</td>
-                    <td  class="centrar_celda"><a href="{{url('/maquinas')}}/{{$maquina->id}}" uk-icon="icon: location; ratio:1.5"></a></td>
+                    <td  class="centrar_celda"><a href="{{url('/maquinas')}}/{{$maquina->id}}" uk-icon="icon: location; ratio:1.4"></a></td>
                     @if($maquina->maq_estado == 'Alquilada')
                         <td  class="maq_editar centrar_celda"><a href="#" uk-icon="icon: file-edit ; ratio:1.5"></a></td>
                     @elseif($maquina->maq_estado == 'Avería')
                         <td  class="maq_editar centrar_celda"><a href="#" uk-icon="icon: file-edit ; ratio:1.5"></a></td>
                     @elseif($maquina->maq_estado == 'Libre')
-                    <td class="centrar_celda"><a href="{{url('/maquinas')}}/{{$maquina->id}}/edit" uk-icon="icon: file-edit ; ratio:1.5"></a></td>
+                    <td class="centrar_celda"><a href="{{url('/maquinas')}}/{{$maquina->id}}/edit" uk-icon="icon: file-edit ; ratio:1.4"></a></td>
                     @endif
 
 
                     @if (Auth::user()->rol == 'admin')
                         <td class="centrar_celda"><a class="borrar_maquina" uk-icon="icon: trash ; ratio:1.5"></a></td>
+                     @elseif(Auth::user()->rol == 'trabajador')
+                        <th></th>
                     @endif    
                 </tr>
         @endforeach
@@ -126,6 +131,8 @@
             <th>Localización</th>
             <th>Editar</th>
             @if (Auth::user()->rol == 'admin')
+                <th>Borrar</th>
+            @elseif(Auth::user()->rol == 'trabajador')
                 <th>Borrar</th>
             @endif
     

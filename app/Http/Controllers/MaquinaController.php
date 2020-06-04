@@ -158,6 +158,18 @@ class MaquinaController extends Controller
         }else if($estado == 'Libre'){
             Maquina::where('id',$id)
             ->update(['maq_estado'=>'Libre']);
+
+
+             //marca una sin incidencia en el contrato
+             Contrato::where('maquina_id',$id)
+             ->update(['con_incidencia'=>'Sin incidencias']);
+
+             $contrato = DB::table('contratos')->where('maquina_id', $id)->first();
+
+             Alquilere::where('id',$contrato->alquiler_id)
+            ->update(['alq_incidencia'=>'Sin incidencias']);
+
+
         }
     }//fin editarEstado
 

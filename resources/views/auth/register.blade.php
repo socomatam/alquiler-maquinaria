@@ -96,7 +96,7 @@
             <select id="cli_select" class="uk-select" name="rol">
                 
                 <option value="admin">Administrador</option>
-                <option value="admin">Trabajador</option>
+                <option value="trabajador">Trabajador</option>
                 
             </select>
 

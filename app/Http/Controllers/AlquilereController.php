@@ -41,7 +41,7 @@ class AlquilereController extends Controller
        
        //pasada la fecha actual cambia el estado de las máquinas por el de libres para alquiler 
        Contrato::join('maquinas', 'contratos.maquina_id', '=', 'maquinas.id')
-        ->where('con_fecha_fin', '<', $fechaActual)->update(['maq_estado'=>'Libre']);
+        ->where('con_fecha_fin', '<=', $fechaActual)->update(['maq_estado'=>'Libre']);
 
 
       

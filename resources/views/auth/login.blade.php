@@ -55,14 +55,14 @@
                 </div>
                 
                 <button type="submit" class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom">ACCEDER<a href="" uk-icon="icon:  sign-in"></a></button>
-                <a class="uk-link-muted" href="{{ route('password.request') }}">Recuperar contraseña.</a>
+                <a class="uk-link-muted" href="#">Recuperar contraseña.</a>
                 <br>
                 <a class="uk-link-muted" href="{{url('nuevousuario')}}">Solicitar creación de cuenta.</a>
             </form>
         <div>
     </div>
     
-
+    <!-- <a class="uk-link-muted" href="{{ route('password.request') }}">Recuperar contraseña.</a>-->
     </body>
 </html>
 
