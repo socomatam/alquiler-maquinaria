@@ -87,6 +87,10 @@ body > div > div.layout_menu_lateral.uk-width-1-6\@s{
     
 }
 
+#alq_liberar{
+    background-color: orange;
+}
+
 
 .alq_btn_plus{
     cursor: pointer;

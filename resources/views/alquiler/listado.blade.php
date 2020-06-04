@@ -11,6 +11,7 @@
             <span class="uk-label uk-label-success">VIGENTE</span>
             <span style="background-color:lightgray;"  class="uk-label">FINALIZADO</span>
             <span class="uk-label uk-label-danger">INCIDENCIA</span>
+            <span id="alq_liberar" class="uk-label uk-label-danger">SIN LIBERAR</span>
         </span>
     
     
@@ -64,7 +65,11 @@
 
             @foreach($alquiler as $alq)
                 @if($alq->fin <= $fechaActual) 
-                    <tr data-alq_id="{{$alq->id_alquiler}}" id="alq_pasados">
+                    @if($alq->incidencia == "Con incidencias")
+                        <tr data-alq_id="{{$alq->id_alquiler}}" id="alq_liberar">
+                    @elseif($alq->incidencia == 'Sin incidencias')
+                        <tr data-alq_id="{{$alq->id_alquiler}}" id="alq_pasados">
+                    @endif
                 @elseif($alq->incidencia == "Con incidencias")
                     <tr data-alq_id="{{$alq->id_alquiler}}" id="alq_incidencia">
                 @elseif($alq->fin > $fechaActual)
