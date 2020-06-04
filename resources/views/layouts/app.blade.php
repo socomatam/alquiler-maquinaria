@@ -101,7 +101,7 @@
        <div class="layout_menu_lateral uk-width-1-6@s">
             <ul uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky" class="uk-nav-primary uk-nav-parent-icon" uk-nav>
                 <div>
-                 <a style="font-size:30px;" uk-icon="menu"></a>  <a style="font-size:23px;">Menú de navegación</a>
+                  <a style="font-size:23px;">Menú de navegación</a>
                  </div>
                <hr>
                 <li><a class="menu_alq" href="{{url('/alquiler')}}"> Alquiler</a></li>

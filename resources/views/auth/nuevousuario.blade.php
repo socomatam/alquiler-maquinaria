@@ -31,10 +31,19 @@
 </head>
 <body>
 
-    <div class="uk-position-top-center">
-
-        <h1 class="uk-heading-small">ALQUILER MAQUINARIA</h1>
-    </div>
+     <div style="background-color:black;" class="uk-background-secondary uk-light uk-padding uk-panel">
+           
+            <br>
+            <br>
+          
+           
+        </div>
+        <div  class="uk-position-top-center">
+               
+                <div class="_logo">
+                    <img style="width:50% ;" src="{{url('image/logo_agm.png')}}">
+                </div>
+        </div>
 
 
 
@@ -115,7 +124,7 @@
 
 
 
-                <button type="submit" class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom">REGISTRARSE<a href="" uk-icon="icon:  sign-in"></a></button>
+                <button type="submit" class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom">ENVIAR DATOS<a href="" uk-icon="icon:  sign-in"></a></button>
 
             </form>
             <div>

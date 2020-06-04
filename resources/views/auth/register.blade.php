@@ -31,10 +31,7 @@
 </head>
 <body>
 
-     <div class="uk-position-top-center">
-           
-            <h1 class="uk-heading-small">ALQUILER MAQUINARIA</h1>
-    </div>
+  
 
     <div class="uk-position-center uk-overlay uk-overlay-default">
     
@@ -132,7 +129,7 @@
 
 
 
-        <button type="submit" class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom">REGISTRARSE<a href="" uk-icon="icon:  sign-in"></a></button>
+        <button type="submit" class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom">REGISTRAR USUARIO<a href="" uk-icon="icon:  sign-in"></a></button>
 
         </form>
         <div>

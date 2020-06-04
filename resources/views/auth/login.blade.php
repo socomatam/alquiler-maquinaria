@@ -17,14 +17,23 @@
 
     </head>
     <body>
-
-    <div class="uk-position-top-center">
+     <div style="background-color:black;" class="uk-background-secondary uk-light uk-padding uk-panel">
+           
             <br>
             <br>
-             <div class="_logo">
-                 <img style="width:70% ;" src="{{url('image/logo_agm.png')}}">
-             </div>
-    </div>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+        <div  class="uk-position-top-center">
+                <br>
+                <br>
+                <div class="_logo">
+                    <img style="width:70% ;" src="{{url('image/logo_agm.png')}}">
+                </div>
+        </div>
+    
 
     <div class="uk-position-center uk-overlay uk-overlay-default">
         <div class="uk-box-shadow-bottom uk-box-shadow-small">
