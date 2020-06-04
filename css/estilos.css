@@ -10,6 +10,7 @@ html, body{
     height: 50%;
 }
 
+
 body > div > div.layout_menu_lateral.uk-width-1-6\@s{
     background-color: white;
 }
@@ -51,12 +52,12 @@ body > div > div.layout_menu_lateral.uk-width-1-6\@s{
 }
 
 .lay_user:hover{
-    color: black !important;
+    color: #f5e042 !important;
 }
 
 
 #listado{
-    background-color: #1da1f2;
+    background-color:black;
     
 }
 

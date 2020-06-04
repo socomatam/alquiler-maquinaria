@@ -24,6 +24,56 @@ class MaquinaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
+
+       /*
+        $maquinas = Contrato::select(
+            'contratos.id AS id_contrato',
+            'maquinas.maq_imagen AS maq_imagen', 
+            DB::raw('COUNT(maquinas.id) as amount'),
+            'contratos.con_incidencia AS incidencia',
+            'contratos.con_fecha_inicio AS fecha_inicio',
+            'contratos.con_fecha_fin AS fecha_final',
+            'maquinas.maq_marca AS maq_marca',
+            'maquinas.maq_modelo AS maq_modelo',
+            'maquinas.maq_traslacion AS maq_traslacion',
+            'maquinas.maq_tipo AS maq_tipo',
+            'maquinas.maq_peso AS maq_peso',
+            'maquinas.maq_dimension_alto AS maq_dimension_alto',
+            'maquinas.maq_dimension_largo AS maq_dimension_largo',
+            'maquinas.maq_dimension_ancho AS maq_dimension_ancho',
+            'maquinas.maq_categoria AS maq_categoria',
+            'maquinas.maq_estado AS maq_estado',
+            'maquinas.maq_precio_dia AS maq_precio',
+            'maquinas.id AS id',
+            'maquinas.maq_estado AS maq_estado',
+            'maquinas.maq_precio_dia AS maq_precio_dia',
+            DB::raw("DATEDIFF(contratos.con_fecha_fin,contratos.con_fecha_inicio) AS dias")
+            
+        )->rightJoin(
+            'maquinas', 'contratos.maquina_id', '=', 'maquinas.id'
+        //)->join(
+          //  'trabajadores', 'alquileres.trabajador_id', '=', 'trabajadores.id'
+        )->groupBy('contratos.id','maq_imagen','con_incidencia','con_fecha_inicio',
+        'con_fecha_fin',
+        'maq_marca',
+        'maq_modelo',
+        'maq_traslacion',
+        'maq_tipo',
+        'maq_peso',
+        'maq_dimension_alto',
+        'maq_dimension_largo',
+        'maq_dimension_ancho',
+        'maq_categoria',
+        'maq_estado',
+        'maq_precio',
+        'maquinas.id',
+        
+       
+        )->get();
+
+        
+            */
+
         $maquinas = Maquina::all();
         $estados = Estado::all();
         return view('maquinas.listado_maquina', compact('maquinas', 'estados'));

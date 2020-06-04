@@ -10,6 +10,7 @@
             <span class="uk-label uk-label-success">VIGENTE</span>
             <span style="background-color:lightgray;"  class="uk-label">FINALIZADO</span>
             <span class="uk-label uk-label-danger">INCIDENCIA</span>
+            <span id="alq_liberar" class="uk-label uk-label-danger">SIN LIBERAR</span>
         </span>
     
     
@@ -46,17 +47,27 @@
     </thead>
     <tbody>
 
-
             
 
         @foreach($contratos as $contrato)
     
             @if($contrato->fecha_final <= $fechaActual)
-                <tr style="background-color: lightgrey"  data-id="{{$contrato->id_alquiler}}" data-maquina_id="{{$contrato->maquina_id}}" data-contrato_id="{{$contrato->id}}">
+
+                  @if($contrato->incidencia == "Con incidencias")
+                         <tr style="background-color: orange"  data-id="{{$contrato->id_alquiler}}" data-maquina_id="{{$contrato->maquina_id}}" data-contrato_id="{{$contrato->id}}">
+                    @else
+                         <tr style="background-color: lightgrey"  data-id="{{$contrato->id_alquiler}}" data-maquina_id="{{$contrato->maquina_id}}" data-contrato_id="{{$contrato->id}}">
+                    @endif
+
+
+
+               
+
+
             @elseif($contrato->incidencia == 'Con incidencias')
                 <tr style="background-color: #ff8787"  data-id="{{$contrato->id_alquiler}}" data-maquina_id="{{$contrato->maquina_id}}" data-contrato_id="{{$contrato->id}}">
             @elseif($contrato->fecha_final > $fechaActual) 
-                <tr data-id="{{$contrato->id_alquiler}}" style="background-color: lightgreen" data-maquina_id="{{$contrato->maquina_id}}" data-contrato_id="{{$contrato->id}}">
+                <tr data-id="{{$contrato->id_alquiler}}" style="background-color: #b3ffb3" data-maquina_id="{{$contrato->maquina_id}}" data-contrato_id="{{$contrato->id}}">
             @endif
                 <td >{{$contrato->id}}</td>
                 <td><img class="img_hover" src="{{url('image')}}/{{$contrato->imagen}}"></td>

@@ -102,7 +102,9 @@
                     <table>
                         <tr>
                             <td class="title">
-                                <img src="" style="width:100%; max-width:300px;">
+                                <img src="{{url('image/logo_agm.png')}}" style="width:700%;">
+
+                              
                             </td>
                             
                             <td>

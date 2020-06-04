@@ -69,7 +69,7 @@
         <div class="uk-navbar-left">
 
             <ul class="uk-navbar-nav">
-                <li class="uk-active"><a href="#"><h4>ALQUILER MAQUINARIA</h4></a></li>
+               <img style="width: 40%;" src="{{url('image/logo_agm.png')}}"> 
             </ul>
 
         </div>
@@ -113,11 +113,7 @@
                     <a class="menu_maq" href="#">Gestión Máquinas</a>
                     <ul class="uk-nav-sub">
                         <li><a  class="menu_maq"  href="{{url('/maquinas')}}">Máquinas</a></li>
-                        <li><a href="{{url('/marcas')}}">Marcas</a></li>
-                        <li><a href="{{url('/modelos')}}">Modelos</a></li>
-                        <li><a href="{{url('/categorias')}}">Categorías</a></li>
-                        <li><a href="{{url('/tipos')}}">Tipos</a></li>
-                        <li><a href="{{url('/estados')}}">Estados</a></li>
+                        
                         
                        
                     </ul>

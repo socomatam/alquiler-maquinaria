@@ -21,9 +21,9 @@
     <div class="uk-position-top-center">
             <br>
             <br>
-             <br>
-            <br>
-            <h1 class="uk-heading-small">ALQUILER MAQUINARIA</h1>
+             <div class="_logo">
+                 <img style="width:70% ;" src="{{url('image/logo_agm.png')}}">
+             </div>
     </div>
 
     <div class="uk-position-center uk-overlay uk-overlay-default">
@@ -55,7 +55,7 @@
                 </div>
                 
                 <button type="submit" class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom">ACCEDER<a href="" uk-icon="icon:  sign-in"></a></button>
-                <a class="uk-link-muted" href="#">Recuperar contraseña.</a>
+            
                 <br>
                 <a class="uk-link-muted" href="{{url('nuevousuario')}}">Solicitar creación de cuenta.</a>
             </form>
@@ -67,7 +67,10 @@
 </html>
 
 <style>
-    
+    img{
+       position:relative;
+       left:60px;
+    }
 </style>
 
 
